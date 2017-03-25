@@ -1,0 +1,40 @@
+version: '3'
+services:
+  db:
+    networks:
+      - appnet
+    build:
+      context: ./services/db
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+  web:
+    networks:
+    - appnet
+    build:
+      context: ./web
+      dockerfile: Dockerfile-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web:/app
+    command: npm start
+  main-api:
+    networks:
+    - appnet
+    build:
+      context: ./services/main-api
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./services/main-api:/app
+    depends_on:
+      - db
+    command: node_modules/nodemon/bin/nodemon.js index.js
+networks:
+  appnet:
+    driver: "bridge"
+volumes:
+  data:
+    driver: "local"

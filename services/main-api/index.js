@@ -5,7 +5,7 @@ const Config        = require('config');
 const HapiAuthJWT   = require('hapi-auth-jwt2');
 const GoodLogging   = require('good');
 const Routes        = require('./lib/routes/');
-const Token         = require('./lib/models/token');
+const Token         = require('./lib/services/token');
 const LoggingConfig = require('./lib/middlewares/logging_config');
 
 // Create a server with a host and port
@@ -17,7 +17,6 @@ const registered = [HapiAuthJWT, { register: GoodLogging, options: goodOptions }
 
 // Server config
 server.connection({
-  host: Config.get('api.host'),
   port: Config.get('api.port'),
   routes: { cors: Config.get('api.cors') }
 });
