@@ -1,5 +1,6 @@
 'use strict';
 
+const Boom = require('boom');
 const MessagesService = require('./../services/messages_service');
 
 class MessagesController {
@@ -7,7 +8,10 @@ class MessagesController {
   index(request, response) {
 
     const userId = request.auth.credentials.id;
-    response(MessagesService.getAllMessagesForUser(userId));
+
+    MessagesService.getAllMessagesForUser(userId)
+      .then((messages) => response(messages))
+      .catch((err) => response(Boom.badImplementation(err)));
   }
 
 }

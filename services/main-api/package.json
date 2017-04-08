@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "boom": "^4.3.1",
     "config": "^1.25.1",
     "good": "^7.1.0",
     "good-console": "^6.4.0",
@@ -28,7 +29,7 @@
     "rollback": "./node_modules/.bin/knex migrate:rollback",
     "jest": "./node_modules/.bin/jest -i",
     "jest:watch": "npm run jest -- --watch",
-    "test": "NODE_ENV=test npm run jest"
+    "test": "NODE_ENV=test npm run migrate-latest && NODE_ENV=test npm run jest"
   },
   "jest": {
     "browser": false,

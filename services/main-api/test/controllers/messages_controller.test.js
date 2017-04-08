@@ -3,6 +3,7 @@
 const Server          = require('../../');
 const Token           = require('../../lib/services/token');
 const MessagesService = require('../../lib/services/messages_service');
+const DB              = require('../../lib/repositories/db');
 
 describe('messages controller', () => {
 
@@ -21,17 +22,17 @@ describe('messages controller', () => {
 
   afterAll((done) => {
     Server.on('stop', () => {
-      done();
+      DB.destroy()
+        .then(() => done());
     });
     Server.stop();
   });
 
   test('responds with success for ping', (done) => {
-
     const returnValue = [{ foo: 'bar' }];
 
     const mockMessages = jest.fn();
-    mockMessages.mockReturnValue(returnValue);
+    mockMessages.mockReturnValue(Promise.resolve(returnValue));
     MessagesService.getAllMessagesForUser = mockMessages;
 
     Server.inject(options, (response) => {

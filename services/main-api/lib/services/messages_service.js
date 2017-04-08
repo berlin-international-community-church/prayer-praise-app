@@ -1,12 +1,10 @@
-const getAllMessagesForUser = (userId) => {
+'use strict';
 
-  return [
-    {
-      id: 1,
-      title: 'foo',
-      body: 'bar'
-    }
-  ]
+const messagesRepo = require('./../repositories/messages_repo');
+
+const getAllMessagesForUser = (userId, getMessages = messagesRepo.getMessages) => {
+
+  return getMessages(userId);
 };
 
 module.exports = {
