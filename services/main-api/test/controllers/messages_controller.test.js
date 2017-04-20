@@ -8,11 +8,7 @@ const DB              = require('../../lib/repositories/db');
 describe('messages controller', () => {
 
   const userId  = 42;
-  const options = {
-    method: 'GET',
-    url: '/messages',
-    headers: { 'Authorization': Token.generate(userId) }
-  };
+  const messageId = 101;
 
   beforeAll((done) => {
     Server.on('start', () => {
@@ -28,19 +24,54 @@ describe('messages controller', () => {
     Server.stop();
   });
 
-  test('responds with success for ping', (done) => {
-    const returnValue = [{ foo: 'bar' }];
+  describe('get all messages', () => {
 
-    const mockMessages = jest.fn();
-    mockMessages.mockReturnValue(Promise.resolve(returnValue));
-    MessagesService.getAllMessagesForUser = mockMessages;
+    const options = {
+      method: 'GET',
+      url: '/messages',
+      headers: { 'Authorization': Token.generate(userId) }
+    };
 
-    Server.inject(options, (response) => {
+    test('fetch all messages for a user', (done) => {
+      const returnValue = [{ foo: 'bar' }];
 
-      expect(response.statusCode).toBe(200);
-      expect(response.result).toBe(returnValue);
-      done();
+      const mockMessages = jest.fn();
+      mockMessages.mockReturnValue(Promise.resolve(returnValue));
+      MessagesService.getAllMessagesForUser = mockMessages;
+
+      Server.inject(options, (response) => {
+
+        expect(response.statusCode).toBe(200);
+        expect(response.result).toBe(returnValue);
+        done();
+      });
     });
+
+  });
+
+  describe('get specific message', () => {
+
+    const options = {
+      method: 'GET',
+      url: `/messages/${messageId}`,
+      headers: { 'Authorization': Token.generate(userId) }
+    };
+
+    test('fetch a specific messages for a user', (done) => {
+      const returnValue = { foo: 'bar' };
+
+      const mockMessages = jest.fn();
+      mockMessages.mockReturnValue(Promise.resolve(returnValue));
+      MessagesService.getMessageForUser = mockMessages;
+
+      Server.inject(options, (response) => {
+
+        expect(response.statusCode).toBe(200);
+        expect(response.result).toBe(returnValue);
+        done();
+      });
+    });
+
   });
 
 });
