@@ -4,7 +4,7 @@ const DB = require('./db');
 
 class MessagesRepo {
 
-  getMessages(userId) {
+  getAllMessages(userId) {
     return DB('messages').where({ user_id: userId });
   }
 

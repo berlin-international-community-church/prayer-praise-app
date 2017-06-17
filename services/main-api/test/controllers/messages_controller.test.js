@@ -9,8 +9,11 @@ describe('messages controller', () => {
 
   const userId  = 42;
   const messageId = 101;
+  const mock1 = jest.fn();
+  const mock2 = jest.fn();
 
   beforeAll((done) => {
+    MessagesService.instance({ getAllMessages: mock1, getMessageForUser: mock2 });
     Server.on('start', () => {
       done();
     });
@@ -34,10 +37,7 @@ describe('messages controller', () => {
 
     test('fetch all messages for a user', (done) => {
       const returnValue = [{ foo: 'bar' }];
-
-      const mockMessages = jest.fn();
-      mockMessages.mockReturnValue(Promise.resolve(returnValue));
-      MessagesService.getAllMessagesForUser = mockMessages;
+      mock1.mockReturnValue(Promise.resolve(returnValue));
 
       Server.inject(options, (response) => {
 
@@ -59,10 +59,7 @@ describe('messages controller', () => {
 
     test('fetch a specific messages for a user', (done) => {
       const returnValue = { foo: 'bar' };
-
-      const mockMessages = jest.fn();
-      mockMessages.mockReturnValue(Promise.resolve(returnValue));
-      MessagesService.getMessageForUser = mockMessages;
+      mock2.mockReturnValue(Promise.resolve(returnValue));
 
       Server.inject(options, (response) => {
 

@@ -1,15 +1,28 @@
-'use strict';
+class MessagesService {
 
-const getAllMessagesForUser = (userId, getMessages = require('./../repositories/messages_repo').getMessages) => {
+  constructor(repo) {
+    this.repo = repo
+  }
 
-  return getMessages(userId);
-};
+  getAllMessagesForUser(userId) {
+    return this.repo.getAllMessages(userId);
+  }
 
-const getMessageForUser = (userId, msgId, getMessageForUser = require('./../repositories/messages_repo').getMessageForUser) => {
+  getMessageForUser(userId, msgId) {
+    return this.repo.getMessageForUser(userId, msgId);
+  }
 
-  return getMessageForUser(userId, msgId);
-};
+}
+
+let obj = null;
+
+const instance = (repo = require('./../repositories/messages_repo')) => {
+  if (!obj) {
+    obj = new MessagesService(repo);
+  }
+  return obj;
+}
 
 module.exports = {
-  getAllMessagesForUser
+  instance
 }
