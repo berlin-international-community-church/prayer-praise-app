@@ -1,18 +1,15 @@
-/**
- *
- * App.react.js
- *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
- *
- */
-
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { createStructuredSelector } from 'reselect';
 
 import Header from './../../components/Header';
 import Footer from './../../components/Footer';
 import Sidebar from './../../components/Sidebar';
+
+import {
+  selectAuth0
+} from './selector';
 
 const Container = styled.div`
   display: flex;
@@ -27,16 +24,12 @@ const Page = styled.div`
   flex-grow: 1;
 `;
 
-export default class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
-  static propTypes = {
-    children: React.PropTypes.node,
-  };
+export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   render() {
     return (
       <Container>
-        <Header />
+        <Header auth0={this.props.auth0}/>
         <Page>
           <Sidebar />
           {React.Children.toArray(this.props.children)}
@@ -45,4 +38,17 @@ export default class App extends React.PureComponent { // eslint-disable-line re
       </Container>
     );
   }
+
 }
+
+const mapStateToProps = createStructuredSelector({
+  auth0: selectAuth0(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

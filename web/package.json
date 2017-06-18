@@ -202,13 +202,14 @@
       "app"
     ],
     "moduleNameMapper": {
-      ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/internals/mocks/cssModule.js",
+      ".*\\.(css)$": "<rootDir>/internals/mocks/cssModule.js",
       ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/image.js"
     },
     "setupTestFrameworkScriptFile": "<rootDir>/internals/testing/test-bundler.js",
     "testRegex": "tests/.*\\.test\\.js$"
   },
   "dependencies": {
+    "auth0-js": "^8.7.0",
     "babel-polyfill": "6.20.0",
     "chalk": "1.1.3",
     "compression": "1.6.2",
@@ -257,7 +258,7 @@
     "cheerio": "0.22.0",
     "circular-dependency-plugin": "2.0.0",
     "coveralls": "2.11.15",
-    "css-loader": "0.26.1",
+    "css-loader": "^0.28.4",
     "enzyme": "2.6.0",
     "eslint": "3.11.1",
     "eslint-config-airbnb": "13.0.0",

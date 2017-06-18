@@ -7,13 +7,13 @@
 ul.sidelinks {
   list-style: none;
   padding-left: 0;
+}
 
-  li {
-    padding-bottom: 100px;
-  }
+ul.sidelinks li {
+  padding-bottom: 100px;
+}
 
-  li a {
-    color: #FFFFFF;
-    text-decoration: none;
-  }
+ul.sidelinks li a {
+  color: #FFFFFF;
+  text-decoration: none;
 }
