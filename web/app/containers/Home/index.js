@@ -1,41 +1,34 @@
-/*
- *
- * Home
- *
- */
-
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
-import makeSelectHome from './selectors';
+
+import {
+  fetchToken
+} from './actions';
 
 export class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+    this.props.fetchToken();
+  }
+
   render() {
     return (
       <div>
-        <Helmet
-          title="Home"
-          meta={[
-            { name: 'description', content: 'Description of Home' },
-          ]}
-        />
+        <Helmet title="Welcome" />
       </div>
     );
   }
+
 }
 
-Home.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
-
 const mapStateToProps = createStructuredSelector({
-  Home: makeSelectHome(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    fetchToken: () => dispatch(fetchToken())
   };
 }
 

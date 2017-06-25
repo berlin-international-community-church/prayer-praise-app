@@ -1,20 +1,15 @@
-/*
- *
- * Home reducer
- *
- */
-
 import { fromJS } from 'immutable';
 import {
-  DEFAULT_ACTION,
+  FETCH_TOKEN,
 } from './constants';
 
-const initialState = fromJS({});
+const initialState = fromJS({
+  jwtToken: null
+});
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
+
     default:
       return state;
   }

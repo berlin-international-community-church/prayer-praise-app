@@ -8,11 +8,11 @@ import {
 const initialState = fromJS({
   auth0: new auth0.WebAuth({
     domain: 'rockyj.eu.auth0.com',
-    clientID: 'foo__',
+    clientID: 'foo',
     redirectUri: 'http://localhost:3000/authCallback',
     audience: 'https://rockyj.eu.auth0.com/userinfo',
     responseType: 'token id_token',
-    scope: 'openid'
+    scope: 'openid profile'
   }),
   accessToken: null,
   idToken: null,

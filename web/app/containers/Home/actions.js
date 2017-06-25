@@ -1,15 +1,25 @@
-/*
- *
- * Home actions
- *
- */
-
 import {
-  DEFAULT_ACTION,
+  FETCH_TOKEN,
+  TOKEN_LOADED,
+  TOKEN_LOAD_ERROR
 } from './constants';
 
-export function defaultAction() {
+export function fetchToken() {
   return {
-    type: DEFAULT_ACTION,
+    type: FETCH_TOKEN
+  };
+}
+
+export function tokenLoaded(payload) {
+  return {
+    type: TOKEN_LOADED,
+    payload
+  };
+}
+
+export function tokenLoadError(payload) {
+  return {
+    type: TOKEN_LOAD_ERROR,
+    payload
   };
 }

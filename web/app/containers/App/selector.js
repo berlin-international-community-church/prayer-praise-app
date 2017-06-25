@@ -7,6 +7,12 @@ const selectAuth0 = () => createSelector(
   (substate) => substate.get('auth0')
 );
 
+const selectAccessToken = () => createSelector(
+  selectGlobalDomain(),
+  (substate) => substate.get('accessToken') || localStorage.getItem('token')
+);
+
 export {
-  selectAuth0
+  selectAuth0,
+  selectAccessToken
 };
