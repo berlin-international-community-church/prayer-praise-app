@@ -15,6 +15,7 @@ import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
+import 'react-switch-button/dist/react-switch-button.css';
 import 'sanitize.css/sanitize.css';
 
 // Import root app

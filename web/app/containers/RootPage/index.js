@@ -9,7 +9,7 @@ const Page = styled.div`
   background-color: #FFFFFF;
 `;
 
-export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class RootPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <Page />

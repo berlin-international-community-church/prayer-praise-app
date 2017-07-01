@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { FormattedMessage } from 'react-intl';
+
 import messages from './messages';
+import User from '../User';
 
 const AppHeading = styled.div`
   display: flex;
@@ -17,19 +18,18 @@ const Title = styled.h1`
   margin: 0;
 `;
 
-const LoginButton = styled.button`
-  background-color: white;
-  color: #E10827;
-  border-radius: 1px;
-  padding: 5px;
-`;
-
 class Header extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <AppHeading>
         <Title><FormattedMessage {...messages.header} /></Title>
-        <LoginButton onClick={ () => this.props.auth0.authorize() }>Login</LoginButton>
+        <User
+          auth0={this.props.auth0}
+          jwtToken={this.props.jwtToken}
+          username={this.props.username}
+          profilePic={this.props.profilePic}
+          logout={this.props.logout}
+        />
       </AppHeading>
     );
   }

@@ -11,6 +11,16 @@ import {
   selectAuth0
 } from './selectors';
 
+import {
+  selectUserName,
+  selectProfilePic,
+  selectJwtToken
+} from '../Home/selectors';
+
+import {
+  logout
+} from '../App/actions';
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,10 +39,16 @@ export class App extends React.Component { // eslint-disable-line react/prefer-s
   render() {
     return (
       <Container>
-        <Header auth0={this.props.auth0}/>
+        <Header
+          auth0={this.props.auth0}
+          jwtToken={this.props.jwtToken}
+          username={this.props.username}
+          profilePic={this.props.profilePic}
+          logout={this.props.logout}
+        />
         <Page>
           <Sidebar />
-          {React.Children.toArray(this.props.children)}
+          { React.Children.toArray(this.props.children) }
         </Page>
         <Footer />
       </Container>
@@ -43,11 +59,14 @@ export class App extends React.Component { // eslint-disable-line react/prefer-s
 
 const mapStateToProps = createStructuredSelector({
   auth0: selectAuth0(),
+  jwtToken: selectJwtToken(),
+  username: selectUserName(),
+  profilePic: selectProfilePic()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    logout: () => dispatch(logout())
   };
 }
 

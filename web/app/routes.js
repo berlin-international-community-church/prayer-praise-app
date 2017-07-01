@@ -22,7 +22,7 @@ export default function createRoutes(store) {
       name: 'root',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/HomePage'),
+          import('containers/RootPage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -66,15 +66,13 @@ export default function createRoutes(store) {
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/Home/reducer'),
           import('containers/Home/sagas'),
           import('containers/Home'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([reducer, sagas, component]) => {
-          injectReducer('user', reducer.default);
+        importModules.then(([sagas, component]) => {
           injectSagas(sagas.default);
           renderRoute(component);
         });

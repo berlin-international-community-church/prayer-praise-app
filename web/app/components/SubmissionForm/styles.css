@@ -1,0 +1,21 @@
+.formContainer {
+  display: flex;
+  padding: 20px;
+  width: 80%;
+  height: 80%;
+}
+
+.formContainer form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+button.submitButton {
+  width: 100px;
+  margin-top: 20px;
+  padding: 10px;
+  color: #FFFFFF;
+  background-color: #E10827;
+}

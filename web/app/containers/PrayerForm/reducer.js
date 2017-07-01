@@ -5,6 +5,7 @@ import {
 
 const initialState = fromJS({
   prayerText: '',
+  sharedWithChurch: false,
   loading: false,
   error: null
 });

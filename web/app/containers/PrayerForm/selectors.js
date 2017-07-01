@@ -21,8 +21,6 @@ const makeSelectPrayerText = () => createSelector(
   (substate) => substate.get('prayerText')
 );
 
-export default makeSelectPrayerForm;
 export {
-  selectPrayerFormDomain,
   makeSelectPrayerText
 };

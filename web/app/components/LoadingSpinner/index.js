@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './styles.css'
+import styles from './styles.css';
 
 class LoadingSpinner extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
