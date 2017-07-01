@@ -4,10 +4,12 @@ import { push } from 'react-router-redux';
 import { createStructuredSelector } from 'reselect';
 
 import LoadingSpinner from '../../components/LoadingSpinner';
+
 import {
   selectAuth0,
   selectLoggedIn
-} from './selector';
+} from './selectors';
+
 import {
   login
 } from '../App/actions';

@@ -9,7 +9,7 @@ import Sidebar from './../../components/Sidebar';
 
 import {
   selectAuth0
-} from './selector';
+} from './selectors';
 
 const Container = styled.div`
   display: flex;

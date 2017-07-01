@@ -7,7 +7,7 @@ const environmentConfiguration = (environment) => {
 
   if (environment === 'development'){
     return defaultConf.merge({
-      tokenURL: 'http://' + window.location.hostname + ':3001/token'
+      baseURL: 'http://' + window.location.hostname + ':3001',
     }).toObject();
   }
 }

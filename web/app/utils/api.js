@@ -13,20 +13,20 @@ const AppAPI = {
     });
   },
 
-  async createToken (accessToken) {
-    return await AppAPI.API().post(Config.env.tokenURL, { accessToken });
+  async createToken(accessToken) {
+    return await AppAPI.API().post(Config.env.baseURL + '/token', { accessToken });
   },
 
-  // async fetchUserProfile () {
-  //   return await B2BAPI.API().get(Config.env.auth_url + '/me');
-  // },
-  //
+  async fetchUserProfile() {
+    return await AppAPI.API().get(Config.env.baseURL + '/me');
+  }
+
   // async deleteBond (bondID) {
-  //   return await B2BAPI.API()({ method: 'delete', url: Config.env.api_url + '/bond_order', data: bondID });
+  //   return await API.API()({ method: 'delete', url: Config.env.api_url + '/bond_order', data: bondID });
   // },
   //
   // async updatePassword (password) {
-  //   return await B2BAPI.API().put(Config.env.auth_url + '/me', {
+  //   return await API.API().put(Config.env.auth_url + '/me', {
   //     password
   //   });
   // },

@@ -1,5 +1,3 @@
-'use strict';
-
 const DB = require('./db');
 
 class MessagesRepo {

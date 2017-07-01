@@ -1,15 +1,24 @@
 import { createSelector } from 'reselect';
 
-/**
- * Direct selector to the home state domain
- */
 const selectUserDomain = () => (state) => state.get('user');
 
-const makeSelectUser = () => createSelector(
+const selectJwtToken = () => createSelector(
   selectUserDomain(),
-  (substate) => substate.toJS()
+  (substate) => substate.get('jwtToken')
+);
+
+const selectUserName = () => createSelector(
+  selectUserDomain(),
+  (substate) => substate.get('username')
+);
+
+const selectProfilePic = () => createSelector(
+  selectUserDomain(),
+  (substate) => substate.get('profilePic')
 );
 
 export {
-  selectUserDomain,
+  selectJwtToken,
+  selectUserName,
+  selectProfilePic
 };

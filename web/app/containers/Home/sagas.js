@@ -1,25 +1,39 @@
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { FETCH_TOKEN } from './constants';
-import { tokenLoaded, tokenLoadError } from './actions';
+
+import { FETCH_TOKEN, FETCH_USER_PROFILE } from './constants';
+import {
+  tokenLoaded,
+  tokenLoadError,
+  userProfileLoaded,
+  userProfileLoadError
+} from './actions';
+import { selectAccessToken } from 'containers/App/selectors';
 
 import API from 'utils/api';
-import { selectAccessToken } from 'containers/App/selector';
 
 export function* createToken() {
   const accessToken = yield select(selectAccessToken());
 
   try {
     const result = yield call(API.createToken, accessToken);
-    yield put(tokenLoaded(result));
+    yield put(tokenLoaded(result.data.token));
   } catch (err) {
-    yield put(tokenLoadError(err));
+    console.error(err);
+    yield put(tokenLoadError());
   }
 }
 
-/**
- * Root saga manages watcher lifecycle
- */
+export function* getUserProfile() {
+  try {
+    const result = yield call(API.fetchUserProfile);
+    yield put(userProfileLoaded(result.data));
+  } catch (err) {
+    console.error(err);
+    yield put(userProfileLoadError());
+  }
+}
+
 export function* tokenData() {
   const watcher = yield takeLatest(FETCH_TOKEN, createToken);
 
@@ -28,7 +42,15 @@ export function* tokenData() {
   yield cancel(watcher);
 }
 
+export function* userProfile() {
+  const watcher = yield takeLatest(FETCH_USER_PROFILE, getUserProfile);
+
+  // Suspend execution until location changes
+  yield take(LOCATION_CHANGE);
+  yield cancel(watcher);
+}
+
 // Bootstrap sagas
 export default [
-  tokenData
+  tokenData, userProfile
 ];

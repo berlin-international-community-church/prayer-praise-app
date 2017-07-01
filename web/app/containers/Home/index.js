@@ -1,16 +1,41 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
+import { push } from 'react-router-redux';
 import { createStructuredSelector } from 'reselect';
 
 import {
-  fetchToken
+  selectUserName,
+  selectJwtToken
+} from './selectors';
+
+import { selectAccessToken } from '../App/selectors';
+
+import {
+  fetchToken,
+  fetchUserProfile
 } from './actions';
 
 export class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
-    this.props.fetchToken();
+    this.check(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.check(nextProps);
+  }
+
+  check(props) {
+    if (!props.accessToken && !props.jwtToken) {
+      props.changeRoute('/');
+    }
+    if (props.accessToken && !props.jwtToken) {
+      props.fetchToken();
+    }
+    if (props.jwtToken) {
+      props.fetchUserProfile();
+    }
   }
 
   render() {
@@ -24,11 +49,16 @@ export class Home extends React.Component { // eslint-disable-line react/prefer-
 }
 
 const mapStateToProps = createStructuredSelector({
+  accessToken: selectAccessToken(),
+  jwtToken: selectJwtToken(),
+  username: selectUserName()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchToken: () => dispatch(fetchToken())
+    fetchToken: () => dispatch(fetchToken()),
+    fetchUserProfile: () => dispatch(fetchUserProfile()),
+    changeRoute: (route) => dispatch(push(route))
   };
 }
 
