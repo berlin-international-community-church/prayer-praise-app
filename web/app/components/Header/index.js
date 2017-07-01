@@ -18,8 +18,9 @@ const Title = styled.h1`
 `;
 
 const LoginButton = styled.button`
-  border: 1px solid white;
-  border-radius: 4px;
+  background-color: white;
+  color: #E10827;
+  border-radius: 1px;
   padding: 5px;
 `;
 
