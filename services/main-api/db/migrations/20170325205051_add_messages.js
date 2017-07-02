@@ -5,8 +5,9 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('messages', (table) => {
 
     table.increments('id').primary();
-    table.text('title').unique();
-    table.text('body');
+    table.text('messageType');
+    table.text('messageText');
+    table.boolean('sharedWithChurch');
 
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());

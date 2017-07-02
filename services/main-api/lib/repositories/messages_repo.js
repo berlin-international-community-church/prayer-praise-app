@@ -10,6 +10,15 @@ class MessagesRepo {
     return DB('messages').where({ id: msgId, user_id: userId });
   }
 
+  createMessageForUser(userId, message) {
+    return DB('messages').insert({
+      user_id: userId,
+      messageType: message.messageType,
+      messageText: message.messageText,
+      sharedWithChurch: message.sharingStatus
+    });
+  }
+
 }
 
 module.exports = new MessagesRepo();

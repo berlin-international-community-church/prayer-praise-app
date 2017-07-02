@@ -19,6 +19,10 @@ const AppAPI = {
 
   async fetchUserProfile() {
     return await AppAPI.API().get(Config.env.baseURL + '/me');
+  },
+
+  async submitMessage(message) {
+    return await AppAPI.API().post(Config.env.baseURL + '/messages', { message });
   }
 
   // async deleteBond (bondID) {

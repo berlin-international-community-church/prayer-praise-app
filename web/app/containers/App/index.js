@@ -18,8 +18,8 @@ import {
 } from '../Home/selectors';
 
 import {
-  logout
-} from '../App/actions';
+  fetchUserProfile
+} from '../Home/actions';
 
 const Container = styled.div`
   display: flex;
@@ -35,6 +35,20 @@ const Page = styled.div`
 `;
 
 export class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+    this.checkAuth(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.checkAuth(nextProps);
+  }
+
+  checkAuth(props) {
+    if (props.jwtToken && !props.username) {
+      props.fetchUserProfile();
+    }
+  }
 
   render() {
     return (
@@ -66,7 +80,8 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    fetchUserProfile: () => dispatch(fetchUserProfile())
   };
 }
 

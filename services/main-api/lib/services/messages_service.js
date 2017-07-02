@@ -12,6 +12,10 @@ class MessagesService {
     return this.repo.getMessageForUser(userId, msgId);
   }
 
+  createMessageForUser(userId, message) {
+    return this.repo.createMessageForUser(userId, message);
+  }
+
 }
 
 let obj = null;

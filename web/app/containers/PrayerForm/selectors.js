@@ -1,26 +1,24 @@
 import { createSelector } from 'reselect';
 
-/**
- * Direct selector to the prayerForm state domain
- */
 const selectPrayerFormDomain = () => (state) => state.get('prayerForm');
 
-/**
- * Default selector used by PrayerForm
- */
-const makeSelectPrayerForm = () => createSelector(
+const selectMessageType = () => createSelector(
   selectPrayerFormDomain(),
-  (substate) => substate.toJS()
+  (substate) => substate.get('messageType')
 );
 
-/**
-* Other specific selectors
-*/
-const makeSelectPrayerText = () => createSelector(
+const selectMessageText = () => createSelector(
   selectPrayerFormDomain(),
-  (substate) => substate.get('prayerText')
+  (substate) => substate.get('messageText')
+);
+
+const selectSharingStatus = () => createSelector(
+  selectPrayerFormDomain(),
+  (substate) => substate.get('sharedWithChurch')
 );
 
 export {
-  makeSelectPrayerText
+  selectMessageType,
+  selectMessageText,
+  selectSharingStatus
 };

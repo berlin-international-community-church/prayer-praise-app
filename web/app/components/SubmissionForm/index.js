@@ -15,28 +15,37 @@ const Content = styled.div`
   background-image: url(${lineSvg});
   background-repeat: repeat;
   line-height: 41px;
+  margin-bottom: 20px;
 `;
 
 class SubmissionForm extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
+  getMessage(formType) {
+    return {
+      prayer: 'I need prayer for',
+      praise: 'I praise God for'
+    }[formType];
+  }
+
   render() {
     return (
       <div className="formContainer">
+        <h2>{this.getMessage(this.props.formType)}</h2>
         <form>
           <Content
             contentEditable="true"
-            onBlur={(e) => this.props.handleChangePrayerText(e.target.innerHTML)}
+            onBlur={(e) => this.props.handleChangeMessageText(e.target.innerHTML)}
           />
           <SwitchButton
             name="sharingStatus"
-            label="Share with Prayer Team"
+            label="Share with Prayer Team only"
             labelRight="Share with Church"
             onChange={this.props.handleShareStatusChange}
           />
           <button
             className="submitButton"
             type="submit"
-            onClick={() => this.props.handlePrayerTextSubmit()}>
+            onClick={ (e) => { e.preventDefault(); this.props.handleSubmit(); } }>
             Submit
           </button>
         </form>

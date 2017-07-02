@@ -21,6 +21,15 @@ class MessagesController {
       .catch((err) => response(Boom.badImplementation(err)));
   }
 
+  create(request, response) {
+
+    const userId = request.auth.credentials.id;
+
+    MessagesService.instance().createMessageForUser(userId, request.payload.message)
+      .then((message) => response(message))
+      .catch((err) => response(Boom.badImplementation(err)));
+  }
+
 }
 
 module.exports = new MessagesController();

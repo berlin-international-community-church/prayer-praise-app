@@ -12,8 +12,7 @@ import {
 import { selectAccessToken } from '../App/selectors';
 
 import {
-  fetchToken,
-  fetchUserProfile
+  fetchToken
 } from './actions';
 
 export class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -32,9 +31,6 @@ export class Home extends React.Component { // eslint-disable-line react/prefer-
     }
     if (props.accessToken && !props.jwtToken) {
       props.fetchToken();
-    }
-    if (props.jwtToken) {
-      props.fetchUserProfile();
     }
   }
 
@@ -57,7 +53,6 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     fetchToken: () => dispatch(fetchToken()),
-    fetchUserProfile: () => dispatch(fetchUserProfile()),
     changeRoute: (route) => dispatch(push(route))
   };
 }

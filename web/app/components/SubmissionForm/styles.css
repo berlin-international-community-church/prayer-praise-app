@@ -1,8 +1,14 @@
 .formContainer {
   display: flex;
+  flex-direction: column;
   padding: 20px;
   width: 80%;
   height: 80%;
+}
+
+.formContainer h2 {
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .formContainer form {

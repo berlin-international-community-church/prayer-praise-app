@@ -1,17 +1,53 @@
 import {
-  CHANGE_PRAYER_TEXT,
-  SUBMIT_PRAYER
+  CHANGE_MESSAGE_TYPE,
+  CHANGE_MESSAGE_TEXT,
+  CHANGE_SHARED_STATUS,
+  SUBMIT_MESSAGE,
+  SUBMIT_MESSAGE_INFLIGHT,
+  SUBMIT_MESSAGE_SUCCESS,
+  SUBMIT_MESSAGE_FAILED
 } from './constants';
 
-export function changePrayerText(payload) {
+export function changeMessageType(payload) {
   return {
-    type: CHANGE_PRAYER_TEXT,
+    type: CHANGE_MESSAGE_TYPE,
     payload
   };
 }
 
-export function submitPrayer() {
+export function changeMessageText(payload) {
   return {
-    type: SUBMIT_PRAYER
+    type: CHANGE_MESSAGE_TEXT,
+    payload
+  };
+}
+
+export function changeSharedStatus() {
+  return {
+    type: CHANGE_SHARED_STATUS
+  };
+}
+
+export function submitMessage() {
+  return {
+    type: SUBMIT_MESSAGE
+  };
+}
+
+export function submitMessageInProgress() {
+  return {
+    type: SUBMIT_MESSAGE_INFLIGHT
+  };
+}
+
+export function submitMessageSuccessful() {
+  return {
+    type: SUBMIT_PRAYER_SUCCESS
+  };
+}
+
+export function submitMessageFailed() {
+  return {
+    type: SUBMIT_MESSAGE_FAILED
   };
 }

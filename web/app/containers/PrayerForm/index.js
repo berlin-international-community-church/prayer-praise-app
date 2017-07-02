@@ -6,26 +6,35 @@ import { createStructuredSelector } from 'reselect';
 import styled from 'styled-components';
 
 import SubmissionForm from '../../components/SubmissionForm';
-import { makeSelectPrayerText } from './selectors';
-import { changePrayerText } from './actions';
-import messages from './messages';
+import {
+  changeMessageType,
+  changeMessageText,
+  changeSharedStatus,
+  submitMessage
+} from './actions';
 
 const Page = styled.div`
   width: 100%;
   min-height: 80%;
 `;
 
+const PRAYER = 'prayer';
+
 export class PrayerForm extends React.Component { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+    this.props.changeMessageType({ messageType: PRAYER });
+  }
 
   render() {
     return (
       <Page>
         <Helmet title="BICC: Prayer Form" />
         <SubmissionForm
-          handleChangePrayerText={this.props.changePrayerText}
-          handleShareStatusChange={() => {}}
-          handleSubmit={{}}
-          type={'prayer'}
+          formType={PRAYER}
+          handleChangeMessageText={this.props.changeMessageText}
+          handleShareStatusChange={this.props.changeSharedStatus}
+          handleSubmit={this.props.submitMessage}
         />
       </Page>
     );
@@ -34,12 +43,14 @@ export class PrayerForm extends React.Component { // eslint-disable-line react/p
 }
 
 const mapStateToProps = createStructuredSelector({
-  prayerText: makeSelectPrayerText(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    changePrayerText: (txt) => dispatch(changePrayerText(txt))
+    changeMessageType: (payload) => dispatch(changeMessageType(payload)),
+    changeMessageText: (txt) => dispatch(changeMessageText(txt)),
+    changeSharedStatus: () => dispatch(changeSharedStatus()),
+    submitMessage: () => dispatch(submitMessage())
   };
 }
 
