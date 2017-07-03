@@ -42,7 +42,7 @@ export function submitMessageInProgress() {
 
 export function submitMessageSuccessful() {
   return {
-    type: SUBMIT_PRAYER_SUCCESS
+    type: SUBMIT_MESSAGE_SUCCESS
   };
 }
 
