@@ -1,0 +1,31 @@
+.message {
+  display: flex;
+  position: relative;
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+.prayer {
+  background-color: #4dd0e1;
+}
+
+.praise {
+  background-color: #64b5f6;
+}
+
+.userInitials {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  bottom: 10px;
+  left: 10px;
+  padding-top: 4px;
+  padding-left: 7px;
+  background-color: #b39ddb;
+  border-radius: 50%;
+}

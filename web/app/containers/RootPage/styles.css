@@ -1,0 +1,18 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  padding: 20px;
+  color: #292929;
+}
+
+.page h2 {
+  margin: 0;
+}
+
+.messages {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  flex-wrap: wrap;
+}

@@ -12,6 +12,7 @@ const Content = styled.div`
   min-width: 80%;
   min-height: 80%;
   resize: none;
+  outline: none;
   background-image: url(${lineSvg});
   background-repeat: repeat;
   line-height: 41px;
