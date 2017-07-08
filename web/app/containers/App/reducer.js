@@ -15,10 +15,10 @@ import {
 
 const initialState = fromJS({
   auth0: new auth0.WebAuth({
-    domain: 'rockyj.eu.auth0.com',
-    clientID: '',
+    domain: process.env['AUTH0_DOMAIN'],
+    clientID: process.env['AUTH0_CLIENT_ID'],
+    audience: process.env['AUTH0_AUDIENCE'],
     redirectUri: 'http://localhost:3000/authCallback',
-    audience: 'https://rockyj.eu.auth0.com/userinfo',
     responseType: 'token id_token',
     scope: 'openid profile'
   }),
@@ -62,6 +62,7 @@ function globalReducer(state = initialState, action) {
         .set('profilePic', action.payload.picture);
 
     case USER_PROFILE_LOAD_ERROR:
+      sessionStorage.removeItem('token');
       return state
         .set('jwtToken', null)
         .set('username', null)
