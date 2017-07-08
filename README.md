@@ -21,3 +21,4 @@ Fully containerized HapiJS + ReactJS app for Berlin Church to share prayers and 
 
 - The application runs as a ReactJS web application, with a Node+HapiJS REST API backend.
 - The application also uses Auth0 for user login, the Auth0 token is not checked into the git repo, please create your own Auth0 client for testing / local installation (it's very simple)
+  - Change the Auth0 configuration in __web/app/containers/App/reducer.js__ with your configuration from Auth0 (I will move this to env vars soon)
