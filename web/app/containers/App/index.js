@@ -21,6 +21,10 @@ import {
   fetchUserProfile
 } from '../Home/actions';
 
+import {
+  logout
+} from './actions';
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;

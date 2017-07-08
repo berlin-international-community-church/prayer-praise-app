@@ -23,8 +23,8 @@ export function* userProfile() {
   const watcher = yield takeLatest(FETCH_USER_PROFILE, getUserProfile);
 
   // Suspend execution until location changes
-  yield take(LOCATION_CHANGE);
-  yield cancel(watcher);
+  // yield take(LOCATION_CHANGE);
+  // yield cancel(watcher);
 }
 
 // Bootstrap sagas
