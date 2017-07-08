@@ -1,5 +1,5 @@
 const Boom = require('boom');
-const MessagesService = require('./../services/messages_service');
+const MessagesService = require('./../services/messages_service').instance();
 
 class MessagesController {
 
@@ -7,7 +7,7 @@ class MessagesController {
 
     const userId = request.auth.credentials.id;
 
-    MessagesService.instance().getAllMessagesForUser(userId)
+    MessagesService.getAllMessagesForUser(userId)
       .then((messages) => response(messages))
       .catch((err) => response(Boom.badImplementation(err)));
   }
@@ -16,7 +16,7 @@ class MessagesController {
 
     const userId = request.auth.credentials.id;
 
-    MessagesService.instance().getMessageForUser(userId, request.params.id)
+    MessagesService.getMessageForUser(userId, request.params.id)
       .then((messages) => response(messages))
       .catch((err) => response(Boom.badImplementation(err)));
   }
@@ -25,7 +25,7 @@ class MessagesController {
 
     const userId = request.auth.credentials.id;
 
-    MessagesService.instance().createMessageForUser(userId, request.payload.message)
+    MessagesService.createMessageForUser(userId, request.payload.message)
       .then((message) => response(message))
       .catch((err) => response(Boom.badImplementation(err)));
   }

@@ -12,7 +12,7 @@ COPY ./harden.sh /usr/local/bin/harden.sh
 RUN /usr/local/bin/harden.sh
 
 ADD . /app
-RUN yarn install --production
+RUN yarn install
 
 EXPOSE 3001
 CMD ["node", "index.js"]

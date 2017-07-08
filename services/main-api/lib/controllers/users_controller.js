@@ -1,5 +1,5 @@
 const Boom = require('boom');
-const UsersService = require('./../services/users_service');
+const UsersService = require('./../services/users_service').instance();
 
 class UsersController {
 
@@ -7,7 +7,7 @@ class UsersController {
 
     const userId = request.auth.credentials.id;
 
-    UsersService.instance().findUser(userId)
+    UsersService.findUser(userId)
       .then((user) => response(user))
       .catch((err) => response(Boom.badImplementation(err)));
   }
