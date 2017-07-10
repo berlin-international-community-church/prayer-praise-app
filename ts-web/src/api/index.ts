@@ -1,40 +1,41 @@
-import axios from 'axios';
+import { AxiosInstance, default as axios } from 'axios';
 import Config from '../config';
 
-const AppAPI = {
+class AppAPI {
+  api: AxiosInstance;
 
-  API() {
-    return axios.create({
+  constructor() {
+    this.api = axios.create({
       headers: {
         common: {
           Authorization: sessionStorage.getItem('token') || ''
         }
       }
     });
-  },
+  }
 
-  async createToken(accessToken) {
-    return await AppAPI.API().post(Config.env.baseURL + '/token', { accessToken });
-  },
+  async createToken(accessToken: string) {
+    return await this.api.post(Config.env.baseURL + '/token', { accessToken });
+  }
 
   async fetchUserProfile() {
-    return await AppAPI.API().get(Config.env.baseURL + '/me');
-  },
+    return await this.api.get(Config.env.baseURL + '/me');
+  }
 
   async submitMessage(message) {
-    return await AppAPI.API().post(Config.env.baseURL + '/messages', { message });
+    return await this.api.post(Config.env.baseURL + '/messages', { message });
   }
 
   // async deleteBond (bondID) {
   //   return await API.API()({ method: 'delete', url: Config.env.api_url + '/bond_order', data: bondID });
-  // },
+  // }
   //
   // async updatePassword (password) {
   //   return await API.API().put(Config.env.auth_url + '/me', {
   //     password
   //   });
-  // },
+  // }
 
-};
+}
 
-export default AppAPI;
+export default new AppAPI();

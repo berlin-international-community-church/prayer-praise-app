@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 
 const defaultConfiguration = {};
 
-const environmentConfiguration = (environment) => {
+const environmentConfiguration = (environment: string) => {
   const defaultConf = fromJS(defaultConfiguration);
 
   if (environment === 'development') {

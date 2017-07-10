@@ -1,5 +1,6 @@
-import { LOCATION_CHANGE } from 'react-router-redux';
-import { call, cancel, put, select, take, takeLatest } from 'redux-saga/effects';
+// import { LOCATION_CHANGE } from 'react-router-redux';
+// import { call, cancel, put, select, take, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 import {
   userProfileLoaded,
@@ -21,7 +22,7 @@ export function* getUserProfile() {
 }
 
 export function* userProfile() {
-  const watcher = yield takeLatest(FETCH_USER_PROFILE, getUserProfile);
+  yield takeLatest(FETCH_USER_PROFILE, getUserProfile);
 
   // Suspend execution until location changes
   // yield take(LOCATION_CHANGE);
