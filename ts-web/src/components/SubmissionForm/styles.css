@@ -1,0 +1,34 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  min-width: 80%;
+  min-height: 80%;
+}
+
+.formContainer h2 {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+button.submitButton {
+  width: 100px;
+  margin-top: 20px;
+  padding: 10px;
+  color: #FFFFFF;
+  background-color: #E10827;
+}
+
+.contentHolder {
+  color: #444;
+  font-family: 'Kalam', cursive;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciDQogIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIg0KICB3aWR0aD0iMzAwcHgiIGhlaWdodD0iNDFweCINCiAgdmlld0JveD0iMCAwICAzMDAgNDEiDQogIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIG1lZXQiID4NCiAgPHJlY3QNCiAgICBpZD0ic3ZnRWRpdG9yQmFja2dyb3VuZCINCiAgICB4PSIwIiB5PSIwIg0KICAgIHdpZHRoPSIzMDAiDQogICAgaGVpZ2h0PSI0MSINCiAgICBzdHlsZT0iZmlsbDogbm9uZTsgc3Ryb2tlOiBub25lOyIvPg0KICA8bGluZSBpZD0iZTFfbGluZSIgeDE9IjAiIHkxPSI0MCIgeDI9IjMwMCIgeTI9IjQwIiBzdHJva2U9InNpbHZlciIgc3R5bGU9InN0cm9rZS13aWR0aDogMXB4OyBmaWxsOiBub25lOyIvPg0KPC9zdmc+);
+  background-repeat: repeat;
+  font-size: 22px;
+  line-height: 41px;
+  width: 450px;
+  height: 400px;
+  margin-bottom: 20px;
+  resize: none;
+  outline: none;
+}

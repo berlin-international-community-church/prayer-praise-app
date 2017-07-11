@@ -8,11 +8,11 @@ import {
 } from '../containers/Home/actions';
 import { FETCH_USER_PROFILE } from '../containers/Home/constants';
 
-import API from '../api';
+import AppAPI from '../api';
 
 export function* getUserProfile() {
   try {
-    const result = yield call(API.fetchUserProfile);
+    const result = yield call(AppAPI.fetchUserProfile);
     yield put(userProfileLoaded(result.data));
   } catch (err) {
     // tslint:disable-next-line:no-console
