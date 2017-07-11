@@ -7,11 +7,9 @@ import Layout from '../../components/Layout';
 
 import { IRootState } from '../../reducers';
 import {
-  logout
-} from './actions';
-import {
+  logout,
   fetchUserProfile
-} from '../Home/actions';
+} from './actions';
 
 interface IProps extends RouteComponentProps<void> {
   auth0: any;

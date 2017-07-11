@@ -26,7 +26,7 @@ const AppAPI = {
   async submitMessage(message) {
     return await AppAPI.init()
       .post(Config.env.baseURL + '/messages', { message });
-  },
+  }
 
   // async deleteBond (bondID) {
   //   return await API.init()({ method: 'delete', url: Config.env.api_url + '/bond_order', data: bondID });
@@ -38,6 +38,6 @@ const AppAPI = {
   //   });
   // }
 
-}
+};
 
 export default AppAPI;
