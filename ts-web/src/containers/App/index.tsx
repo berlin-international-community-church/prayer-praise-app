@@ -1,27 +1,26 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
 
-import * as style from './style.css';
 import Layout from '../../components/Layout';
-
 import { IRootState } from '../../reducers';
-import {
-  logout,
-  fetchUserProfile
-} from './actions';
+import { fetchUserProfile, logout } from './actions';
 
-interface IProps extends RouteComponentProps<void> {
+interface IStateProps {
   auth0: any;
-  jwtToken: string;
-  username: string;
-  profilePic: string;
-  fetchUserProfile(): void;
-  logout(): void;
+  jwtToken?: string;
+  username?: string;
+  profilePic?: string;
 }
 
-@connect(mapStateToProps, mapDispatchToProps)
-export class App extends React.Component<IProps, {}> {
+interface IDispatchProps {
+  fetchUserProfile();
+  logout();
+}
+
+type IAppProps = IStateProps & IDispatchProps;
+
+@connect<IStateProps, IDispatchProps>(mapStateToProps, mapDispatchToProps)
+export class App extends React.Component<IAppProps, never> {
 
   componentDidMount() {
     this.props.fetchUserProfile();
@@ -42,7 +41,7 @@ export class App extends React.Component<IProps, {}> {
   }
 }
 
-function mapStateToProps(state: IRootState) {
+function mapStateToProps(state: IRootState): IStateProps {
   return {
     auth0: state.app.auth0,
     jwtToken: state.app.jwtToken,
@@ -51,7 +50,7 @@ function mapStateToProps(state: IRootState) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch): IDispatchProps {
   return {
     fetchUserProfile: () => dispatch(fetchUserProfile()),
     logout: () => dispatch(logout())
