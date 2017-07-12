@@ -5,8 +5,9 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   userProfileLoaded,
   userProfileLoadError
-} from '../containers/Home/actions';
-import { FETCH_USER_PROFILE } from '../containers/Home/constants';
+} from '../containers/App/actions';
+
+import { FETCH_USER_PROFILE } from '../containers/App/constants';
 
 import AppAPI from '../api';
 

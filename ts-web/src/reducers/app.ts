@@ -3,15 +3,12 @@ import { fromJS } from 'immutable';
 
 import {
   LOGIN,
-  LOGOUT
-} from '../containers/App/constants';
-
-import {
+  LOGOUT,
   TOKEN_LOAD_ERROR,
   TOKEN_LOADED,
   USER_PROFILE_LOAD_ERROR,
   USER_PROFILE_LOADED
-} from '../containers/Home/constants';
+} from '../containers/App/constants';
 
 export const initialState = fromJS({
   accessToken: null,
@@ -19,9 +16,9 @@ export const initialState = fromJS({
     // tslint:disable-next-line:no-string-literal
     audience: process.env['AUTH0_AUDIENCE'],
     // tslint:disable-next-line:no-string-literal
-    clientID: process.env['AUTH0_CLIENT_ID'],
+    clientID: process.env['AUTH0_CLIENT_ID'] || 'changeme',
     // tslint:disable-next-line:no-string-literal
-    domain: process.env['AUTH0_DOMAIN'],
+    domain: process.env['AUTH0_DOMAIN'] || 'changeme.example.com',
     redirectUri: 'http://localhost:3000/authCallback',
     responseType: 'token id_token',
     scope: 'openid profile'

@@ -9,7 +9,7 @@ import allSagas from '../sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export function configureStore(initialState?: IRootState, history?: History): Store<IRootState> {
+export function configureStore(initialState?: IRootState, history?: History): Store<IRootState | undefined> {
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
