@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-"@types/auth0-js@^8.6.2":
-  version "8.6.2"
-  resolved "https://registry.yarnpkg.com/@types/auth0-js/-/auth0-js-8.6.2.tgz#7c07671a90d05d4d4001bd14e36b1356551d97d7"
-
 "@types/classnames@2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.0.tgz#f2312039e780bdf89d7d4102a26ec11de5ec58aa"
@@ -35,24 +31,9 @@
     "@types/react" "*"
     redux "^3.6.0"
 
-"@types/react-router-dom@^4.0.6":
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.0.6.tgz#e3bd43e4dcae8aed421f53b02425cc83242f3983"
-  dependencies:
-    "@types/history" "*"
-    "@types/react" "*"
-    "@types/react-router" "*"
-
-"@types/react-router@*":
+"@types/react-router@4.0.14":
   version "4.0.14"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.14.tgz#dd650f40bbb20ad1fec26471707665908efa9e9f"
-  dependencies:
-    "@types/history" "*"
-    "@types/react" "*"
-
-"@types/react-router@4.0.12":
-  version "4.0.12"
-  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.12.tgz#7ccf3433741393e22ede149b5cd733abfe594ffc"
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
@@ -3878,6 +3859,10 @@ redux-actions@^2.1.0:
     lodash "^4.13.1"
     lodash-es "^4.17.4"
     reduce-reducers "^0.1.0"
+
+redux-immutable@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/redux-immutable/-/redux-immutable-4.0.0.tgz#3a1a32df66366462b63691f0e1dc35e472bbc9f3"
 
 redux-saga@^0.15.4:
   version "0.15.4"

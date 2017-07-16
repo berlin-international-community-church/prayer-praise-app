@@ -11,3 +11,5 @@ npm-debug.log
 
 services/db/data/
 /.env
+/services/main-api/db/data/dev.db
+/services/main-api/db/data/test.db

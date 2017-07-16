@@ -9,7 +9,7 @@ import {
   USER_PROFILE_LOADED
 } from './constants';
 
-export function login(payload) {
+export function login(payload: any) {
   return {
     payload,
     type: LOGIN

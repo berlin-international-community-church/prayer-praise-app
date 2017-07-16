@@ -1,15 +1,16 @@
+import { fromJS } from 'immutable';
 import { History } from 'history';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore, Store } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { logger } from '../middleware';
 
-import rootReducer, { IRootState } from '../reducers';
+import { createReducer } from '../reducers';
 import allSagas from '../sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export function configureStore(initialState?: IRootState, history?: History): Store<IRootState | undefined> {
+export function configureStore(initialState = {}, history?: History): Store<any | undefined> {
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
@@ -28,18 +29,19 @@ export function configureStore(initialState?: IRootState, history?: History): St
         window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] : compose;
 
   const store = createStore(
-    rootReducer,
-    initialState,
+    createReducer(),
+    fromJS({}),
     composeEnhancers(...enhancers)
   );
+
   allSagas.map((saga) => sagaMiddleware.run(saga));
 
-  if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers');
-      store.replaceReducer(nextReducer);
-    });
-  }
+  // if (module.hot) {
+  //   module.hot.accept('../reducers', () => {
+  //     const nextReducer = require('../reducers');
+  //     store.replaceReducer(nextReducer);
+  //   });
+  // }
 
   return store;
 }

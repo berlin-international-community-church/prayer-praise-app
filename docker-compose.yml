@@ -1,14 +1,5 @@
 version: '3'
 services:
-  db:
-    networks:
-      - appnet
-    build:
-      context: ./services/db
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./services/db/data:/var/lib/postgresql/data
   ts-web:
     networks:
     - appnet
@@ -35,8 +26,9 @@ services:
       - "3001:3001"
     volumes:
       - ./services/main-api:/app
-    depends_on:
-      - db
+    environment:
+      AUTH0_AUDIENCE: "${AUTH0_AUDIENCE}"
+      NODE_ENV: development
     command: node_modules/nodemon/bin/nodemon.js index.js
 networks:
   appnet:

@@ -2,4 +2,8 @@ import {
   userProfile
 } from './userProfile';
 
-export default [ userProfile ];
+import {
+  tokenData
+} from './tokenData';
+
+export default [ userProfile, tokenData ];

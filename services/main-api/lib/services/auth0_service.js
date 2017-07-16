@@ -9,12 +9,13 @@ class Auth0Service {
   }
 
   fetchOrCreateUser(accessToken) {
-    // console.log(accessToken);
+    // console.log(process.env);
     return Promise.resolve(
       axios({
-      url: Config.get('auth0_url'),
-      headers: { 'Authorization': `Bearer ${accessToken}` }
-    }))
+        url: Config.get('auth0_url'),
+        headers: { 'Authorization': `Bearer ${accessToken}` }
+      })
+    )
     // .tap(console.log)
     .then((userDetails) => {
       return Promise.all([

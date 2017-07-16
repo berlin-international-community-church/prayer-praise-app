@@ -1,13 +1,28 @@
-import { routerReducer } from 'react-router-redux';
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable';
+import { fromJS } from 'immutable';
+import { LOCATION_CHANGE } from 'react-router-redux';
 
-import app from './app';
+import { appReducer } from './app';
 
-export interface IRootState {
-  app: AppState;
+const routeInitialState = fromJS({
+  locationBeforeTransitions: null,
+});
+
+function routeReducer(state = routeInitialState, action) {
+  switch (action.type) {
+    /* istanbul ignore next */
+    case LOCATION_CHANGE:
+      return state.merge({
+        locationBeforeTransitions: action.payload,
+      });
+    default:
+      return state;
+  }
 }
 
-export default combineReducers<IRootState>({
-  app,
-  route: routerReducer
-});
+export function createReducer() {
+  return combineReducers({
+    app: appReducer,
+    route: routeReducer
+  });
+}

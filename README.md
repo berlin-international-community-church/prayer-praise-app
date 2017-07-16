@@ -4,7 +4,7 @@ Fully containerized HapiJS + ReactJS app for Berlin Church to share prayers and 
 
 ## Local setup requirements
 
-- NodeJS (6 LTS)
+- NodeJS (8)
 - Yarn (node package manager)
 - docker
 - docker-compose

@@ -1,22 +1,19 @@
-import { createBrowserHistory, History } from 'history';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { createBrowserHistory } from 'history';
 import { Provider } from 'react-redux';
-import { Route, Router, Switch } from 'react-router';
+import { Router } from 'react-router-dom';
+
+import { App } from './containers/App';
 import { configureStore } from './store';
 
-import routeList from './routes';
-import { initialState as initialApp } from './reducers/app';
-
 const history  = createBrowserHistory();
-const store = configureStore({
-  app: initialApp
-}, history);
+const store = configureStore({}, history);
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <Route {...routeList.base} />
+      <App />
     </Router>
   </Provider>,
   document.getElementById('root')

@@ -7,7 +7,7 @@ const AppAPI = {
     return axios.create({
       headers: {
         common: {
-          Authorization: sessionStorage.getItem('token') || ''
+          Authorization: sessionStorage.getItem('jwtToken') || ''
         }
       }
     });

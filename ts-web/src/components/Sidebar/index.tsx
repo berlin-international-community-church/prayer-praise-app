@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+
 import * as styles from './styles.css';
 
 class Sidebar extends React.PureComponent<{}, {}> {
-  
+
   render() {
     return (
       <div className={styles.sidebar}>
@@ -12,10 +13,10 @@ class Sidebar extends React.PureComponent<{}, {}> {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/prayer">Pr</Link>
+            <Link to="/prayer">Prayer</Link>
           </li>
           <li>
-            <Link to="/praise">Pr2</Link>
+            <Link to="/praise">Praise</Link>
           </li>
         </ul>
       </div>

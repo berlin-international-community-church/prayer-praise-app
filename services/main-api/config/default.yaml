@@ -1,11 +1,9 @@
 db:
-  host: db
-  name: prayer_praise_app_dev
-  user: postgresdev
-  password: postgresdev
+  client: 'sqlite3'
+  connection:
+    filename:  'db/data/dev.db'
 api:
   port: 3001
   cors: true
 token:
   secret: das34rtji89sasy676768ghjttr378ikiy9ufg4dasdam4l30434kmr34r8dgfgdtj54n4334gtr5
-auth0_url: 'https://rockyj.eu.auth0.com/userinfo'

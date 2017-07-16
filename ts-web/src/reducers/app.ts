@@ -11,7 +11,7 @@ import {
 } from '../containers/App/constants';
 
 export const initialState = fromJS({
-  accessToken: null,
+  accessToken: sessionStorage.getItem('accessToken'),
   auth0: new WebAuth({
     // tslint:disable-next-line:no-string-literal
     audience: process.env['AUTH0_AUDIENCE'],
@@ -25,29 +25,32 @@ export const initialState = fromJS({
   }),
   error: null,
   idToken: null,
-  jwtToken: sessionStorage.getItem('token'),
+  jwtToken: sessionStorage.getItem('jwtToken'),
   profilePic: null,
   tokenExpiresAt: null,
   username: null
 });
 
-function globalReducer(state = initialState, action) {
+export function appReducer(state = initialState, action) {
   switch (action.type) {
 
     case LOGIN:
+      sessionStorage.setItem('accessToken', action.payload.accessToken);
       return state
         .set('accessToken', action.payload.accessToken)
         .set('idToken', action.payload.idToken)
         .set('tokenExpiresAt', action.payload.tokenExpiresAt);
 
     case LOGOUT:
-      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('jwtToken');
+      sessionStorage.removeItem('accessToken');
       return state
         .merge(initialState)
+        .set('accessToken', null)
         .set('jwtToken', null);
 
     case TOKEN_LOADED:
-      sessionStorage.setItem('token', action.payload);
+      sessionStorage.setItem('jwtToken', action.payload);
       return state
         .set('jwtToken', action.payload);
 
@@ -73,5 +76,3 @@ function globalReducer(state = initialState, action) {
       return state;
   }
 }
-
-export default globalReducer;
