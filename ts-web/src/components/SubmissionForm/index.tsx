@@ -21,9 +21,10 @@ class SubmissionForm extends React.PureComponent<IProps> {
     return (
       <div className={styles.formContainer}>
         <h2>{this.getMessage(this.props.formType)}</h2>
-        <div 
+        <div
           className={styles.contentHolder}
           contentEditable={true}
+          onInput={ (e) => this.props.handleChangeMessageText(e.target['innerHTML']) }
         />
         <button
           className={styles.submitButton}

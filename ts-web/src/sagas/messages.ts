@@ -1,43 +1,38 @@
 import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
-import { SUBMIT_MESSAGE } from './constants';
-import {
-  selectMessageType,
-  selectMessageText,
-  selectSharingStatus
-} from './selectors';
+import { SUBMIT_MESSAGE } from '../containers/Praise/constants';
+
 import {
   submitMessageInProgress,
   submitMessageSuccessful,
   submitMessageFailed
-} from './actions';
+} from '../containers/Praise/actions';
 
-import API from 'utils/api';
+import API from '../api';
 
 export function* submitMessage() {
   try {
     yield put(submitMessageInProgress());
-    const messageType = yield select(selectMessageType());
-    const messageText = yield select(selectMessageText());
-    const sharingStatus = yield select(selectSharingStatus());
+
+    const state = yield select();
+    const messageType   = state.get('messages').get('messageType');
+    const messageText   = state.get('messages').get('messageText');
+    const sharingStatus = state.get('messages').get('sharingStatus');
+
     const result = yield call(API.submitMessage, { messageType, messageText, sharingStatus });
-    yield put(submitMessageSuccessful(result.data));
+    yield put(submitMessageSuccessful());
   } catch (err) {
     console.error(err);
     yield put(submitMessageFailed());
   }
 }
 
-export function* submitMessageWaatcher() {
+export function* messages() {
   const watcher = yield takeLatest(SUBMIT_MESSAGE, submitMessage);
-
-  // Suspend execution until location changes
-  yield take(LOCATION_CHANGE);
-  yield cancel(watcher);
 }
 
 // Bootstrap sagas
 export default [
-  submitMessageWaatcher
+  messages
 ];

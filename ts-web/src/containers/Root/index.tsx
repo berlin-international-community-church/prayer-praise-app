@@ -58,7 +58,7 @@ export class Root extends React.Component<IAppProps, never> {
 }
 
 function mapStateToProps(immutableState: any): IStateProps {
-  const state = immutableState.toJS();
+  const state: { app: AppState } = immutableState.toJS();
   return {
     auth0: state.app.auth0,
     jwtToken: state.app.jwtToken,

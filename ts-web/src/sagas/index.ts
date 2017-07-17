@@ -6,4 +6,8 @@ import {
   tokenData
 } from './tokenData';
 
-export default [ userProfile, tokenData ];
+import {
+  messages
+} from './messages';
+
+export default [ userProfile, tokenData, messages ];

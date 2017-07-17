@@ -5,18 +5,19 @@ import {
   CHANGE_SHARED_STATUS,
   SUBMIT_MESSAGE_INFLIGHT,
   SUBMIT_MESSAGE_SUCCESS,
-  SUBMIT_MESSAGE_FAILED
-} from './constants';
+  SUBMIT_MESSAGE_FAILED,
+  SHARE_WITH_PRAYER_TEAM
+} from '../containers/Praise/constants';
 
 const initialState = fromJS({
   messageType: 'prayer',
   messageText: '',
-  sharedWithChurch: false,
+  sharingStatus:  SHARE_WITH_PRAYER_TEAM,
   loading: false,
   error: null
 });
 
-function prayerFormReducer(state = initialState, action) {
+export function messagesReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_MESSAGE_TYPE:
       return state
@@ -28,7 +29,7 @@ function prayerFormReducer(state = initialState, action) {
 
     case CHANGE_SHARED_STATUS:
       return state
-        .set('sharedWithChurch', !state.get('sharedWithChurch'));
+        .set('sharedWithChurch', action.payload);
 
     case SUBMIT_MESSAGE_INFLIGHT:
       return state
@@ -47,5 +48,3 @@ function prayerFormReducer(state = initialState, action) {
       return state;
   }
 }
-
-export default prayerFormReducer;

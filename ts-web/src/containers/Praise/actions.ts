@@ -22,9 +22,10 @@ export function changeMessageText(payload) {
   };
 }
 
-export function changeSharedStatus() {
+export function changeSharedStatus(payload) {
   return {
-    type: CHANGE_SHARED_STATUS
+    type: CHANGE_SHARED_STATUS,
+    payload
   };
 }
 

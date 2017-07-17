@@ -55,8 +55,13 @@ export function appReducer(state = initialState, action) {
         .set('jwtToken', action.payload);
 
     case TOKEN_LOAD_ERROR:
+      sessionStorage.removeItem('jwtToken');
+      sessionStorage.removeItem('accessToken');
       return state
+        .set('accessToken', null)
         .set('jwtToken', null)
+        .set('username', null)
+        .set('profilePic', null)
         .set('error', TOKEN_LOAD_ERROR);
 
     case USER_PROFILE_LOADED:
@@ -65,8 +70,10 @@ export function appReducer(state = initialState, action) {
         .set('profilePic', action.payload.picture);
 
     case USER_PROFILE_LOAD_ERROR:
-      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('jwtToken');
+      sessionStorage.removeItem('accessToken');
       return state
+        .set('accessToken', null)
         .set('jwtToken', null)
         .set('username', null)
         .set('profilePic', null)

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Layout from '../../components/Layout';
 import SubmissionForm from '../../components/SubmissionForm';
 import { fetchUserProfile, logout } from '../App/actions';
+import { changeMessageText, submitMessage } from './actions';
 
 interface IStateProps { //extends RouteComponentProps<void> {
   auth0?: any;
@@ -16,6 +17,8 @@ interface IStateProps { //extends RouteComponentProps<void> {
 interface IDispatchProps {
   fetchUserProfile();
   logout();
+  changeMessageText(payload: string);
+  submitMessage();
 }
 
 type IAppProps = IStateProps & IDispatchProps;
@@ -48,8 +51,8 @@ export class Praise extends React.Component<IAppProps, never> {
       >
         <SubmissionForm
           formType={'praise'}
-          handleChangeMessageText={() => {}}
-          handleSubmit={() => {}}
+          handleChangeMessageText={(text) => this.props.changeMessageText(text)}
+          handleSubmit={() => this.props.submitMessage()}
         />
       </Layout>
     );
@@ -57,7 +60,7 @@ export class Praise extends React.Component<IAppProps, never> {
 }
 
 function mapStateToProps(immutableState: any): IStateProps {
-  const state = immutableState.toJS();
+  const state: { app: AppState } = immutableState.toJS();
   return {
     auth0: state.app.auth0,
     jwtToken: state.app.jwtToken,
@@ -70,6 +73,8 @@ function mapStateToProps(immutableState: any): IStateProps {
 function mapDispatchToProps(dispatch): IDispatchProps {
   return {
     logout: () => dispatch(logout()),
-    fetchUserProfile: () => dispatch(fetchUserProfile())
+    fetchUserProfile: () => dispatch(fetchUserProfile()),
+    changeMessageText: (payload: string) => dispatch(changeMessageText(payload)),
+    submitMessage: () => dispatch(submitMessage())
   };
 }
