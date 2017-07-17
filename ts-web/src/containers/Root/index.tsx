@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router';
 
 import Layout from '../../components/Layout';
 import { fetchToken, fetchUserProfile, logout } from '../App/actions';
+
+// import { RouteComponentProps } from 'react-router';
 
 interface IStateProps { // extends RouteComponentProps<void> {
   auth0?: any;

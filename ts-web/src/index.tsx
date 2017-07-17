@@ -8,7 +8,7 @@ import { App } from './containers/App';
 import { configureStore } from './store';
 
 const history  = createBrowserHistory();
-const store = configureStore({}, history);
+const store = configureStore(history);
 
 ReactDOM.render(
   <Provider store={store}>

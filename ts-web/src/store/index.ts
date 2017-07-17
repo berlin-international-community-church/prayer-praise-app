@@ -10,7 +10,8 @@ import allSagas from '../sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export function configureStore(initialState = {}, history?: History): Store<any | undefined> {
+export function configureStore(history: History): Store<any | undefined> {
+
   const middlewares = [
     sagaMiddleware,
     routerMiddleware(history),
@@ -44,4 +45,5 @@ export function configureStore(initialState = {}, history?: History): Store<any 
   // }
 
   return store;
+
 }
