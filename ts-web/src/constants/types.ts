@@ -16,16 +16,36 @@ export type AppStateType = IAppState;
 interface IMessagesState {
   messageType: PrayerPraise;
   messageText: string;
-  sharingStatus: ShareStatus;
+  sharedStatus: ShareStatus;
   loading: boolean;
   error?: string;
   displayMessage?: string;
 }
 export type MessagesStateType = IMessagesState;
 
+interface ISharedMessage {
+  id: number;
+  messageType: PrayerPraise;
+  messageText: string;
+  sharedStatus: ShareStatus;
+  username: string;
+}
+
+export type SharedMessageType = ISharedMessage;
+
+interface ISharedMessages {
+  displayMessage?: string;
+  error?: string;
+  loading: boolean;
+  messages: ISharedMessage[];
+}
+
+export type SharedMessagesType = ISharedMessages;
+
 interface IStateType {
   app: IAppState;
   messages: IMessagesState;
+  sharedMessages: ISharedMessages;
 }
 
 export type StateType = IStateType;

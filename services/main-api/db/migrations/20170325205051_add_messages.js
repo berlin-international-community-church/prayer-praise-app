@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.text('messageType');
     table.text('messageText');
-    table.boolean('sharedWithChurch');
+    table.text('sharedStatus');
 
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());

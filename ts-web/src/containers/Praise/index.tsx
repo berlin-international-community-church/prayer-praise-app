@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import Layout from '../../components/Layout';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import SubmissionForm from '../../components/SubmissionForm';
-import { PrayerPraise } from '../../constants/enums';
+import { PrayerPraise, ShareStatus } from '../../constants/enums';
 import { StateType } from '../../constants/types';
 import { fetchUserProfile, logout } from '../App/actions';
-import { changeMessageText, changeMessageType, submitMessage } from './actions';
+import { changeMessageText, changeMessageType, changeSharedStatus, submitMessage } from './actions';
 
 interface IStateProps { // extends RouteComponentProps<void> {
   accessToken?: string;
@@ -17,6 +17,7 @@ interface IStateProps { // extends RouteComponentProps<void> {
   loading: boolean;
   messageText: string;
   profilePic?: string;
+  sharedStatus: ShareStatus;
   username?: string;
 }
 
@@ -24,6 +25,7 @@ interface IDispatchProps {
   fetchUserProfile();
   logout();
   changeMessageText(payload: string);
+  changeSharedStatus(payload: ShareStatus);
   submitMessage();
   changeMessageType();
 }
@@ -57,7 +59,9 @@ export class Praise extends React.Component<IAppProps, never> {
         displayMessage={this.props.displayMessage}
         formType={'praise'}
         messageText={this.props.messageText}
-        handleChangeMessageText={(text) => this.props.changeMessageText(text)}
+        sharedStatus={this.props.sharedStatus}
+        handleChangeMessageText={(text: string) => this.props.changeMessageText(text)}
+        handleChangeShareStatus={(status: ShareStatus) => this.props.changeSharedStatus(status)}
         handleSubmit={() => this.props.submitMessage()}
       />
     );
@@ -88,6 +92,7 @@ function mapStateToProps(immutableState: any): IStateProps {
     loading: state.messages.loading,
     messageText: state.messages.messageText,
     profilePic: state.app.profilePic,
+    sharedStatus: state.messages.sharedStatus,
     username: state.app.username
   };
 }
@@ -96,6 +101,7 @@ function mapDispatchToProps(dispatch): IDispatchProps {
   return {
     changeMessageText: (payload: string) => dispatch(changeMessageText(payload)),
     changeMessageType: () => dispatch(changeMessageType(PrayerPraise.PRAISE)),
+    changeSharedStatus: (payload: ShareStatus) => dispatch(changeSharedStatus(payload)),
     fetchUserProfile: () => dispatch(fetchUserProfile()),
     logout: () => dispatch(logout()),
     submitMessage: () => dispatch(submitMessage())

@@ -41,14 +41,3 @@ button.disabledButton {
   outline: none;
 }
 
-.messages {
-  padding: 10px;
-  width: 250px;
-  color: white;
-  background-color: #E10827;
-}
-
-.hidden {
-  display: hidden;
-  visibility: none;
-}

@@ -1,0 +1,19 @@
+.selectbar {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.selected {
+  width: 50%;
+  padding: 20px 10px;
+  margin-bottom: 5px;
+  background-color: #E10827;
+}
+
+.unselected {
+  width: 50%;
+  padding: 20px 10px;
+  margin-bottom: 5px;
+  background-color: #898989;
+}

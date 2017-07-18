@@ -1,4 +1,4 @@
-import { PrayerPraise } from '../../constants/enums';
+import { PrayerPraise, ShareStatus } from '../../constants/enums';
 import {
   CHANGE_MESSAGE_TEXT,
   CHANGE_MESSAGE_TYPE,
@@ -23,7 +23,7 @@ export function changeMessageText(payload) {
   };
 }
 
-export function changeSharedStatus(payload) {
+export function changeSharedStatus(payload: ShareStatus) {
   return {
     payload,
     type: CHANGE_SHARED_STATUS

@@ -1,0 +1,12 @@
+.message {
+  width: 80%;
+  padding: 20px 10px;
+  margin-bottom: 5px;
+  color: white;
+  background-color: #E10827;
+}
+
+.hidden {
+  display: hidden;
+  visibility: none;
+}

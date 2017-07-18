@@ -17,7 +17,7 @@ const init: MessagesStateType = {
   loading: false,
   messageText: '',
   messageType: PrayerPraise.PRAISE,
-  sharingStatus:  ShareStatus.SHARE_WITH_NOONE
+  sharedStatus:  ShareStatus.SHARE_WITH_NOONE
 };
 
 const initialState = fromJS(init);
@@ -30,11 +30,13 @@ export function messagesReducer(state = initialState, action) {
 
     case CHANGE_MESSAGE_TEXT:
       return state
+        .set('displayMessage', '')
         .set('messageText', action.payload);
 
     case CHANGE_SHARED_STATUS:
       return state
-        .set('sharedWithChurch', action.payload);
+        .set('displayMessage', '')
+        .set('sharedStatus', action.payload);
 
     case SUBMIT_MESSAGE_INFLIGHT:
       return state
@@ -42,8 +44,8 @@ export function messagesReducer(state = initialState, action) {
 
     case SUBMIT_MESSAGE_SUCCESS:
       return state
-        .set('messageText', '')
         .set('loading', false)
+        .set('messageText', '')
         .set('displayMessage', 'Save successful!');
 
     case SUBMIT_MESSAGE_FAILED:

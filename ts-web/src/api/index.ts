@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import Config from '../config';
 
 const AppAPI = {
@@ -26,6 +27,11 @@ const AppAPI = {
   async submitMessage(message) {
     return await AppAPI.init()
       .post(Config.env.baseURL + '/messages', { message });
+  },
+
+  async fetchSharedMessages() {
+    return await AppAPI.init()
+      .get(Config.env.baseURL + '/messages');
   }
 
   // async deleteBond (bondID) {

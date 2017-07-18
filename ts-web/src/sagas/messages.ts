@@ -17,9 +17,9 @@ export function* submitMessage() {
     const state = yield select();
     const messageType   = state.get('messages').get('messageType');
     const messageText   = state.get('messages').get('messageText');
-    const sharingStatus = state.get('messages').get('sharingStatus');
+    const sharedStatus = state.get('messages').get('sharedStatus');
 
-    yield call(API.submitMessage, { messageType, messageText, sharingStatus });
+    yield call(API.submitMessage, { messageType, messageText, sharedStatus });
     yield put(submitMessageSuccessful());
   } catch (err) {
     // tslint:disable-next-line:no-console

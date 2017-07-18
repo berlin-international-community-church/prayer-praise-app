@@ -10,4 +10,8 @@ import {
   messages
 } from './messages';
 
-export default [ userProfile, tokenData, messages ];
+import {
+  sharedMessages
+} from './sharedMessages';
+
+export default [ userProfile, tokenData, messages, sharedMessages ];

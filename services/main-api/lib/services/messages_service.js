@@ -4,6 +4,13 @@ class MessagesService {
     this.repo = repo
   }
 
+  getAllSharedMessagesAvailable(userId) {
+    if (!userId) {
+      return this.repo.getMessagesSharedToAll();
+    }
+    return this.repo.getAllMessages(userId);
+  }
+
   getAllMessagesForUser(userId) {
     return this.repo.getAllMessages(userId);
   }
@@ -17,7 +24,13 @@ class MessagesService {
       0: 'PRAYER',
       1: 'PRAISE'
     }
+    const sharedStatusMapping = {
+      0: 'SHARED_WITH_EVERYONE',
+      1: 'SHARE_WITH_NOONE',
+      2: 'SHARE_WITH_PRAYER_TEAM'
+    }
     message.messageType = messageTypeMapping[message.messageType];
+    message.sharedStatus = sharedStatusMapping[message.sharedStatus];
     return this.repo.createMessageForUser(userId, message);
   }
 

@@ -6,6 +6,7 @@ exports.up = (knex, Promise) => {
 
     table.increments('id').primary();
     table.text('name').unique();
+    table.text('role');
     table.text('picture');
 
     table.timestamp('created_at').defaultTo(knex.fn.now());

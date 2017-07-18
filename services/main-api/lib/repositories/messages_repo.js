@@ -2,6 +2,10 @@ const DB = require('./db');
 
 class MessagesRepo {
 
+  getMessagesSharedToAll() {
+    return DB('messages').where({ sharedStatus: 'SHARED_WITH_EVERYONE' });
+  }
+
   getAllMessages(userId) {
     return DB('messages').where({ user_id: userId });
   }
@@ -15,7 +19,7 @@ class MessagesRepo {
       user_id: userId,
       messageType: message.messageType,
       messageText: message.messageText,
-      sharedWithChurch: message.sharingStatus
+      sharedStatus: message.sharedStatus
     });
   }
 
