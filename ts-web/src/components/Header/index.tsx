@@ -1,7 +1,7 @@
 import * as React from 'react';
-import * as styles from './styles.css';
 
 import User from '../User';
+import * as styles from './styles.css';
 
 interface IProps {
   username?: string;
@@ -11,8 +11,8 @@ interface IProps {
   logout(): void;
 }
 
-class Header extends React.PureComponent<IProps> { 
-  
+class Header extends React.PureComponent<IProps> {
+
   render() {
     return (
       <div className={styles.heading}>

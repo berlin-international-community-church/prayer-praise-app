@@ -13,6 +13,11 @@ class MessagesService {
   }
 
   createMessageForUser(userId, message) {
+    const messageTypeMapping = {
+      0: 'PRAYER',
+      1: 'PRAISE'
+    }
+    message.messageType = messageTypeMapping[message.messageType];
     return this.repo.createMessageForUser(userId, message);
   }
 

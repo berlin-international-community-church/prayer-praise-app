@@ -5,7 +5,7 @@ interface IProps {
   message: {
     messageType: string;
     messageText: string;
-  }
+  };
 }
 
 class MessageCard extends React.PureComponent<IProps> {
@@ -18,7 +18,7 @@ class MessageCard extends React.PureComponent<IProps> {
           RJ
         </div>
       </div>
-    )
+    );
   }
 
 }

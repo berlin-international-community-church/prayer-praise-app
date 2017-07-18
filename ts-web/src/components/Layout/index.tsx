@@ -10,8 +10,8 @@ interface IProps {
   profilePic?: string;
   jwtToken?: string;
   auth0: any;
-  logout(): void;
   children?: any;
+  logout(): void;
 }
 
 class Layout extends React.PureComponent<IProps> {
@@ -19,7 +19,7 @@ class Layout extends React.PureComponent<IProps> {
   render() {
     return (
       <div className={styles.container}>
-        <Header 
+        <Header
           auth0={this.props.auth0}
           jwtToken={this.props.jwtToken}
           username={this.props.username}

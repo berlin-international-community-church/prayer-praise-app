@@ -4,16 +4,16 @@ import * as styles from './styles.css';
 
 interface IProps {
   formType: string;
-  handleChangeMessageText(string): void;
-  handleSubmit()
+  handleChangeMessageText(text: string): void;
+  handleSubmit();
 }
 
 class SubmissionForm extends React.PureComponent<IProps> {
 
   getMessage(formType) {
     return {
-      prayer: '1',
-      praise: '2'
+      praise: '2',
+      prayer: '1'
     }[formType];
   }
 
