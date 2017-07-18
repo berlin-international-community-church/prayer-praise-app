@@ -2,8 +2,11 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import Layout from '../../components/Layout';
+import MessageCard from '../../components/MessageCard';
+import { PrayerPraise } from '../../constants/enums';
 import { AppStateType } from '../../constants/types';
 import { fetchToken, fetchUserProfile, logout } from '../App/actions';
+import * as styles from './styles.css';
 
 // import { RouteComponentProps } from 'react-router';
 
@@ -22,6 +25,17 @@ interface IDispatchProps {
 }
 
 type IAppProps = IStateProps & IDispatchProps;
+
+const sampleData = [
+  { id: 1, messageType: PrayerPraise.PRAYER, messageText: 'Help in my exams.' },
+  { id: 2, messageType: PrayerPraise.PRAYER, messageText: 'Healing from a sickness.' },
+  { id: 3, messageType: PrayerPraise.PRAYER, messageText: 'Getting a visa.' },
+  { id: 4, messageType: PrayerPraise.PRAYER, messageText: 'Finding a job.' },
+  { id: 5, messageType: PrayerPraise.PRAISE, messageText: 'God\'s amazing love!'},
+  { id: 6, messageType: PrayerPraise.PRAISE, messageText: 'Healing from a sickness.' },
+  { id: 7, messageType: PrayerPraise.PRAISE, messageText: 'Promotion at job.' },
+  { id: 8, messageType: PrayerPraise.PRAISE, messageText: 'Food at my table.' }
+];
 
 @connect<IStateProps, IDispatchProps>(mapStateToProps, mapDispatchToProps)
 export class Root extends React.Component<IAppProps, never> {
@@ -43,6 +57,12 @@ export class Root extends React.Component<IAppProps, never> {
     }
   }
 
+  displayMessages() {
+    return sampleData.map((message) => {
+      return <MessageCard message={message} key={message.id} />;
+    });
+  }
+
   render() {
     return (
       <Layout
@@ -52,7 +72,9 @@ export class Root extends React.Component<IAppProps, never> {
         profilePic={this.props.profilePic}
         logout={this.props.logout}
       >
-        <h1>Hi</h1>
+        <div className={styles.messages}>
+          { this.displayMessages() }
+        </div>
       </Layout>
     );
   }
@@ -61,9 +83,9 @@ export class Root extends React.Component<IAppProps, never> {
 function mapStateToProps(immutableState: any): IStateProps {
   const state: { app: AppStateType } = immutableState.toJS();
   return {
+    accessToken: state.app.accessToken,
     auth0: state.app.auth0,
     jwtToken: state.app.jwtToken,
-    accessToken: state.app.accessToken,
     profilePic: state.app.profilePic,
     username: state.app.username
   };
