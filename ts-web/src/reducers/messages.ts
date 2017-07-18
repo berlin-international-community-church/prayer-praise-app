@@ -1,27 +1,31 @@
 import { fromJS } from 'immutable';
+
+import { PrayerPraise, ShareStatus } from '../constants/enums';
+import { MessagesStateType } from '../constants/types';
 import {
-  CHANGE_MESSAGE_TYPE,
   CHANGE_MESSAGE_TEXT,
+  CHANGE_MESSAGE_TYPE,
   CHANGE_SHARED_STATUS,
-  SUBMIT_MESSAGE_INFLIGHT,
-  SUBMIT_MESSAGE_SUCCESS,
   SUBMIT_MESSAGE_FAILED,
-  SHARE_WITH_PRAYER_TEAM
+  SUBMIT_MESSAGE_INFLIGHT,
+  SUBMIT_MESSAGE_SUCCESS
 } from '../containers/Praise/constants';
 
-const initialState = fromJS({
-  messageType: 'prayer',
-  messageText: '',
-  sharingStatus:  SHARE_WITH_PRAYER_TEAM,
+const init: MessagesStateType = {
+  error: undefined,
   loading: false,
-  error: null
-});
+  messageText: '',
+  messageType: PrayerPraise.PRAISE,
+  sharingStatus:  ShareStatus.SHARE_WITH_NOONE
+};
+
+const initialState = fromJS(init);
 
 export function messagesReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_MESSAGE_TYPE:
       return state
-        .set('messageType', action.payload.messageType);
+        .set('messageType', action.payload);
 
     case CHANGE_MESSAGE_TEXT:
       return state

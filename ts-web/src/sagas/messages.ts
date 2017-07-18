@@ -1,12 +1,11 @@
-import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 
 import { SUBMIT_MESSAGE } from '../containers/Praise/constants';
 
 import {
+  submitMessageFailed,
   submitMessageInProgress,
-  submitMessageSuccessful,
-  submitMessageFailed
+  submitMessageSuccessful
 } from '../containers/Praise/actions';
 
 import API from '../api';
@@ -20,16 +19,17 @@ export function* submitMessage() {
     const messageText   = state.get('messages').get('messageText');
     const sharingStatus = state.get('messages').get('sharingStatus');
 
-    const result = yield call(API.submitMessage, { messageType, messageText, sharingStatus });
+    yield call(API.submitMessage, { messageType, messageText, sharingStatus });
     yield put(submitMessageSuccessful());
   } catch (err) {
+    // tslint:disable-next-line:no-console
     console.error(err);
     yield put(submitMessageFailed());
   }
 }
 
 export function* messages() {
-  const watcher = yield takeLatest(SUBMIT_MESSAGE, submitMessage);
+  yield takeLatest(SUBMIT_MESSAGE, submitMessage);
 }
 
 // Bootstrap sagas

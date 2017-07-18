@@ -1,11 +1,10 @@
-import { take, call, put, select, cancel, takeLatest } from 'redux-saga/effects';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 
-import { FETCH_TOKEN } from '../containers/App/constants';
 import {
   tokenLoaded,
   tokenLoadError
 } from '../containers/App/actions';
+import { FETCH_TOKEN } from '../containers/App/constants';
 
 import AppAPI from '../api';
 
@@ -17,13 +16,14 @@ export function* createToken() {
     const result = yield call(AppAPI.createToken, accessToken);
     yield put(tokenLoaded(result.data.token));
   } catch (err) {
+    // tslint:disable-next-line:no-console
     console.error(err);
     yield put(tokenLoadError());
   }
 }
 
 export function* tokenData() {
-  const watcher = yield takeLatest(FETCH_TOKEN, createToken);
+  yield takeLatest(FETCH_TOKEN, createToken);
 }
 
 export default [

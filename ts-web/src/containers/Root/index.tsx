@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import Layout from '../../components/Layout';
+import { AppStateType } from '../../constants/types';
 import { fetchToken, fetchUserProfile, logout } from '../App/actions';
 
 // import { RouteComponentProps } from 'react-router';
@@ -58,7 +59,7 @@ export class Root extends React.Component<IAppProps, never> {
 }
 
 function mapStateToProps(immutableState: any): IStateProps {
-  const state: { app: AppState } = immutableState.toJS();
+  const state: { app: AppStateType } = immutableState.toJS();
   return {
     auth0: state.app.auth0,
     jwtToken: state.app.jwtToken,

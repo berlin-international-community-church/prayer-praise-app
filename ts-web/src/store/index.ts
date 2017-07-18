@@ -1,5 +1,5 @@
-import { fromJS } from 'immutable';
 import { History } from 'history';
+import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore, Store } from 'redux';
 import createSagaMiddleware from 'redux-saga';

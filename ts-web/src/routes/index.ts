@@ -1,9 +1,9 @@
 import { ComponentClass } from 'react';
 
-import { Root } from '../containers/Root';
-import { Prayer } from '../containers/Prayer';
-import { Praise } from '../containers/Praise';
 import { AuthCallback } from '../containers/AuthCallback';
+import { Praise } from '../containers/Praise';
+import { Prayer } from '../containers/Prayer';
+import { Root } from '../containers/Root';
 
 interface IRouteDefinition {
   exact: boolean;
@@ -16,25 +16,25 @@ interface IRoutes {
 }
 
 const routes: IRoutes = {
-  base: {
-    component: Root,
-    exact: true,
-    path: '/'
-  },
   authCallback: {
     component: AuthCallback,
     exact: true,
     path: '/authCallback'
   },
-  prayer: {
-    component: Prayer,
+  base: {
+    component: Root,
     exact: true,
-    path: '/prayer'
+    path: '/'
   },
   praise: {
     component: Praise,
     exact: true,
     path: '/praise'
+  },
+  prayer: {
+    component: Prayer,
+    exact: true,
+    path: '/prayer'
   }
 };
 

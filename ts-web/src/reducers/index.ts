@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux-immutable';
 
 import { appReducer } from './app';
-import { routeReducer } from './route';
 import { messagesReducer } from './messages';
+import { routeReducer } from './route';
 
 export function createReducer() {
   return combineReducers({

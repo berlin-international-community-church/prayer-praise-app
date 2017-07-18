@@ -1,31 +1,32 @@
+import { PrayerPraise } from '../../constants/enums';
 import {
-  CHANGE_MESSAGE_TYPE,
   CHANGE_MESSAGE_TEXT,
+  CHANGE_MESSAGE_TYPE,
   CHANGE_SHARED_STATUS,
   SUBMIT_MESSAGE,
+  SUBMIT_MESSAGE_FAILED,
   SUBMIT_MESSAGE_INFLIGHT,
-  SUBMIT_MESSAGE_SUCCESS,
-  SUBMIT_MESSAGE_FAILED
+  SUBMIT_MESSAGE_SUCCESS
 } from './constants';
 
-export function changeMessageType(payload) {
+export function changeMessageType(payload: PrayerPraise) {
   return {
-    type: CHANGE_MESSAGE_TYPE,
-    payload
+    payload,
+    type: CHANGE_MESSAGE_TYPE
   };
 }
 
 export function changeMessageText(payload) {
   return {
-    type: CHANGE_MESSAGE_TEXT,
-    payload
+    payload,
+    type: CHANGE_MESSAGE_TEXT
   };
 }
 
 export function changeSharedStatus(payload) {
   return {
-    type: CHANGE_SHARED_STATUS,
-    payload
+    payload,
+    type: CHANGE_SHARED_STATUS
   };
 }
 
