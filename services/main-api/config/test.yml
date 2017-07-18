@@ -1,7 +1,9 @@
 db:
-  client: 'sqlite3'
-  connection:
-    filename:  'db/data/test.db'
+  host: localhost
+  port: 5432
+  name: prayer_praise_app_test
+  user: postgresdev
+  password: postgresdev
 api:
   port: 9001
   cors: true

@@ -3,10 +3,12 @@
 const Config = require('config');
 
 const dbConfiguration = {
-  client: 'sqlite3',
-  useNullAsDefault: true,
+  client: 'postgresql',
   connection: {
-    filename:  Config.get('db.connection.filename')
+    host:     Config.get('db.host'),
+    database: Config.get('db.name'),
+    user:     Config.get('db.user'),
+    password: Config.get('db.password')
   },
   pool: {
     min: 2,
