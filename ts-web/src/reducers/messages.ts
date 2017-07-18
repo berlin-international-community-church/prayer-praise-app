@@ -12,6 +12,7 @@ import {
 } from '../containers/Praise/constants';
 
 const init: MessagesStateType = {
+  displayMessage: undefined,
   error: undefined,
   loading: false,
   messageText: '',
@@ -41,12 +42,15 @@ export function messagesReducer(state = initialState, action) {
 
     case SUBMIT_MESSAGE_SUCCESS:
       return state
-        .set('loading', true);
+        .set('messageText', '')
+        .set('loading', false)
+        .set('displayMessage', 'Save successful!');
 
     case SUBMIT_MESSAGE_FAILED:
       return state
         .set('loading', false)
-        .set('error', SUBMIT_MESSAGE_FAILED);
+        .set('error', SUBMIT_MESSAGE_FAILED)
+        .set('displayMessage', 'Save unsuccessful! Please refresh and try later.');
 
     default:
       return state;

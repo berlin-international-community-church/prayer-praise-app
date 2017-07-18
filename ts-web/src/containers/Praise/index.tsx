@@ -2,18 +2,22 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import Layout from '../../components/Layout';
+import LoadingSpinner from '../../components/LoadingSpinner';
 import SubmissionForm from '../../components/SubmissionForm';
 import { PrayerPraise } from '../../constants/enums';
-import { AppStateType } from '../../constants/types';
+import { StateType } from '../../constants/types';
 import { fetchUserProfile, logout } from '../App/actions';
 import { changeMessageText, changeMessageType, submitMessage } from './actions';
 
-interface IStateProps { //extends RouteComponentProps<void> {
-  auth0?: any;
-  jwtToken?: string;
+interface IStateProps { // extends RouteComponentProps<void> {
   accessToken?: string;
-  username?: string;
+  auth0?: any;
+  displayMessage?: string;
+  jwtToken?: string;
+  loading: boolean;
+  messageText: string;
   profilePic?: string;
+  username?: string;
 }
 
 interface IDispatchProps {
@@ -44,6 +48,21 @@ export class Praise extends React.Component<IAppProps, never> {
     }
   }
 
+  renderForm() {
+    if (this.props.loading) {
+      return <LoadingSpinner />;
+    }
+    return (
+      <SubmissionForm
+        displayMessage={this.props.displayMessage}
+        formType={'praise'}
+        messageText={this.props.messageText}
+        handleChangeMessageText={(text) => this.props.changeMessageText(text)}
+        handleSubmit={() => this.props.submitMessage()}
+      />
+    );
+  }
+
   render() {
     return (
       <Layout
@@ -53,22 +72,21 @@ export class Praise extends React.Component<IAppProps, never> {
         profilePic={this.props.profilePic}
         logout={this.props.logout}
       >
-        <SubmissionForm
-          formType={'praise'}
-          handleChangeMessageText={(text) => this.props.changeMessageText(text)}
-          handleSubmit={() => this.props.submitMessage()}
-        />
+        { this.renderForm() }
       </Layout>
     );
   }
 }
 
 function mapStateToProps(immutableState: any): IStateProps {
-  const state: { app: AppStateType } = immutableState.toJS();
+  const state: StateType = immutableState.toJS();
   return {
-    auth0: state.app.auth0,
-    jwtToken: state.app.jwtToken,
     accessToken: state.app.accessToken,
+    auth0: state.app.auth0,
+    displayMessage: state.messages.displayMessage,
+    jwtToken: state.app.jwtToken,
+    loading: state.messages.loading,
+    messageText: state.messages.messageText,
     profilePic: state.app.profilePic,
     username: state.app.username
   };
@@ -76,10 +94,10 @@ function mapStateToProps(immutableState: any): IStateProps {
 
 function mapDispatchToProps(dispatch): IDispatchProps {
   return {
-    logout: () => dispatch(logout()),
-    fetchUserProfile: () => dispatch(fetchUserProfile()),
     changeMessageText: (payload: string) => dispatch(changeMessageText(payload)),
-    submitMessage: () => dispatch(submitMessage()),
-    changeMessageType: () => dispatch(changeMessageType(PrayerPraise.PRAISE))
+    changeMessageType: () => dispatch(changeMessageType(PrayerPraise.PRAISE)),
+    fetchUserProfile: () => dispatch(fetchUserProfile()),
+    logout: () => dispatch(logout()),
+    submitMessage: () => dispatch(submitMessage())
   };
 }

@@ -15,9 +15,9 @@ interface IStateProps { //extends RouteComponentProps<void> {
 }
 
 interface IDispatchProps {
-  login(any);
+  login(arg: any);
   logout();
-  changeRoute(string);
+  changeRoute(route: string);
 }
 
 type IAppProps = IStateProps & IDispatchProps;
@@ -28,7 +28,7 @@ export class AuthCallback extends React.Component<IAppProps, never> {
   handleAuthentication() {
     this.props.auth0.parseHash((err, authResult) => {
       if (err) {
-        console.error(err);
+        // console.error(err);
         return;
       }
       if (authResult && authResult.accessToken && authResult.idToken) {

@@ -19,5 +19,13 @@ interface IMessagesState {
   sharingStatus: ShareStatus;
   loading: boolean;
   error?: string;
+  displayMessage?: string;
 }
 export type MessagesStateType = IMessagesState;
+
+interface IStateType {
+  app: IAppState;
+  messages: IMessagesState;
+}
+
+export type StateType = IStateType;

@@ -19,6 +19,14 @@ button.submitButton {
   background-color: #E10827;
 }
 
+button.disabledButton {
+  width: 100px;
+  margin-top: 20px;
+  padding: 10px;
+  color: #FFFFFF;
+  background-color: #898989;
+}
+
 .contentHolder {
   color: #444;
   font-family: 'Kalam', cursive;
@@ -26,9 +34,21 @@ button.submitButton {
   background-repeat: repeat;
   font-size: 22px;
   line-height: 41px;
-  width: 450px;
+  width: 80%;
   height: 400px;
   margin-bottom: 20px;
   resize: none;
   outline: none;
+}
+
+.messages {
+  padding: 10px;
+  width: 250px;
+  color: white;
+  background-color: #E10827;
+}
+
+.hidden {
+  display: hidden;
+  visibility: none;
 }

@@ -11,3 +11,8 @@
   margin: 0;
   padding-top: 8px;
 }
+
+.heading h1 a {
+  color: white;
+  text-decoration: none;
+}

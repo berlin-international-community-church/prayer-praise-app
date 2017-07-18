@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import User from '../User';
 import * as styles from './styles.css';
@@ -16,7 +17,7 @@ class Header extends React.PureComponent<IProps> {
   render() {
     return (
       <div className={styles.heading}>
-        <h1>Hello</h1>
+        <h1><Link to="/">Hello</Link></h1>
         <User
           auth0={this.props.auth0}
           jwtToken={this.props.jwtToken}
