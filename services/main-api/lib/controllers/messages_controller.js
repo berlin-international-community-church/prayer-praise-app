@@ -6,13 +6,9 @@ class MessagesController {
 
   index(request, response) {
 
-    let userId = null;
-    const headers = request.headers;
-    if (!headers.authorization) {
-      userId = null;
-    }
+    const userId = request.auth.credentials.id;
 
-    MessagesService.instance().getAllSharedMessagesAvailable(userId)
+    MessagesService.instance().getAllUserMessages(userId)
       .then((messages) => response(messages))
       .catch((err) => response(Boom.badImplementation(err)));
   }

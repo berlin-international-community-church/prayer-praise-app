@@ -28,7 +28,7 @@ interface ISharedMessage {
   messageType: PrayerPraise;
   messageText: string;
   sharedStatus: ShareStatus;
-  username: string;
+  shortUsername: string;
 }
 
 export type SharedMessageType = ISharedMessage;

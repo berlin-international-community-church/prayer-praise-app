@@ -6,6 +6,10 @@ class UsersRepo {
     return DB('users').where(query).first();
   }
 
+  findAll(userIds) {
+    return DB('users').whereIn('id', userIds);
+  }
+
   createUser(name, picture) {
     return DB('users')
       .insert({ name, picture })

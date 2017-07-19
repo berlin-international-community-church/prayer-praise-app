@@ -6,7 +6,7 @@ class MessagesRepo {
     return DB('messages').where({ sharedStatus: 'SHARED_WITH_EVERYONE' });
   }
 
-  getAllMessages(userId) {
+  getAllUserMessages(userId) {
     return DB('messages').where({ user_id: userId });
   }
 

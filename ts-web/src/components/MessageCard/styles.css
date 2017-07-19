@@ -12,7 +12,6 @@
 
 .prayer {
   background-color: #FAFAFA;
-  color: #E10827;
 }
 
 .praise {
@@ -27,6 +26,7 @@
   left: 10px;
   padding-top: 10px;
   padding-left: 10px;
-  background-color: #CCC;
   border-radius: 50%;
+  background-color: #CCC;
+  color: #292929;
 }

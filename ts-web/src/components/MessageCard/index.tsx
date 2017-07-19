@@ -7,6 +7,7 @@ interface IProps {
   message: {
     messageType: PrayerPraise;
     messageText: string;
+    shortUsername: string;
   };
 }
 
@@ -18,7 +19,7 @@ class MessageCard extends React.PureComponent<IProps> {
         `${styles.message} ${styles.praise}` : `${styles.message} ${styles.prayer}` }>
         {this.props.message.messageText}
         <div className={styles.userInitials}>
-          RJ
+          {this.props.message.shortUsername}
         </div>
       </div>
     );
