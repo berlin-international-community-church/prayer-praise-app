@@ -1,14 +1,11 @@
 import * as React from 'react';
 
 import { PrayerPraise } from '../../constants/enums';
+import { SharedMessageType } from '../../constants/types';
 import * as styles from './styles.css';
 
 interface IProps {
-  message: {
-    messageType: PrayerPraise;
-    messageText: string;
-    shortUsername: string;
-  };
+  message: SharedMessageType;
 }
 
 class MessageCard extends React.PureComponent<IProps> {
