@@ -7,7 +7,7 @@ const UsersController    = require('../controllers/users_controller');
 
 const Routes = {
   config: [
-    { method: 'GET',  path: '/',              config: { auth: false }, handler: PingController.show       },
+    { method: 'GET',  path: '/ping',          config: { auth: false }, handler: PingController.show       },
     { method: 'POST', path: '/token',         config: { auth: false }, handler: TokenController.create    },
     { method: 'GET',  path: '/me',            config: { auth: 'jwt' }, handler: UsersController.show      },
     { method: 'GET',  path: '/messages',      config: { auth: false }, handler: MessagesController.index  },

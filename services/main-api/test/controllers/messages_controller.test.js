@@ -11,9 +11,9 @@ describe('messages controller', () => {
   const messageId = 101;
   const mock1 = jest.fn();
   const mock2 = jest.fn();
+  MessagesService.instance({ getMessagesSharedToAll: mock1, getMessageForUser: mock2 });
 
   beforeAll((done) => {
-    MessagesService.instance({ getAllMessages: mock1, getMessageForUser: mock2 });
     Server.on('start', () => {
       done();
     });

@@ -1,12 +1,13 @@
 'use strict';
 
 const Server = require('../../');
+const DB     = require('../../lib/repositories/db');
 
 describe('ping controller', () => {
 
   const options = {
     method: 'GET',
-    url: '/'
+    url: '/ping'
   };
 
   beforeAll((done) => {
@@ -17,7 +18,8 @@ describe('ping controller', () => {
 
   afterAll((done) => {
     Server.on('stop', () => {
-      done();
+      DB.destroy()
+        .then(() => done());
     });
     Server.stop();
   });
