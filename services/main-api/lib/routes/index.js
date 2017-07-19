@@ -12,7 +12,7 @@ const Routes = {
     { method: 'GET',  path: '/me',            config: { auth: 'jwt' }, handler: UsersController.show      },
     { method: 'GET',  path: '/messages',      config: { auth: false }, handler: MessagesController.index  },
     { method: 'GET',  path: '/messages/{id}', config: { auth: 'jwt' }, handler: MessagesController.show   },
-    { method: 'POST', path: '/messages',      config: { auth: 'jwt' }, handler: MessagesController.create }
+    { method: 'POST', path: '/messages',      config: { auth: false }, handler: MessagesController.create }
   ]
 };
 

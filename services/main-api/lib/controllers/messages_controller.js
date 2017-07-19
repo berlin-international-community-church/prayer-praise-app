@@ -1,5 +1,6 @@
-const Boom = require('boom');
+const Boom   = require('boom');
 const MessagesService = require('./../services/messages_service');
+const UsersService = require('./../services/users_service');
 
 class MessagesController {
 
@@ -27,11 +28,10 @@ class MessagesController {
 
   create(request, response) {
 
-    const userId = request.auth.credentials.id;
-
-    MessagesService.instance().createMessageForUser(userId, request.payload.message)
+    UsersService.instance().findAuthorizedUser(request.headers.authorization)
+      .then((user)    => MessagesService.instance().createMessageForUser(user.id, request.payload.message))
       .then((message) => response(message))
-      .catch((err) => response(Boom.badImplementation(err)));
+      .catch((err)    => response(Boom.badImplementation(err)));
   }
 
 }

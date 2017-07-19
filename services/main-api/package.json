@@ -16,7 +16,7 @@
     "hapi": "^16.1.0",
     "hapi-auth-jwt2": "^7.2.4",
     "js-yaml": "^3.8.2",
-    "jsonwebtoken": "^7.3.0",
+    "jsonwebtoken": "^7.4.1",
     "knex": "^0.12.9",
     "pg": "^7.0.0"
   },
@@ -29,9 +29,10 @@
     "create-migration": "./node_modules/.bin/knex migrate:make",
     "migrate-latest": "./node_modules/.bin/knex migrate:latest",
     "rollback": "./node_modules/.bin/knex migrate:rollback",
+    "seed-data": "./node_modules/.bin/knex seed:run",
     "jest": "./node_modules/.bin/jest -i",
     "jest:watch": "npm run jest -- --watch",
-    "test": "NODE_ENV=test npm run migrate-latest && NODE_ENV=test npm run jest"
+    "test": "NODE_ENV=test npm run migrate-latest && NODE_ENV=test npm run seed-data && NODE_ENV=test npm run jest"
   },
   "jest": {
     "browser": false,

@@ -12,6 +12,12 @@ class UsersRepo {
       .then(() => this.findUserBy({ name }))
   }
 
+  findAnonymousUser() {
+    return DB('users')
+      .where({ role: 'ANONYMOUS_USER' })
+      .first();
+  }
+
 }
 
 module.exports = new UsersRepo();
