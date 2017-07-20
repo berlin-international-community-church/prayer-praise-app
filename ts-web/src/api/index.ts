@@ -32,6 +32,11 @@ const AppAPI = {
   async fetchSharedMessages() {
     return await AppAPI.init()
       .get(Config.env.baseURL + '/sharedmessages');
+  },
+
+  async fetchMyMessages() {
+    return await AppAPI.init()
+      .get(Config.env.baseURL + '/messages');
   }
 
   // async deleteBond (bondID) {

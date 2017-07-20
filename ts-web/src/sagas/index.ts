@@ -14,4 +14,8 @@ import {
   sharedMessages
 } from './sharedMessages';
 
-export default [ userProfile, tokenData, messages, sharedMessages ];
+import {
+  myMessages
+} from './myMessages';
+
+export default [ userProfile, tokenData, messages, sharedMessages, myMessages ];

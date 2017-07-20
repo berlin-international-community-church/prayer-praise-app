@@ -49,3 +49,12 @@ interface IStateType {
 }
 
 export type StateType = IStateType;
+
+interface IMyMessages {
+  displayMessage?: string;
+  error?: string;
+  loading: boolean;
+  myMessages: ISharedMessage[];
+}
+
+export type MyMessages = IMyMessages;

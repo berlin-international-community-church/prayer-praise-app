@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Layout from '../../components/Layout';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { fetchUserProfile, logout } from '../App/actions';
+import { fetchMyMessages } from './actions';
 import * as styles from './styles.css';
 
 interface IStateProps {
@@ -15,6 +16,7 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
+  fetchMyMessages();
   fetchUserProfile();
   logout();
 }
@@ -26,6 +28,7 @@ export class Me extends React.Component<any, never> {
 
   componentDidMount() {
     this.checkProfile(this.props);
+    this.props.fetchMyMessages();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -70,6 +73,7 @@ function mapStateToProps(immutableState: any): IStateProps {
 
 function mapDispatchToProps(dispatch): IDispatchProps {
   return {
+    fetchMyMessages: () => dispatch(fetchMyMessages()),
     fetchUserProfile: () => dispatch(fetchUserProfile()),
     logout: () => dispatch(logout())
   };
