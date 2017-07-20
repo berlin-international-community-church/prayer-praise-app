@@ -12,6 +12,7 @@ export class App extends React.Component<any, never> {
         <Route {...routeList.authCallback} />
         <Route {...routeList.prayer} />
         <Route {...routeList.praise} />
+        <Route {...routeList.me} />
       </Switch>
     );
   }

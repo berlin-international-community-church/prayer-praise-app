@@ -13,7 +13,7 @@ const server = new Hapi.Server();
 
 // Logging setup
 const goodOptions = { reporters: LoggingConfig, includes: { request: ['headers'] } };
-const registered = [HapiAuthJWT, { register: GoodLogging, options: goodOptions }];
+const registered  = [HapiAuthJWT, { register: GoodLogging, options: goodOptions }];
 
 // Server config
 server.connection({
@@ -30,11 +30,11 @@ server.register(registered, (err) => {
 
   // Auth
   server.auth.strategy('jwt', 'jwt', {
-      key: Config.get('token.secret'),
-      validateFunc: Token.validate,
-      verifyOptions: { algorithms: ['HS256'] }
-    }
-  );
+    key: Config.get('token.secret'),
+    validateFunc: Token.validate,
+    verifyOptions: { algorithms: ['HS256'] }
+  });
+
   server.auth.default('jwt');
 
   // Add the routes

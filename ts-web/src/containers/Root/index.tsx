@@ -76,6 +76,7 @@ export class Root extends React.Component<IAppProps, never> {
         logout={this.props.logout}
       >
         <div className={styles.container}>
+          <h2>Welcome Church</h2>
           <button
             className={styles.reload}
             onClick={() => this.props.fetchSharedMessages()}>

@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.container h2 {
+  text-transform: uppercase;
+}
+
 .reload {
   width: 70px;
   margin: 20px 0;

@@ -17,7 +17,7 @@ class Header extends React.PureComponent<IProps> {
   render() {
     return (
       <div className={styles.heading}>
-        <h1><Link to="/">Hello</Link></h1>
+        <h1><Link to="/">BICC - Prayers & Praise</Link></h1>
         <User
           auth0={this.props.auth0}
           jwtToken={this.props.jwtToken}

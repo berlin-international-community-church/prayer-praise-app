@@ -1,6 +1,7 @@
 import { ComponentClass } from 'react';
 
 import { AuthCallback } from '../containers/AuthCallback';
+import { Me } from '../containers/Me';
 import { Praise } from '../containers/Praise';
 import { Prayer } from '../containers/Prayer';
 import { Root } from '../containers/Root';
@@ -25,6 +26,11 @@ const routes: IRoutes = {
     component: Root,
     exact: true,
     path: '/'
+  },
+  me: {
+    component: Me,
+    exact: true,
+    path: '/me'
   },
   praise: {
     component: Praise,

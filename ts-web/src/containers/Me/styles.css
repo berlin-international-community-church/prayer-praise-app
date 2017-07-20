@@ -1,0 +1,8 @@
+.conatiner {
+  display: flex;
+  flex-direction: column;
+}
+
+.container h2 {
+  text-transform: uppercase;
+}
