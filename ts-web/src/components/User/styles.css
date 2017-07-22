@@ -12,6 +12,7 @@
 .userProfile button {
   height: 50px;
   padding: 5px;
+  border: none;
   background-color: white;
   color: #E10827;
 }

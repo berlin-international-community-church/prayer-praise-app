@@ -37,17 +37,12 @@ const AppAPI = {
   async fetchMyMessages() {
     return await AppAPI.init()
       .get(Config.env.baseURL + '/messages');
-  }
+  },
 
-  // async deleteBond (bondID) {
-  //   return await API.init()({ method: 'delete', url: Config.env.api_url + '/bond_order', data: bondID });
-  // },
-  //
-  // async updatePassword (password) {
-  //   return await API.init().put(Config.env.auth_url + '/me', {
-  //     password
-  //   });
-  // }
+  async deleteMessage(id) {
+    return await AppAPI.init()
+      .delete(Config.env.baseURL + `/messages/${id}`);
+  }
 
 };
 

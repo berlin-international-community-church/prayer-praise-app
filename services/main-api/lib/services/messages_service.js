@@ -33,7 +33,7 @@ class MessagesService {
       .then((user) => {
 
         if (user.role === 'PRAYER_TEAM') {
-          return this.messagesRepo.getAllMessages();
+          return this.messagesRepo.getAllSharedMessages();
         }
         return this.messagesRepo.getAllUserMessages(userId);
       });
@@ -58,6 +58,11 @@ class MessagesService {
     message.messageType = messageTypeMapping[message.messageType];
     message.sharedStatus = sharedStatusMapping[message.sharedStatus];
     return this.messagesRepo.createMessageForUser(userId, message);
+  }
+
+  deleteUserMessage(msgId) {
+
+    return this.messagesRepo.deleteUserMessage(msgId);
   }
 
 }

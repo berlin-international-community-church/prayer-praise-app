@@ -18,4 +18,8 @@ import {
   myMessages
 } from './myMessages';
 
-export default [ userProfile, tokenData, messages, sharedMessages, myMessages ];
+import {
+  deleteMessage
+} from './deleteMessage';
+
+export default [ userProfile, tokenData, messages, sharedMessages, myMessages, deleteMessage ];

@@ -4,7 +4,7 @@ const DB = require('./db');
 
 class MessagesRepo {
 
-  getAllMessages() {
+  getAllSharedMessages() {
 
     return DB('messages')
       .whereIn('sharedStatus', ['SHARED_WITH_EVERYONE', 'SHARE_WITH_PRAYER_TEAM']);
@@ -20,9 +20,19 @@ class MessagesRepo {
     return DB('messages').where({ user_id: userId });
   }
 
+  getMessage(msgId) {
+
+    return DB('messages').where({ id: msgId }).first();
+  }
+
   getMessageForUser(userId, msgId) {
 
     return DB('messages').where({ id: msgId, user_id: userId });
+  }
+
+  deleteUserMessage(msgId) {
+
+    return DB('messages').where({ id: msgId }).del();
   }
 
   createMessageForUser(userId, message) {

@@ -3,6 +3,7 @@
 const Boom   = require('boom');
 const MessagesService = require('./../services/messages_service');
 const UsersService = require('./../services/users_service');
+const AuthService = require('./../services/auth_service');
 
 class MessagesController {
 
@@ -22,6 +23,17 @@ class MessagesController {
     MessagesService.instance().getMessageForUser(userId, request.params.id)
       .then((messages) => response(messages))
       .catch((err) => response(Boom.badImplementation(err)));
+  }
+
+  delete(request, response) {
+
+    const userId = request.auth.credentials.id;
+
+    AuthService.instance().checkAuthorization(userId, request.params.id)
+      .then(() => MessagesService.instance().deleteUserMessage(request.params.id))
+      .then(() => MessagesService.instance().getAllUserMessages(userId))
+      .then((messages) => response(messages))
+      .catch((err) => response(Boom.badImplementation(err))); // TODO: send 4xx in case of bad auth
   }
 
   create(request, response) {

@@ -5,6 +5,7 @@ import * as styles from './styles.css';
 
 interface IProps {
   messages: SharedMessageType[];
+  deleteMessage(payload);
 }
 
 class MyMessages extends React.PureComponent<IProps> {
@@ -19,7 +20,12 @@ class MyMessages extends React.PureComponent<IProps> {
                 <tr key={message.id}>
                   <td>{message.messageText.substr(0, 20)}...</td>
                   <td>Edit</td>
-                  <td>Delete</td>
+                  <td>
+                    <button className={styles.deleteButton}
+                      onClick={() => this.props.deleteMessage(message.id)}>
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               );
             })}

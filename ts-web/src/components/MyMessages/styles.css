@@ -19,3 +19,14 @@ table tr {
 table td {
   padding: 20px;
 }
+
+.deleteButton {
+  align-self: center;
+  border: none;
+  padding: 5px;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  background: #E10827;
+  border-radius: 2px;
+}
