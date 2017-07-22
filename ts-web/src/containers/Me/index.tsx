@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import Layout from '../../components/Layout';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import MyMessages from '../../components/MyMessages';
+import { SharedMessageType, StateType } from '../../constants/types';
 import { fetchUserProfile, logout } from '../App/actions';
 import { fetchMyMessages } from './actions';
 import * as styles from './styles.css';
@@ -10,9 +12,11 @@ import * as styles from './styles.css';
 interface IStateProps {
   auth0?: any;
   jwtToken?: string;
-  accessToken: string;
+  accessToken?: string;
   username?: string;
   profilePic?: string;
+  loading: boolean;
+  messages: SharedMessageType[];
 }
 
 interface IDispatchProps {
@@ -24,7 +28,7 @@ interface IDispatchProps {
 type IAppProps = IStateProps & IDispatchProps;
 
 @connect<IStateProps, IDispatchProps>(mapStateToProps, mapDispatchToProps)
-export class Me extends React.Component<any, never> {
+export class Me extends React.Component<IAppProps, never> {
 
   componentDidMount() {
     this.checkProfile(this.props);
@@ -41,6 +45,18 @@ export class Me extends React.Component<any, never> {
     }
   }
 
+  renderContainer() {
+    if (this.props.loading || !this.props.messages) {
+      return <LoadingSpinner />;
+    }
+    return (
+      <div className={styles.container}>
+        <h2>My Data</h2>
+        <MyMessages messages={this.props.messages}/>
+      </div>
+    )
+  }
+
   render() {
     return (
       <Layout
@@ -50,10 +66,7 @@ export class Me extends React.Component<any, never> {
         profilePic={this.props.profilePic}
         logout={this.props.logout}
       >
-        <div className={styles.container}>
-          <h2>My Data</h2>
-          <LoadingSpinner />
-        </div>
+        { this.renderContainer() }
       </Layout>
     );
   }
@@ -61,13 +74,15 @@ export class Me extends React.Component<any, never> {
 }
 
 function mapStateToProps(immutableState: any): IStateProps {
-  const state = immutableState.toJS();
+  const state: StateType = immutableState.toJS();
   return {
     accessToken: state.app.accessToken,
     auth0: state.app.auth0,
     jwtToken: state.app.jwtToken,
     profilePic: state.app.profilePic,
-    username: state.app.username
+    username: state.app.username,
+    loading: state.myData.loading,
+    messages: state.myData.myMessages
   };
 }
 

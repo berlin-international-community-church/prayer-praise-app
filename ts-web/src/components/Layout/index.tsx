@@ -27,7 +27,7 @@ class Layout extends React.PureComponent<IProps> {
           logout={this.props.logout}
         />
         <div className={styles.page}>
-          <Sidebar />
+          <Sidebar loggedIn={!!this.props.jwtToken && !!this.props.profilePic}/>
           <div className={styles.main}>
             { React.Children.toArray(this.props.children) }
           </div>

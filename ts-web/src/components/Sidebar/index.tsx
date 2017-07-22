@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 
 import * as styles from './styles.css';
 
-class Sidebar extends React.PureComponent<{}, {}> {
+interface IProps {
+  loggedIn: boolean;
+}
+
+class Sidebar extends React.PureComponent<IProps, {}> {
 
   render() {
     return (
@@ -18,9 +22,7 @@ class Sidebar extends React.PureComponent<{}, {}> {
           <li>
             <Link to="/praise">Praise</Link>
           </li>
-          <li>
-            <Link to="/me">Me</Link>
-          </li>
+          { this.props.loggedIn ? <li><Link to="/me">Me</Link></li> : <li/> }
         </ul>
       </div>
     );

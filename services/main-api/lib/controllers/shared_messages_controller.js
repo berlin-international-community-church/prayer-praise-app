@@ -1,3 +1,5 @@
+'use strict';
+
 const Boom   = require('boom');
 const MessagesService = require('./../services/messages_service');
 

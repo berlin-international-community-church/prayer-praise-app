@@ -4,12 +4,13 @@ import { push } from 'react-router-redux';
 
 import Layout from '../../components/Layout';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import { StateType } from '../../constants/types';
 import { login, logout } from '../App/actions';
 
 interface IStateProps { //extends RouteComponentProps<void> {
   auth0?: any;
   jwtToken?: string;
-  accessToken: string;
+  accessToken?: string;
   username?: string;
   profilePic?: string;
 }
@@ -67,7 +68,7 @@ export class AuthCallback extends React.Component<IAppProps, never> {
 }
 
 function mapStateToProps(immutableState: any): IStateProps {
-  const state = immutableState.toJS();
+  const state: StateType = immutableState.toJS();
   return {
     auth0: state.app.auth0,
     jwtToken: state.app.jwtToken,

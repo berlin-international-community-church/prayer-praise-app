@@ -1,13 +1,13 @@
 import { fromJS } from 'immutable';
 
-import { MyMessages } from '../constants/types';
+import { MyData } from '../constants/types';
 import {
   FETCH_MY_MESSAGES_FAILED,
   FETCH_MY_MESSAGES_INFLIGHT,
   FETCH_MY_MESSAGES_SUCCESS
 } from '../containers/Me/constants';
 
-const init: MyMessages = {
+const init: MyData = {
   displayMessage: undefined,
   error: undefined,
   loading: false,

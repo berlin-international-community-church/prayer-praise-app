@@ -42,19 +42,20 @@ interface ISharedMessages {
 
 export type SharedMessagesType = ISharedMessages;
 
-interface IStateType {
-  app: IAppState;
-  messages: IMessagesState;
-  sharedMessages: ISharedMessages;
-}
-
-export type StateType = IStateType;
-
-interface IMyMessages {
+interface IMyData {
   displayMessage?: string;
   error?: string;
   loading: boolean;
   myMessages: ISharedMessage[];
 }
 
-export type MyMessages = IMyMessages;
+export type MyData = IMyData;
+
+interface IStateType {
+  app: IAppState;
+  messages: IMessagesState;
+  sharedMessages: ISharedMessages;
+  myData: IMyData;
+}
+
+export type StateType = IStateType;

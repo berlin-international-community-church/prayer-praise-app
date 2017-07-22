@@ -1,6 +1,6 @@
 'use strict';
 
-exports.up = function(knex, Promise) {
+exports.up = (knex, Promise) => {
 
   return knex.schema.createTable('messages', (table) => {
 
@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
   });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = (knex, Promise) => {
+
   return knex.schema.dropTable('messages');
 };
