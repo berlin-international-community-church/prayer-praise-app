@@ -27,3 +27,14 @@
   background: #E10827;
   border-radius: 2px;
 }
+
+.editButton {
+  align-self: center;
+  border: none;
+  padding: 5px;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  background: #333;
+  border-radius: 2px;
+}

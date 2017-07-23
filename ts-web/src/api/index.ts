@@ -42,6 +42,11 @@ const AppAPI = {
   async deleteMessage(id) {
     return await AppAPI.init()
       .delete(Config.env.baseURL + `/messages/${id}`);
+  },
+
+  async editMessage(id) {
+    return await AppAPI.init()
+      .get(Config.env.baseURL + `/messages/${id}`);
   }
 
 };

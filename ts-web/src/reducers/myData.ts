@@ -5,6 +5,9 @@ import {
   DELETE_MESSAGE_FAILED,
   DELETE_MESSAGE_INFLIGHT,
   DELETE_MESSAGE_SUCCESS,
+  EDIT_MESSAGE_FAILED,
+  EDIT_MESSAGE_INFLIGHT,
+  EDIT_MESSAGE_SUCCESS,
   FETCH_MY_MESSAGES_FAILED,
   FETCH_MY_MESSAGES_INFLIGHT,
   FETCH_MY_MESSAGES_SUCCESS
@@ -52,6 +55,21 @@ export function myDataReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .set('error', DELETE_MESSAGE_FAILED)
+        .set('displayMessage', 'Please refresh / try again later.');
+
+    case EDIT_MESSAGE_INFLIGHT:
+      return state
+        .set('loading', true);
+
+    case EDIT_MESSAGE_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('displayMessage', undefined);
+
+    case EDIT_MESSAGE_FAILED:
+      return state
+        .set('loading', false)
+        .set('error', EDIT_MESSAGE_FAILED)
         .set('displayMessage', 'Please refresh / try again later.');
 
     default:

@@ -25,11 +25,6 @@ class MessagesRepo {
     return DB('messages').where({ id: msgId }).first();
   }
 
-  getMessageForUser(userId, msgId) {
-
-    return DB('messages').where({ id: msgId, user_id: userId });
-  }
-
   deleteUserMessage(msgId) {
 
     return DB('messages').where({ id: msgId }).del();

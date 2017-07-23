@@ -6,7 +6,7 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import MyMessages from '../../components/MyMessages';
 import { SharedMessageType, StateType } from '../../constants/types';
 import { fetchUserProfile, logout } from '../App/actions';
-import { deleteMessage, fetchMyMessages } from './actions';
+import { deleteMessage, editMessage, fetchMyMessages } from './actions';
 import * as styles from './styles.css';
 
 interface IStateProps {
@@ -20,9 +20,10 @@ interface IStateProps {
 }
 
 interface IDispatchProps {
+  deleteMessage(payload: number);
+  editMessage(payload: number);
   fetchMyMessages();
   fetchUserProfile();
-  deleteMessage(payload: any);
   logout();
 }
 
@@ -50,12 +51,14 @@ export class Me extends React.Component<IAppProps, never> {
     if (this.props.loading || !this.props.messages) {
       return <LoadingSpinner />;
     }
+    // TODO: For edit - change route here and call edit message on componentDidMount
     return (
       <div className={styles.container}>
         <h2>My Data</h2>
         <MyMessages
           messages={this.props.messages}
           deleteMessage={this.props.deleteMessage}
+          editMessage={this.props.editMessage}
         />
       </div>
     );
@@ -93,6 +96,7 @@ function mapStateToProps(immutableState: any): IStateProps {
 function mapDispatchToProps(dispatch): IDispatchProps {
   return {
     deleteMessage: (payload) => dispatch(deleteMessage(payload)),
+    editMessage: (payload) => dispatch(editMessage(payload)),
     fetchMyMessages: () => dispatch(fetchMyMessages()),
     fetchUserProfile: () => dispatch(fetchUserProfile()),
     logout: () => dispatch(logout())

@@ -20,7 +20,8 @@ class MessagesController {
 
     const userId = request.auth.credentials.id;
 
-    MessagesService.instance().getMessageForUser(userId, request.params.id)
+    AuthService.instance().checkAuthorization(userId, request.params.id)
+      .then(() => MessagesService.instance().getMessageForUser(request.params.id))
       .then((messages) => response(messages))
       .catch((err) => response(Boom.badImplementation(err)));
   }

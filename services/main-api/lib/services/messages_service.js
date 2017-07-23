@@ -39,9 +39,9 @@ class MessagesService {
       });
   }
 
-  getMessageForUser(userId, msgId) {
+  getMessageForUser(msgId) {
 
-    return this.messagesRepo.getMessageForUser(userId, msgId);
+    return this.messagesRepo.getMessage(msgId);
   }
 
   createMessageForUser(userId, message) {

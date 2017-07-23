@@ -3,6 +3,10 @@ import {
   DELETE_MESSAGE_FAILED,
   DELETE_MESSAGE_INFLIGHT,
   DELETE_MESSAGE_SUCCESS,
+  EDIT_MESSAGE,
+  EDIT_MESSAGE_FAILED,
+  EDIT_MESSAGE_INFLIGHT,
+  EDIT_MESSAGE_SUCCESS,
   FETCH_MY_MESSAGES,
   FETCH_MY_MESSAGES_FAILED,
   FETCH_MY_MESSAGES_INFLIGHT,
@@ -57,5 +61,30 @@ export function deleteMessageSuccessful(payload) {
 export function deleteMessageFailed() {
   return {
     type: DELETE_MESSAGE_FAILED
+  };
+}
+
+export function editMessage(payload) {
+  return {
+    payload,
+    type: EDIT_MESSAGE
+  };
+}
+
+export function editMessageInProgress() {
+  return {
+    type: EDIT_MESSAGE_INFLIGHT
+  };
+}
+
+export function editMessageSuccessful() {
+  return {
+    type: EDIT_MESSAGE_SUCCESS
+  };
+}
+
+export function editMessageFailed() {
+  return {
+    type: EDIT_MESSAGE_FAILED
   };
 }
