@@ -20,7 +20,8 @@ Fully containerized HapiJS + ReactJS app for Berlin Church to share prayers and 
 
 ## Notes
 
-- The application runs as a ReactJS web application, with a Node+HapiJS REST API backend.
+- The application runs as a ReactJS web application, with a NodeJS (HapiJS) REST API backend. The data is persisted in PostgreSQL RDBMS.
+- The React web application is written in TypeScript for some type safety and the backend is pure NodeJS
 
 ## Important
 
