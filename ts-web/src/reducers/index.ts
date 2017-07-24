@@ -10,8 +10,8 @@ export function createReducer() {
   return combineReducers({
     app: appReducer,
     messages: messagesReducer,
+    myData: myDataReducer,
     route: routeReducer,
-    sharedMessages: sharedMessagesReducer,
-    myData: myDataReducer
+    sharedMessages: sharedMessagesReducer
   });
 }

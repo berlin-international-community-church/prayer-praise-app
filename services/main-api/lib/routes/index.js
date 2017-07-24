@@ -14,6 +14,7 @@ const Routes = {
     { method: 'GET',   path: '/messages',      config: { auth: 'jwt' }, handler: MessagesController.index  },
     { method: 'GET',   path: '/messages/{id}', config: { auth: 'jwt' }, handler: MessagesController.show   },
     { method: 'DELETE',path: '/messages/{id}', config: { auth: 'jwt' }, handler: MessagesController.delete },
+    { method: 'PUT',   path: '/messages/{id}', config: { auth: 'jwt' }, handler: MessagesController.update },
     { method: 'POST',  path: '/messages',      config: { auth: false }, handler: MessagesController.create },
     { method: 'GET',   path: '/sharedmessages',config: { auth: false }, handler: SharedMessagesController.index  }
   ]

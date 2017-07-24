@@ -70,9 +70,9 @@ export class AuthCallback extends React.Component<IAppProps, never> {
 function mapStateToProps(immutableState: any): IStateProps {
   const state: StateType = immutableState.toJS();
   return {
+    accessToken: state.app.accessToken,
     auth0: state.app.auth0,
     jwtToken: state.app.jwtToken,
-    accessToken: state.app.accessToken,
     profilePic: state.app.profilePic,
     username: state.app.username
   };
@@ -80,8 +80,8 @@ function mapStateToProps(immutableState: any): IStateProps {
 
 function mapDispatchToProps(dispatch): IDispatchProps {
   return {
+    changeRoute: (route) => dispatch(push(route)),
     login: (payload) => dispatch(login(payload)),
-    logout: () => dispatch(logout()),
-    changeRoute: (route) => dispatch(push(route))
+    logout: () => dispatch(logout())
   };
 }

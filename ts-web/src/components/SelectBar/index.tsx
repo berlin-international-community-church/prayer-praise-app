@@ -14,21 +14,21 @@ class SelectBar extends React.PureComponent<IProps> {
     return (
       <div className={styles.selectbar}>
         <div
-          className={this.props.sharedStatus === ShareStatus.SHARE_WITH_NOONE ?
+          className={this.props.sharedStatus === ShareStatus.SHARED_WITH_NOONE ?
             styles.selected : styles.unselected}
-          onClick={() => this.props.handleChangeShareStatus(ShareStatus.SHARE_WITH_NOONE)}>
+          onClick={() => this.props.handleChangeShareStatus(ShareStatus.SHARED_WITH_NOONE)}>
           Share with no one
         </div>
         <div
-          className={this.props.sharedStatus === ShareStatus.SHARE_WITH_PRAYER_TEAM ?
+          className={this.props.sharedStatus === ShareStatus.SHARED_WITH_PRAYER_TEAM ?
             styles.selected : styles.unselected}
-          onClick={() => this.props.handleChangeShareStatus(ShareStatus.SHARE_WITH_PRAYER_TEAM)}>
+          onClick={() => this.props.handleChangeShareStatus(ShareStatus.SHARED_WITH_PRAYER_TEAM)}>
           Share with prayer team
         </div>
         <div
-          className={this.props.sharedStatus === ShareStatus.SHARE_WITH_EVERYONE ?
+          className={this.props.sharedStatus === ShareStatus.SHARED_WITH_EVERYONE ?
             styles.selected : styles.unselected}
-          onClick={() => this.props.handleChangeShareStatus(ShareStatus.SHARE_WITH_EVERYONE)}>
+          onClick={() => this.props.handleChangeShareStatus(ShareStatus.SHARED_WITH_EVERYONE)}>
           Share with everyone
         </div>
       </div>

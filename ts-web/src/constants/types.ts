@@ -47,6 +47,7 @@ interface IMyData {
   error?: string;
   loading: boolean;
   myMessages: ISharedMessage[];
+  messageForEdit?: ISharedMessage;
 }
 
 export type MyData = IMyData;

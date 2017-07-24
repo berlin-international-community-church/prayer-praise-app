@@ -10,6 +10,7 @@ export class App extends React.Component<any, never> {
       <Switch>
         <Route {...routeList.base} />
         <Route {...routeList.authCallback} />
+        <Route {...routeList.editMessage} />
         <Route {...routeList.prayer} />
         <Route {...routeList.praise} />
         <Route {...routeList.me} />

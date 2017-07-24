@@ -7,7 +7,7 @@ class MessagesRepo {
   getAllSharedMessages() {
 
     return DB('messages')
-      .whereIn('sharedStatus', ['SHARED_WITH_EVERYONE', 'SHARE_WITH_PRAYER_TEAM']);
+      .whereIn('sharedStatus', ['SHARED_WITH_EVERYONE', 'SHARED_WITH_PRAYER_TEAM']);
   }
 
   getMessagesSharedToAll() {
@@ -23,6 +23,16 @@ class MessagesRepo {
   getMessage(msgId) {
 
     return DB('messages').where({ id: msgId }).first();
+  }
+
+  updateMessage(msgId, message) {
+
+    return DB('messages')
+      .where({ id: msgId })
+      .update({
+        messageText: message.messageText,
+        sharedStatus: message.sharedStatus
+      });
   }
 
   deleteUserMessage(msgId) {

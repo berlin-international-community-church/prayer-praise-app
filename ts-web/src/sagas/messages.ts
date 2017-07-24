@@ -17,7 +17,7 @@ export function* submitMessage() {
     const state = yield select();
     const messageType   = state.get('messages').get('messageType');
     const messageText   = state.get('messages').get('messageText');
-    const sharedStatus = state.get('messages').get('sharedStatus');
+    const sharedStatus  = state.get('messages').get('sharedStatus');
 
     yield call(API.submitMessage, { messageType, messageText, sharedStatus });
     yield put(submitMessageSuccessful());

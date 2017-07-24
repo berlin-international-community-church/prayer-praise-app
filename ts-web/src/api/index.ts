@@ -47,6 +47,11 @@ const AppAPI = {
   async editMessage(id) {
     return await AppAPI.init()
       .get(Config.env.baseURL + `/messages/${id}`);
+  },
+
+  async updateMessage(message) {
+    return await AppAPI.init()
+      .put(Config.env.baseURL + `/messages/${message.id}`, { message });
   }
 
 };

@@ -44,6 +44,22 @@ class MessagesService {
     return this.messagesRepo.getMessage(msgId);
   }
 
+  updateUserMessage(msgId, message) {
+
+    const messageTypeMapping = {
+      0: 'PRAYER',
+      1: 'PRAISE'
+    };
+    const sharedStatusMapping = {
+      0: 'SHARED_WITH_EVERYONE',
+      1: 'SHARED_WITH_NOONE',
+      2: 'SHARED_WITH_PRAYER_TEAM'
+    };
+    message.messageType = messageTypeMapping[message.messageType];
+    message.sharedStatus = sharedStatusMapping[message.sharedStatus];
+    return this.messagesRepo.updateMessage(msgId, message);
+  }
+
   createMessageForUser(userId, message) {
 
     const messageTypeMapping = {
@@ -52,8 +68,8 @@ class MessagesService {
     };
     const sharedStatusMapping = {
       0: 'SHARED_WITH_EVERYONE',
-      1: 'SHARE_WITH_NOONE',
-      2: 'SHARE_WITH_PRAYER_TEAM'
+      1: 'SHARED_WITH_NOONE',
+      2: 'SHARED_WITH_PRAYER_TEAM'
     };
     message.messageType = messageTypeMapping[message.messageType];
     message.sharedStatus = sharedStatusMapping[message.sharedStatus];

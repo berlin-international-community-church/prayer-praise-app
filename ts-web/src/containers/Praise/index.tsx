@@ -57,7 +57,7 @@ export class Praise extends React.Component<IAppProps, never> {
     return (
       <SubmissionForm
         displayMessage={this.props.displayMessage}
-        formType={'praise'}
+        formType={PrayerPraise.PRAISE}
         messageText={this.props.messageText}
         sharedStatus={this.props.sharedStatus}
         handleChangeMessageText={(text: string) => this.props.changeMessageText(text)}

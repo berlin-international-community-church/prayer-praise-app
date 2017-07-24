@@ -4,7 +4,7 @@ export enum PrayerPraise {
 }
 
 export enum ShareStatus {
-  SHARE_WITH_EVERYONE,
-  SHARE_WITH_NOONE,
-  SHARE_WITH_PRAYER_TEAM
+  SHARED_WITH_EVERYONE,
+  SHARED_WITH_NOONE,
+  SHARED_WITH_PRAYER_TEAM
 }

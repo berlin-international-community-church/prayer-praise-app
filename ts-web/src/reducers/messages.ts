@@ -17,7 +17,7 @@ const init: MessagesStateType = {
   loading: false,
   messageText: '',
   messageType: PrayerPraise.PRAISE,
-  sharedStatus:  ShareStatus.SHARE_WITH_NOONE
+  sharedStatus:  ShareStatus.SHARED_WITH_NOONE
 };
 
 const initialState = fromJS(init);

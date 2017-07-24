@@ -13,7 +13,7 @@ function* edtMessage(action) {
   try {
     yield put(editMessageInProgress());
     const result = yield call(AppAPI.editMessage, action.payload);
-    yield put(editMessageSuccessful());
+    yield put(editMessageSuccessful(result.data));
   } catch (err) {
     // tslint:disable-next-line:no-console
     console.error(err);

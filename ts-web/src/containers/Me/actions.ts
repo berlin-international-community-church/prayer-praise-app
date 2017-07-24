@@ -10,7 +10,11 @@ import {
   FETCH_MY_MESSAGES,
   FETCH_MY_MESSAGES_FAILED,
   FETCH_MY_MESSAGES_INFLIGHT,
-  FETCH_MY_MESSAGES_SUCCESS
+  FETCH_MY_MESSAGES_SUCCESS,
+  UPDATE_MESSAGE,
+  UPDATE_MESSAGE_FAILED,
+  UPDATE_MESSAGE_INFLIGHT,
+  UPDATE_MESSAGE_SUCCESS
 } from './constants';
 
 export function fetchMyMessages() {
@@ -77,8 +81,9 @@ export function editMessageInProgress() {
   };
 }
 
-export function editMessageSuccessful() {
+export function editMessageSuccessful(payload) {
   return {
+    payload,
     type: EDIT_MESSAGE_SUCCESS
   };
 }
@@ -86,5 +91,29 @@ export function editMessageSuccessful() {
 export function editMessageFailed() {
   return {
     type: EDIT_MESSAGE_FAILED
+  };
+}
+
+export function updateMessage() {
+  return {
+    type: UPDATE_MESSAGE
+  };
+}
+
+export function updateMessageInProgress() {
+  return {
+    type: UPDATE_MESSAGE_INFLIGHT
+  };
+}
+
+export function updateMessageSuccessful() {
+  return {
+    type: UPDATE_MESSAGE_SUCCESS
+  };
+}
+
+export function updateMessageFailed() {
+  return {
+    type: UPDATE_MESSAGE_FAILED
   };
 }

@@ -26,4 +26,17 @@ import {
   editMessage
 } from './editMessage';
 
-export default [ userProfile, tokenData, messages, sharedMessages, myMessages, deleteMessage, editMessage ];
+import {
+  updateMessage
+} from './updateMessage';
+
+export default [
+  userProfile,
+  tokenData,
+  messages,
+  sharedMessages,
+  myMessages,
+  deleteMessage,
+  editMessage,
+  updateMessage
+];

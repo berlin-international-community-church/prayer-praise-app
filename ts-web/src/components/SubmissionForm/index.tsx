@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { ShareStatus } from '../../constants/enums';
+import { PrayerPraise, ShareStatus } from '../../constants/enums';
 import DisplayMessage from '../DisplayMessage';
 import SelectBar from '../SelectBar';
 import * as styles from './styles.css';
 
 interface IProps {
-  formType: string;
+  formType: PrayerPraise;
   displayMessage?: string;
   messageText: string;
   sharedStatus: ShareStatus;
@@ -19,8 +19,8 @@ class SubmissionForm extends React.PureComponent<IProps> {
 
   getMessage(formType) {
     return {
-      praise: 'Praise',
-      prayer: 'Prayer'
+      [PrayerPraise.PRAISE]: 'Praise',
+      [PrayerPraise.PRAYER]: 'Prayer'
     }[formType];
   }
 
@@ -33,7 +33,9 @@ class SubmissionForm extends React.PureComponent<IProps> {
           className={styles.contentHolder}
           contentEditable={true}
           onInput={ (e) => this.props.handleChangeMessageText(e.target['innerHTML']) }
-        />
+        >
+          {this.props.messageText}
+        </div>
         <SelectBar
           sharedStatus={this.props.sharedStatus}
           handleChangeShareStatus={(status: ShareStatus) => this.props.handleChangeShareStatus(status)}

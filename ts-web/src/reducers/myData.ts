@@ -10,13 +10,17 @@ import {
   EDIT_MESSAGE_SUCCESS,
   FETCH_MY_MESSAGES_FAILED,
   FETCH_MY_MESSAGES_INFLIGHT,
-  FETCH_MY_MESSAGES_SUCCESS
+  FETCH_MY_MESSAGES_SUCCESS,
+  UPDATE_MESSAGE_FAILED,
+  UPDATE_MESSAGE_INFLIGHT,
+  UPDATE_MESSAGE_SUCCESS
 } from '../containers/Me/constants';
 
 const init: MyData = {
   displayMessage: undefined,
   error: undefined,
   loading: false,
+  messageForEdit: undefined,
   myMessages: []
 };
 
@@ -64,12 +68,28 @@ export function myDataReducer(state = initialState, action) {
     case EDIT_MESSAGE_SUCCESS:
       return state
         .set('loading', false)
+        .set('messageForEdit', action.payload)
         .set('displayMessage', undefined);
 
     case EDIT_MESSAGE_FAILED:
       return state
         .set('loading', false)
         .set('error', EDIT_MESSAGE_FAILED)
+        .set('displayMessage', 'Please refresh / try again later.');
+
+    case UPDATE_MESSAGE_INFLIGHT:
+      return state
+        .set('loading', true);
+
+    case UPDATE_MESSAGE_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('displayMessage', 'Update Successful!');
+
+    case UPDATE_MESSAGE_FAILED:
+      return state
+        .set('loading', false)
+        .set('error', UPDATE_MESSAGE_FAILED)
         .set('displayMessage', 'Please refresh / try again later.');
 
     default:

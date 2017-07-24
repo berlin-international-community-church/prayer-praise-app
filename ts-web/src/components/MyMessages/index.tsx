@@ -6,7 +6,7 @@ import * as styles from './styles.css';
 interface IProps {
   messages: SharedMessageType[];
   deleteMessage(payload: number);
-  editMessage(payload: number);
+  editMessage(payload: string);
 }
 
 class MyMessages extends React.PureComponent<IProps> {
@@ -20,7 +20,7 @@ class MyMessages extends React.PureComponent<IProps> {
               <span>{message.messageText.substr(0, 20)}...</span>
               <span>
                 <button className={styles.editButton}
-                  onClick={() => this.props.editMessage(message.id)}>
+                  onClick={() => this.props.editMessage(`/edit/messages/${message.id}`)}>
                   Edit
                 </button>
               </span>

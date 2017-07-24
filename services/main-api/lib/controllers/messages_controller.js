@@ -37,6 +37,16 @@ class MessagesController {
       .catch((err) => response(Boom.badImplementation(err))); // TODO: send 4xx in case of bad auth
   }
 
+  update(request, response) {
+
+    const userId = request.auth.credentials.id;
+
+    AuthService.instance().checkAuthorization(userId, request.params.id)
+      .then(() => MessagesService.instance().updateUserMessage(request.params.id, request.payload.message))
+      .then(() => response({}))
+      .catch((err) => response(Boom.badImplementation(err))); // TODO: send 4xx in case of bad auth
+  }
+
   create(request, response) {
 
     UsersService.instance().findAuthorizedUser(request.headers.authorization)
