@@ -2,6 +2,8 @@ import { fromJS } from 'immutable';
 
 import { MyData } from '../constants/types';
 import {
+  CHANGE_EXISTING_MESSAGE_SHARED_STATUS,
+  CHANGE_EXISTING_MESSAGE_TEXT,
   DELETE_MESSAGE_FAILED,
   DELETE_MESSAGE_INFLIGHT,
   DELETE_MESSAGE_SUCCESS,
@@ -20,7 +22,12 @@ const init: MyData = {
   displayMessage: undefined,
   error: undefined,
   loading: false,
-  messageForEdit: undefined,
+  messageForEdit: {
+    id: undefined,
+    messageType: undefined,
+    newSharedStatus: undefined,
+    newText: undefined
+  },
   myMessages: []
 };
 
@@ -68,7 +75,10 @@ export function myDataReducer(state = initialState, action) {
     case EDIT_MESSAGE_SUCCESS:
       return state
         .set('loading', false)
-        .set('messageForEdit', action.payload)
+        .setIn(['messageForEdit', 'id'], action.payload.id)
+        .setIn(['messageForEdit', 'messageType'], action.payload.messageType)
+        .setIn(['messageForEdit', 'newSharedStatus'], action.payload.sharedStatus)
+        .setIn(['messageForEdit', 'newText'], action.payload.messageText)
         .set('displayMessage', undefined);
 
     case EDIT_MESSAGE_FAILED:
@@ -91,6 +101,14 @@ export function myDataReducer(state = initialState, action) {
         .set('loading', false)
         .set('error', UPDATE_MESSAGE_FAILED)
         .set('displayMessage', 'Please refresh / try again later.');
+
+    case CHANGE_EXISTING_MESSAGE_SHARED_STATUS:
+      return state
+        .setIn(['messageForEdit', 'newSharedStatus'], action.payload);
+
+    case CHANGE_EXISTING_MESSAGE_TEXT:
+      return state
+        .setIn(['messageForEdit', 'newText'], action.payload);
 
     default:
       return state;

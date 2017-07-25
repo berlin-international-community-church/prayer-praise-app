@@ -4,7 +4,7 @@ import { ShareStatus } from '../../constants/enums';
 import * as styles from './styles.css';
 
 interface IProps {
-  sharedStatus: ShareStatus;
+  sharedStatus?: ShareStatus;
   handleChangeShareStatus(status: ShareStatus): void;
 }
 

@@ -1,4 +1,6 @@
 import {
+  CHANGE_EXISTING_MESSAGE_SHARED_STATUS,
+  CHANGE_EXISTING_MESSAGE_TEXT,
   DELETE_MESSAGE,
   DELETE_MESSAGE_FAILED,
   DELETE_MESSAGE_INFLIGHT,
@@ -115,5 +117,19 @@ export function updateMessageSuccessful() {
 export function updateMessageFailed() {
   return {
     type: UPDATE_MESSAGE_FAILED
+  };
+}
+
+export function changeExistingMessageText(payload) {
+  return {
+    payload,
+    type: CHANGE_EXISTING_MESSAGE_TEXT
+  };
+}
+
+export function changeExistingMessageSharedStatus(payload) {
+  return {
+    payload,
+    type: CHANGE_EXISTING_MESSAGE_SHARED_STATUS
   };
 }

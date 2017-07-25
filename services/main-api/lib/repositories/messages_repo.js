@@ -7,12 +7,12 @@ class MessagesRepo {
   getAllSharedMessages() {
 
     return DB('messages')
-      .whereIn('sharedStatus', ['SHARED_WITH_EVERYONE', 'SHARED_WITH_PRAYER_TEAM']);
+      .whereIn('sharedStatus', ['0', '2']);
   }
 
   getMessagesSharedToAll() {
 
-    return DB('messages').where({ sharedStatus: 'SHARED_WITH_EVERYONE' });
+    return DB('messages').where({ sharedStatus: '2' });
   }
 
   getAllUserMessages(userId) {

@@ -6,10 +6,10 @@ import SelectBar from '../SelectBar';
 import * as styles from './styles.css';
 
 interface IProps {
-  formType: PrayerPraise;
+  formType?: PrayerPraise;
   displayMessage?: string;
-  messageText: string;
-  sharedStatus: ShareStatus;
+  messageText?: string;
+  sharedStatus?: ShareStatus;
   handleChangeMessageText(text: string): void;
   handleChangeShareStatus(status: ShareStatus): void;
   handleSubmit();
@@ -41,8 +41,9 @@ class SubmissionForm extends React.PureComponent<IProps> {
           handleChangeShareStatus={(status: ShareStatus) => this.props.handleChangeShareStatus(status)}
         />
         <button
-          disabled={this.props.messageText.trim().length === 0}
-          className={this.props.messageText.trim().length === 0 ? styles.disabledButton : styles.submitButton}
+          disabled={!this.props.messageText || this.props.messageText.trim().length === 0}
+          className={!this.props.messageText || this.props.messageText.trim().length === 0 ?
+            styles.disabledButton : styles.submitButton}
           onClick={ (e) => { e.preventDefault(); this.props.handleSubmit(); } }>
           Submit
         </button>

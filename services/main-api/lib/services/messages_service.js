@@ -55,8 +55,8 @@ class MessagesService {
       1: 'SHARED_WITH_NOONE',
       2: 'SHARED_WITH_PRAYER_TEAM'
     };
-    message.messageType = messageTypeMapping[message.messageType];
-    message.sharedStatus = sharedStatusMapping[message.sharedStatus];
+    message.messageType = message.messageType;
+    message.sharedStatus = message.sharedStatus;
     return this.messagesRepo.updateMessage(msgId, message);
   }
 
@@ -71,8 +71,8 @@ class MessagesService {
       1: 'SHARED_WITH_NOONE',
       2: 'SHARED_WITH_PRAYER_TEAM'
     };
-    message.messageType = messageTypeMapping[message.messageType];
-    message.sharedStatus = sharedStatusMapping[message.sharedStatus];
+    message.messageType = message.messageType;
+    message.sharedStatus = message.sharedStatus;
     return this.messagesRepo.createMessageForUser(userId, message);
   }
 

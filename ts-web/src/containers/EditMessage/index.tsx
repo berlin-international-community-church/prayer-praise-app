@@ -7,12 +7,16 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 import SubmissionForm from '../../components/SubmissionForm';
 
 import { PrayerPraise, ShareStatus } from '../../constants/enums';
-import { SharedMessageType, StateType } from '../../constants/types';
+import { MessageForEdit, StateType } from '../../constants/types';
 
 import { fetchUserProfile, logout } from '../App/actions';
-import { changeMessageText, changeMessageType, changeSharedStatus } from '../Praise/actions';
 // tslint:disable-next-line:ordered-imports
-import { editMessage, updateMessage } from '../Me/actions';
+import {
+  changeExistingMessageSharedStatus,
+  changeExistingMessageText,
+  editMessage,
+  updateMessage
+} from '../Me/actions';
 
 import * as styles from '../Me/styles.css';
 
@@ -21,7 +25,7 @@ interface IStateProps {
   auth0?: any;
   displayMessage?: string;
   jwtToken?: string;
-  messageForEdit?: SharedMessageType;
+  messageForEdit?: MessageForEdit;
   username?: string;
   profilePic?: string;
   loading: boolean;
@@ -33,7 +37,6 @@ interface IRouteParams {
 
 interface IDispatchProps {
   changeMessageText(payload: string);
-  changeMessageType();
   changeSharedStatus(payload: ShareStatus);
   editMessage(payload: number);
   fetchUserProfile();
@@ -63,9 +66,9 @@ export class EditMessage extends React.Component<IAppProps, never> {
 
   convertStatus(status): ShareStatus {
     return {
-      SHARED_WITH_EVERYONE: ShareStatus.SHARED_WITH_EVERYONE,
-      SHARED_WITH_NOONE: ShareStatus.SHARED_WITH_NOONE,
-      SHARED_WITH_PRAYER_TEAM: ShareStatus.SHARED_WITH_PRAYER_TEAM
+      0: ShareStatus.SHARED_WITH_EVERYONE,
+      1: ShareStatus.SHARED_WITH_NOONE,
+      2: ShareStatus.SHARED_WITH_PRAYER_TEAM
     }[status];
   }
 
@@ -79,8 +82,8 @@ export class EditMessage extends React.Component<IAppProps, never> {
         <SubmissionForm
           displayMessage={this.props.displayMessage}
           formType={this.props.messageForEdit.messageType}
-          messageText={this.props.messageForEdit.messageText}
-          sharedStatus={this.convertStatus(this.props.messageForEdit.sharedStatus)}
+          messageText={this.props.messageForEdit.newText}
+          sharedStatus={this.convertStatus(this.props.messageForEdit.newSharedStatus)}
           handleChangeMessageText={(text: string) => this.props.changeMessageText(text)}
           handleChangeShareStatus={(status: ShareStatus) => this.props.changeSharedStatus(status)}
           handleSubmit={() => this.props.updateMessage()}
@@ -121,9 +124,8 @@ function mapStateToProps(immutableState: any): IStateProps {
 
 function mapDispatchToProps(dispatch): IDispatchProps {
   return {
-    changeMessageText: (payload: string) => dispatch(changeMessageText(payload)),
-    changeMessageType: () => dispatch(changeMessageType(PrayerPraise.PRAISE)),
-    changeSharedStatus: (payload: ShareStatus) => dispatch(changeSharedStatus(payload)),
+    changeMessageText: (payload: string) => dispatch(changeExistingMessageText(payload)),
+    changeSharedStatus: (payload: ShareStatus) => dispatch(changeExistingMessageSharedStatus(payload)),
     editMessage: (payload) => dispatch(editMessage(payload)),
     fetchUserProfile: () => dispatch(fetchUserProfile()),
     logout: () => dispatch(logout()),

@@ -42,12 +42,21 @@ interface ISharedMessages {
 
 export type SharedMessagesType = ISharedMessages;
 
+interface IMessageForEdit {
+  id?: number;
+  newText?: string;
+  newSharedStatus?: ShareStatus;
+  messageType?: PrayerPraise;
+}
+
+export type MessageForEdit = IMessageForEdit;
+
 interface IMyData {
   displayMessage?: string;
   error?: string;
   loading: boolean;
   myMessages: ISharedMessage[];
-  messageForEdit?: ISharedMessage;
+  messageForEdit?: MessageForEdit;
 }
 
 export type MyData = IMyData;

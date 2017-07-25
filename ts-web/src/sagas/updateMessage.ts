@@ -13,11 +13,11 @@ function* updtMessage(action) {
   try {
     yield put(updateMessageInProgress());
 
-    const state = yield select();
-    const id           = state.get('myData').get('messageForEdit').id;
-    const messageType  = state.get('messages').get('messageType');
-    const messageText  = state.get('messages').get('messageText');
-    const sharedStatus = state.get('messages').get('sharedStatus');
+    const state        = yield select();
+    const id           = state.get('myData').get('messageForEdit').get('id');
+    const messageType  = state.get('myData').get('messageForEdit').get('messageType');
+    const messageText  = state.get('myData').get('messageForEdit').get('newText');
+    const sharedStatus = state.get('myData').get('messageForEdit').get('newSharedStatus');
 
     yield call(AppAPI.updateMessage, { id, messageType, messageText, sharedStatus });
     yield put(updateMessageSuccessful());
