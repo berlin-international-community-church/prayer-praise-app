@@ -1,6 +1,7 @@
 'use strict';
 
 const Promise = require('bluebird');
+const _ = require('lodash');
 
 class MessagesService {
 
@@ -28,15 +29,17 @@ class MessagesService {
 
   getAllUserMessages(userId) {
 
-    return this.usersRepo
-      .findUserBy({ id: userId })
-      .then((user) => {
+    return this.messagesRepo
+      .getAllUserMessages(userId)
+      .then((myMessages) => Promise.all([myMessages, this.usersRepo.findUserBy({ id: userId })]))
+      .spread((myMessages, user) => {
 
         if (user.role === 'PRAYER_TEAM') {
-          return this.messagesRepo.getAllSharedMessages();
+          return Promise.all([myMessages, this.messagesRepo.getAllSharedMessages()]);
         }
-        return this.messagesRepo.getAllUserMessages(userId);
-      });
+        return Promise.all([myMessages, []]);
+      })
+      .spread((myMessages, sharedMessages) => _.uniqBy(myMessages.concat(sharedMessages), 'id'));
   }
 
   getMessageForUser(msgId) {
@@ -46,15 +49,6 @@ class MessagesService {
 
   updateUserMessage(msgId, message) {
 
-    const messageTypeMapping = {
-      0: 'PRAYER',
-      1: 'PRAISE'
-    };
-    const sharedStatusMapping = {
-      0: 'SHARED_WITH_EVERYONE',
-      1: 'SHARED_WITH_NOONE',
-      2: 'SHARED_WITH_PRAYER_TEAM'
-    };
     message.messageType = message.messageType;
     message.sharedStatus = message.sharedStatus;
     return this.messagesRepo.updateMessage(msgId, message);
@@ -62,15 +56,6 @@ class MessagesService {
 
   createMessageForUser(userId, message) {
 
-    const messageTypeMapping = {
-      0: 'PRAYER',
-      1: 'PRAISE'
-    };
-    const sharedStatusMapping = {
-      0: 'SHARED_WITH_EVERYONE',
-      1: 'SHARED_WITH_NOONE',
-      2: 'SHARED_WITH_PRAYER_TEAM'
-    };
     message.messageType = message.messageType;
     message.sharedStatus = message.sharedStatus;
     return this.messagesRepo.createMessageForUser(userId, message);

@@ -32,7 +32,7 @@ class SubmissionForm extends React.PureComponent<IProps> {
         <div
           className={styles.contentHolder}
           contentEditable={true}
-          onInput={ (e) => this.props.handleChangeMessageText(e.target['innerHTML']) }
+          onBlur={ (e) => this.props.handleChangeMessageText(e.target['innerHTML']) }
         >
           {this.props.messageText}
         </div>

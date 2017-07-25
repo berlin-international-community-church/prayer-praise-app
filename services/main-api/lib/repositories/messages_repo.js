@@ -2,17 +2,21 @@
 
 const DB = require('./db');
 
+const SHARED_WITH_EVERYONE = 0;
+// const SHARED_WITH_NOONE = 1;
+const SHARED_WITH_PRAYER_TEAM = 2;
+
 class MessagesRepo {
 
   getAllSharedMessages() {
 
     return DB('messages')
-      .whereIn('sharedStatus', ['0', '2']);
+      .whereIn('sharedStatus', [SHARED_WITH_EVERYONE, SHARED_WITH_PRAYER_TEAM]);
   }
 
   getMessagesSharedToAll() {
 
-    return DB('messages').where({ sharedStatus: '2' });
+    return DB('messages').where({ sharedStatus: SHARED_WITH_EVERYONE });
   }
 
   getAllUserMessages(userId) {
@@ -23,6 +27,16 @@ class MessagesRepo {
   getMessage(msgId) {
 
     return DB('messages').where({ id: msgId }).first();
+  }
+
+  createMessageForUser(userId, message) {
+
+    return DB('messages').insert({
+      user_id: userId,
+      messageType: message.messageType,
+      messageText: message.messageText,
+      sharedStatus: message.sharedStatus
+    });
   }
 
   updateMessage(msgId, message) {
@@ -38,16 +52,6 @@ class MessagesRepo {
   deleteUserMessage(msgId) {
 
     return DB('messages').where({ id: msgId }).del();
-  }
-
-  createMessageForUser(userId, message) {
-
-    return DB('messages').insert({
-      user_id: userId,
-      messageType: message.messageType,
-      messageText: message.messageText,
-      sharedStatus: message.sharedStatus
-    });
   }
 
 }

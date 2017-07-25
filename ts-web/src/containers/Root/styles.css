@@ -11,6 +11,8 @@
   width: 70px;
   margin: 20px 0;
   padding: 10px;
+  border: none;
+  border-radius: 2px;
   color: #FFFFFF;
   background-color: #E10827;
 }
