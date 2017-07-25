@@ -2,22 +2,18 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import Layout from '../../components/Layout';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { StateType } from '../../constants/types';
-import { login, logout } from '../App/actions';
+import { login } from '../App/actions';
+import * as styles from './styles.css';
 
-interface IStateProps { //extends RouteComponentProps<void> {
-  auth0?: any;
-  jwtToken?: string;
+interface IStateProps {
   accessToken?: string;
-  username?: string;
-  profilePic?: string;
+  auth0?: any;
 }
 
 interface IDispatchProps {
   login(arg: any);
-  logout();
   changeRoute(route: string);
 }
 
@@ -54,15 +50,9 @@ export class AuthCallback extends React.Component<IAppProps, never> {
 
   render() {
     return (
-      <Layout
-        auth0={this.props.auth0}
-        jwtToken={this.props.jwtToken}
-        username={this.props.username}
-        profilePic={this.props.profilePic}
-        logout={this.props.logout}
-      >
+      <div className={styles.container}>
         <LoadingSpinner />
-      </Layout>
+      </div>
     );
   }
 }
@@ -71,17 +61,13 @@ function mapStateToProps(immutableState: any): IStateProps {
   const state: StateType = immutableState.toJS();
   return {
     accessToken: state.app.accessToken,
-    auth0: state.app.auth0,
-    jwtToken: state.app.jwtToken,
-    profilePic: state.app.profilePic,
-    username: state.app.username
+    auth0: state.app.auth0
   };
 }
 
 function mapDispatchToProps(dispatch): IDispatchProps {
   return {
     changeRoute: (route) => dispatch(push(route)),
-    login: (payload) => dispatch(login(payload)),
-    logout: () => dispatch(logout())
+    login: (payload) => dispatch(login(payload))
   };
 }

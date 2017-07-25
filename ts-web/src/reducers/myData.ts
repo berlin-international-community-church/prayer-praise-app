@@ -13,6 +13,7 @@ import {
   FETCH_MY_MESSAGES_FAILED,
   FETCH_MY_MESSAGES_INFLIGHT,
   FETCH_MY_MESSAGES_SUCCESS,
+  SET_MESSAGE_TO_EDIT,
   UPDATE_MESSAGE_FAILED,
   UPDATE_MESSAGE_INFLIGHT,
   UPDATE_MESSAGE_SUCCESS
@@ -67,6 +68,10 @@ export function myDataReducer(state = initialState, action) {
         .set('loading', false)
         .set('error', DELETE_MESSAGE_FAILED)
         .set('displayMessage', 'Please refresh / try again later.');
+
+    case SET_MESSAGE_TO_EDIT:
+      return state
+        .setIn(['messageForEdit', 'id'], action.payload);
 
     case EDIT_MESSAGE_INFLIGHT:
       return state

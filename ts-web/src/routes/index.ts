@@ -1,11 +1,11 @@
 import { ComponentClass } from 'react';
 
 import { AuthCallback } from '../containers/AuthCallback';
-import { EditMessage } from '../containers/EditMessage';
-import { Me } from '../containers/Me';
-import { Praise } from '../containers/Praise';
-import { Prayer } from '../containers/Prayer';
-import { Root } from '../containers/Root';
+import EditMessage from '../containers/EditMessage';
+import Me from '../containers/Me';
+import Praise from '../containers/Praise';
+import Prayer from '../containers/Prayer';
+import Root from '../containers/Root';
 
 interface IRouteDefinition {
   exact: boolean;

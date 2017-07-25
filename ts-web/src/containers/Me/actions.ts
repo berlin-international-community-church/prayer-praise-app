@@ -13,6 +13,7 @@ import {
   FETCH_MY_MESSAGES_FAILED,
   FETCH_MY_MESSAGES_INFLIGHT,
   FETCH_MY_MESSAGES_SUCCESS,
+  SET_MESSAGE_TO_EDIT,
   UPDATE_MESSAGE,
   UPDATE_MESSAGE_FAILED,
   UPDATE_MESSAGE_INFLIGHT,
@@ -131,5 +132,12 @@ export function changeExistingMessageSharedStatus(payload) {
   return {
     payload,
     type: CHANGE_EXISTING_MESSAGE_SHARED_STATUS
+  };
+}
+
+export function setMessageToEdit(payload) {
+  return {
+    payload,
+    type: SET_MESSAGE_TO_EDIT
   };
 }
