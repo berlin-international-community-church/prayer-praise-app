@@ -16,6 +16,7 @@ import {
 interface IStateProps {
   displayMessage?: string;
   loading: boolean;
+  loggedIn: boolean;
   messageText: string;
   sharedStatus: ShareStatus;
 }
@@ -32,6 +33,7 @@ function mapStateToProps(immutableState: any): IStateProps {
   return {
     displayMessage: state.messages.displayMessage,
     loading: state.messages.loading,
+    loggedIn: !!state.app.jwtToken && !!state.app.username,
     messageText: state.messages.messageText,
     sharedStatus: state.messages.sharedStatus
   };
@@ -63,6 +65,7 @@ export class Prayer extends React.Component<IAppProps, never> {
       <SubmissionForm
         displayMessage={this.props.displayMessage}
         formType={PrayerPraise.PRAYER}
+        loggedIn={this.props.loggedIn}
         messageText={this.props.messageText}
         sharedStatus={this.props.sharedStatus}
         handleChangeMessageText={(text: string) => this.props.changeMessageText(text)}

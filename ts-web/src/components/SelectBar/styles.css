@@ -17,3 +17,8 @@
   margin-bottom: 5px;
   background-color: #898989;
 }
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}

@@ -8,6 +8,7 @@ import * as styles from './styles.css';
 interface IProps {
   formType?: PrayerPraise;
   displayMessage?: string;
+  loggedIn: boolean;
   messageText?: string;
   sharedStatus?: ShareStatus;
   handleChangeMessageText(text: string): void;
@@ -37,6 +38,7 @@ class SubmissionForm extends React.PureComponent<IProps> {
           {this.props.messageText}
         </div>
         <SelectBar
+          loggedIn={this.props.loggedIn}
           sharedStatus={this.props.sharedStatus}
           handleChangeShareStatus={(status: ShareStatus) => this.props.handleChangeShareStatus(status)}
         />

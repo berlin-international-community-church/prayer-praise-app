@@ -4,18 +4,26 @@ import { ShareStatus } from '../../constants/enums';
 import * as styles from './styles.css';
 
 interface IProps {
+  loggedIn: boolean;
   sharedStatus?: ShareStatus;
   handleChangeShareStatus(status: ShareStatus): void;
 }
 
 class SelectBar extends React.PureComponent<IProps> {
 
+  determineClass() {
+    if (!this.props.loggedIn) {
+      return styles.hidden;
+    }
+    return this.props.sharedStatus === ShareStatus.SHARED_WITH_NOONE ?
+      styles.selected : styles.unselected;
+  }
+
   render() {
     return (
       <div className={styles.selectbar}>
         <div
-          className={this.props.sharedStatus === ShareStatus.SHARED_WITH_NOONE ?
-            styles.selected : styles.unselected}
+          className={this.determineClass()}
           onClick={() => this.props.handleChangeShareStatus(ShareStatus.SHARED_WITH_NOONE)}>
           Share with no one
         </div>

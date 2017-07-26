@@ -77,6 +77,7 @@ export class EditMessage extends React.Component<IAppProps, never> {
         <SubmissionForm
           displayMessage={this.props.displayMessage}
           formType={this.props.messageForEdit.messageType}
+          loggedIn={true}
           messageText={this.props.messageForEdit.newText}
           sharedStatus={convertStatus(this.props.messageForEdit.newSharedStatus)}
           handleChangeMessageText={(text: string) => this.props.changeMessageText(text)}

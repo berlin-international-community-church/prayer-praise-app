@@ -11,6 +11,7 @@ import * as styles from './styles.css';
 
 interface IStateProps {
   loading: boolean;
+  loggedIn: boolean;
   messages: SharedMessageType[];
 }
 
@@ -25,6 +26,7 @@ function mapStateToProps(immutableState: any): IStateProps {
   const state: StateType = immutableState.toJS();
   return {
     loading: state.myData.loading,
+    loggedIn: !!state.app.jwtToken,
     messages: state.myData.myMessages
   };
 }
@@ -45,6 +47,12 @@ export class Me extends React.Component<IAppProps, never> {
 
   componentDidMount() {
     this.props.fetchMyMessages();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.loggedIn) {
+      this.props.changeRoute('/');
+    }
   }
 
   render() {
