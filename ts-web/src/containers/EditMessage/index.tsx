@@ -73,7 +73,6 @@ export class EditMessage extends React.Component<IAppProps, never> {
     }
     return (
       <div className={styles.container}>
-        <h2>Edit</h2>
         <SubmissionForm
           displayMessage={this.props.displayMessage}
           formType={this.props.messageForEdit.messageType}

@@ -20,6 +20,5 @@
 .messages {
   display: flex;
   flex-direction: row;
-  width: 80%;
   flex-wrap: wrap;
 }

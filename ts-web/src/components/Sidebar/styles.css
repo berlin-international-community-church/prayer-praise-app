@@ -1,12 +1,12 @@
 .sidebar {
+  padding: 10px;
   background-color: #292929;
   color: #FFFFFF;
-  padding: 10px;
 }
 
 ul.sidelinks {
-  list-style: none;
   padding-left: 0;
+  list-style: none;
 }
 
 ul.sidelinks li {

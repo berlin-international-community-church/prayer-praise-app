@@ -6,11 +6,11 @@
 .message {
   display: flex;
   flex-direction: row;
-  border: 1px solid #ccc;
-  margin: 5px 0;
   width: 80%;
-  background: #f8f8f8;
   padding: 20px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
 }
 
 .message span {
@@ -21,20 +21,20 @@
   align-self: center;
   border: none;
   padding: 5px;
-  color: white;
+  border-radius: 2px;
   text-transform: uppercase;
   text-align: center;
+  color: white;
   background: #E10827;
-  border-radius: 2px;
 }
 
 .editButton {
   align-self: center;
   border: none;
   padding: 5px;
-  color: white;
+  border-radius: 2px;
   text-transform: uppercase;
   text-align: center;
+  color: white;
   background: #333;
-  border-radius: 2px;
 }
