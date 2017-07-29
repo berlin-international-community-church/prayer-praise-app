@@ -5,9 +5,9 @@ exports.up = (knex, Promise) => {
   return knex.schema.createTable('messages', (table) => {
 
     table.increments('id').primary();
-    table.text('messageType');
+    table.integer('messageType');
     table.text('messageText');
-    table.text('sharedStatus');
+    table.integer('sharedStatus');
 
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());

@@ -41,5 +41,7 @@ button.disabledButton {
   margin-bottom: 20px;
   resize: none;
   outline: none;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 

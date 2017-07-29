@@ -1,4 +1,5 @@
 import {
+  EXPAND_MESSAGE,
   FETCH_SHARED_MESSAGES,
   FETCH_SHARED_MESSAGES_FAILED,
   FETCH_SHARED_MESSAGES_INFLIGHT,
@@ -27,5 +28,12 @@ export function fetchSharedMessagesSuccessful(payload) {
 export function fetchSharedMessagesFailed() {
   return {
     type: FETCH_SHARED_MESSAGES_FAILED
+  };
+}
+
+export function expandMessage(payload) {
+  return {
+    payload,
+    type: EXPAND_MESSAGE
   };
 }

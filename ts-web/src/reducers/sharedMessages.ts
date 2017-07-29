@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 
 import { SharedMessagesType } from '../constants/types';
 import {
+  EXPAND_MESSAGE,
   FETCH_SHARED_MESSAGES_FAILED,
   FETCH_SHARED_MESSAGES_INFLIGHT,
   FETCH_SHARED_MESSAGES_SUCCESS
@@ -10,6 +11,7 @@ import {
 const init: SharedMessagesType = {
   displayMessage: undefined,
   error: undefined,
+  expandedMessage: undefined,
   loading: false,
   messages: []
 };
@@ -34,6 +36,10 @@ export function sharedMessagesReducer(state = initialState, action) {
         .set('loading', false)
         .set('error', FETCH_SHARED_MESSAGES_FAILED)
         .set('displayMessage', 'Please refresh / try again later.');
+
+    case EXPAND_MESSAGE:
+      return state
+        .set('expandedMessage', state.get('expandedMessage') === action.payload ? undefined : action.payload);
 
     default:
       return state;

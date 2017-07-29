@@ -36,6 +36,7 @@ export type SharedMessageType = ISharedMessage;
 interface ISharedMessages {
   displayMessage?: string;
   error?: string;
+  expandedMessage?: number;
   loading: boolean;
   messages: ISharedMessage[];
 }

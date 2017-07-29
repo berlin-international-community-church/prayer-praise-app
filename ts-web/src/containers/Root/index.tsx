@@ -3,19 +3,21 @@ import { connect } from 'react-redux';
 
 import DisplayMessage from '../../components/DisplayMessage';
 import LoadingSpinner from '../../components/LoadingSpinner';
-import MessageCard from '../../components/MessageCard';
+import MessageCards from '../../components/MessageCards';
 import { SharedMessageType, StateType } from '../../constants/types';
 import { withUserProfile } from '../Main';
-import { fetchSharedMessages } from './actions';
+import { expandMessage, fetchSharedMessages } from './actions';
 import * as styles from './styles.css';
 
 interface IStateProps {
   displayMessage?: string;
+  expandedMessage?: number;
   loading: boolean;
   sharedMessages: SharedMessageType[];
 }
 
 interface IDispatchProps {
+  expandMessage(id?: number);
   fetchSharedMessages();
 }
 
@@ -23,6 +25,7 @@ function mapStateToProps(immutableState: any): IStateProps {
   const state: StateType = immutableState.toJS();
   return {
     displayMessage: state.sharedMessages.displayMessage,
+    expandedMessage: state.sharedMessages.expandedMessage,
     loading: state.sharedMessages.loading,
     sharedMessages: state.sharedMessages.messages
   };
@@ -30,6 +33,7 @@ function mapStateToProps(immutableState: any): IStateProps {
 
 function mapDispatchToProps(dispatch): IDispatchProps {
   return {
+    expandMessage: (payload) => (dispatch(expandMessage(payload))),
     fetchSharedMessages: () => (dispatch(fetchSharedMessages()))
   };
 }
@@ -44,7 +48,9 @@ export class Root extends React.Component<IAppProps, never> {
   }
 
   render() {
-    if (this.props.loading) {
+    if (this.props.loading ||
+        !this.props.sharedMessages ||
+        this.props.sharedMessages.length === 0) {
       return <LoadingSpinner />;
     }
     if (this.props.displayMessage) {
@@ -58,9 +64,11 @@ export class Root extends React.Component<IAppProps, never> {
           onClick={() => this.props.fetchSharedMessages()}>
           Reload
         </button>
-        <div className={styles.messages}>
-          { this.props.sharedMessages.map((msg) => <MessageCard message={msg} key={msg.id} />) }
-        </div>
+        <MessageCards
+          expand={this.props.expandMessage}
+          expandedMessage={this.props.expandedMessage}
+          sharedMessages={this.props.sharedMessages}
+        />
       </div>
     );
   }
