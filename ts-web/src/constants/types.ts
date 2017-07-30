@@ -7,6 +7,7 @@ interface IAppState {
   error?: string;
   idToken?: string;
   jwtToken?: string;
+  locale: string;
   profilePic?: string;
   tokenExpiresAt?: number;
   username?: string;

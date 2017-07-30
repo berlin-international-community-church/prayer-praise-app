@@ -26,6 +26,7 @@ export const initialState = fromJS({
   error: null,
   idToken: null,
   jwtToken: sessionStorage.getItem('jwtToken'),
+  locale: 'en',
   profilePic: null,
   tokenExpiresAt: null,
   username: null
