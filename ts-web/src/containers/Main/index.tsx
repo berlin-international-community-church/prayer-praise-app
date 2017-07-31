@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Layout from '../../components/Layout';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import { StateType } from '../../constants/types';
-import { fetchToken, fetchUserProfile, logout } from '../App/actions';
+import { fetchToken, fetchUserProfile, logout, switchLanguage } from '../App/actions';
 import * as styles from './styles.css';
 
 interface IStateProps {
@@ -19,6 +19,7 @@ interface IDispatchProps {
   fetchToken();
   fetchUserProfile();
   logout();
+  switchLanguage(payload: string);
 }
 
 function mapStateToProps(immutableState: any, ownProps: any): IStateProps {
@@ -37,7 +38,8 @@ function mapDispatchToProps(dispatch): IDispatchProps {
   return {
     fetchToken: () => (dispatch(fetchToken())),
     fetchUserProfile: () => dispatch(fetchUserProfile()),
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    switchLanguage: (payload: string) => dispatch(switchLanguage(payload))
   };
 }
 
@@ -70,6 +72,7 @@ export const withUserProfile = (WrappedComponent) => {
           username={this.props.username}
           profilePic={this.props.profilePic}
           logout={this.props.logout}
+          switchLanguage={this.props.switchLanguage}
         >
           <div className={styles.container}>
             <WrappedComponent match={this.props.match} />

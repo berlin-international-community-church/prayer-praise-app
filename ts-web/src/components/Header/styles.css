@@ -7,6 +7,21 @@
   padding: 10px;
 }
 
+.options {
+  display: flex;
+  flex-direction: row;
+}
+
+.options button.language {
+  margin-right: 5px;
+  font-size: 1.1em;
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
 .heading h1 {
   margin: 0;
   padding-top: 8px;

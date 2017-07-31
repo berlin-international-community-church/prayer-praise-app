@@ -9,3 +9,5 @@ export const TOKEN_LOAD_ERROR = 'app/App/TOKEN_LOAD_ERROR';
 export const FETCH_USER_PROFILE = 'app/App/FETCH_USER_PROFILE';
 export const USER_PROFILE_LOADED = 'app/App/USER_PROFILE_LOADED';
 export const USER_PROFILE_LOAD_ERROR = 'app/App/USER_PROFILE_LOAD_ERROR';
+
+export const SWITCH_LANGUAGE = 'app/App/SWITCH_LANGUAGE';

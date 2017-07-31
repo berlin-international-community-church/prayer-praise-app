@@ -12,6 +12,7 @@ interface IProps {
   auth0: any;
   children?: any;
   logout(): void;
+  switchLanguage(payload: string);
 }
 
 class Layout extends React.PureComponent<IProps> {
@@ -25,6 +26,7 @@ class Layout extends React.PureComponent<IProps> {
           username={this.props.username}
           profilePic={this.props.profilePic}
           logout={this.props.logout}
+          switchLanguage={this.props.switchLanguage}
         />
         <div className={styles.page}>
           <Sidebar loggedIn={!!this.props.jwtToken && !!this.props.profilePic}/>

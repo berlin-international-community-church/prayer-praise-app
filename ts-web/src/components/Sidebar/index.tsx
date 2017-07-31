@@ -17,10 +17,10 @@ class Sidebar extends React.PureComponent<IProps, {}> {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/prayer">Prayer</Link>
+            <Link to="/prayer">1</Link>
           </li>
           <li>
-            <Link to="/praise">Praise</Link>
+            <Link to="/praise">2</Link>
           </li>
           { this.props.loggedIn ? <li><Link to="/me">Me</Link></li> : <li/> }
         </ul>

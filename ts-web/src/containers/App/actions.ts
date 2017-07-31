@@ -1,8 +1,10 @@
+import * as stream from 'stream';
 import {
   FETCH_TOKEN,
   FETCH_USER_PROFILE,
   LOGIN,
   LOGOUT,
+  SWITCH_LANGUAGE,
   TOKEN_LOAD_ERROR,
   TOKEN_LOADED,
   USER_PROFILE_LOAD_ERROR,
@@ -57,5 +59,12 @@ export function userProfileLoaded(payload) {
 export function userProfileLoadError() {
   return {
     type: USER_PROFILE_LOAD_ERROR
+  };
+}
+
+export function switchLanguage(payload: string) {
+  return {
+    payload,
+    type: SWITCH_LANGUAGE
   };
 }

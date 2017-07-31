@@ -20,8 +20,8 @@ class SubmissionForm extends React.PureComponent<IProps> {
 
   getMessage(formType) {
     return {
-      [PrayerPraise.PRAISE]: 'Praise',
-      [PrayerPraise.PRAYER]: 'Prayer'
+      [PrayerPraise.PRAISE]: '1',
+      [PrayerPraise.PRAYER]: '2'
     }[formType];
   }
 

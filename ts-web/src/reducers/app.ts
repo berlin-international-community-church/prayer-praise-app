@@ -4,6 +4,7 @@ import { fromJS } from 'immutable';
 import {
   LOGIN,
   LOGOUT,
+  SWITCH_LANGUAGE,
   TOKEN_LOAD_ERROR,
   TOKEN_LOADED,
   USER_PROFILE_LOAD_ERROR,
@@ -79,6 +80,10 @@ export function appReducer(state = initialState, action) {
         .set('username', null)
         .set('profilePic', null)
         .set('error', TOKEN_LOAD_ERROR);
+
+    case SWITCH_LANGUAGE:
+      return state
+        .set('locale', action.payload);
 
     default:
       return state;
