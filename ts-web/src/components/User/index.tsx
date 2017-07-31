@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
+
 import * as styles from './styles.css';
 
 interface IProps {
@@ -15,7 +17,7 @@ class User extends React.PureComponent<IProps> {
     return (
       <div className={styles.userProfile}>
         <img src={this.props.profilePic} alt={this.props.username} />
-        <button onClick={ () => this.props.logout() }>Logout</button>
+        <button onClick={ () => this.props.logout() }><FormattedMessage id="actions.logout" /></button>
       </div>
     );
   }
@@ -23,7 +25,7 @@ class User extends React.PureComponent<IProps> {
   displayLoggedOutUser() {
     return (
       <div className={styles.userProfile}>
-        <button onClick={ () => this.props.auth0.authorize() }>Login</button>
+        <button onClick={ () => this.props.auth0.authorize() }><FormattedMessage id="actions.login" /></button>
       </div>
     );
   }

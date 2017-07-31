@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { PrayerPraise, ShareStatus } from '../../constants/enums';
 import DisplayMessage from '../DisplayMessage';
@@ -20,8 +21,8 @@ class SubmissionForm extends React.PureComponent<IProps> {
 
   getMessage(formType) {
     return {
-      [PrayerPraise.PRAISE]: '1',
-      [PrayerPraise.PRAYER]: '2'
+      [PrayerPraise.PRAISE]: <FormattedMessage id="component.FormHeading.Praise" />,
+      [PrayerPraise.PRAYER]: <FormattedMessage id="component.FormHeading.Prayer" />
     }[formType];
   }
 
@@ -47,7 +48,7 @@ class SubmissionForm extends React.PureComponent<IProps> {
           className={!this.props.messageText || this.props.messageText.trim().length === 0 ?
             styles.disabledButton : styles.submitButton}
           onClick={ (e) => { e.preventDefault(); this.props.handleSubmit(); } }>
-          Submit
+          <FormattedMessage id="actions.submit" />
         </button>
       </div>
     );

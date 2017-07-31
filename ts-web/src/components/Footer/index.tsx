@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import * as styles from './styles.css';
 
@@ -7,7 +8,7 @@ class Footer extends React.PureComponent {
   render() {
     return (
       <div className={styles.footer}>
-        &copy; Berlin 2017
+        <FormattedMessage id="components.Footer.main" />
       </div>
     );
   }

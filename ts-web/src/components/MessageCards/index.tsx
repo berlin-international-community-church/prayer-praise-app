@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { PrayerPraise } from '../../constants/enums';
 import { SharedMessageType } from '../../constants/types';
@@ -10,7 +11,14 @@ interface IProps {
   expand(id?: number);
 }
 
-class MessageCards extends React.Component<IProps> {
+class MessageCards extends React.PureComponent<IProps> {
+
+  renderBadge(messageType: PrayerPraise) {
+    if (messageType === PrayerPraise.PRAISE) {
+      return <FormattedMessage id="components.Badge.praise" />
+    }
+    return <FormattedMessage id="components.Badge.prayer" />
+  }
 
   render() {
     return (
@@ -25,7 +33,7 @@ class MessageCards extends React.Component<IProps> {
             >
               <div className={ message.messageType === PrayerPraise.PRAISE ?
                 styles.praiseBadge : styles.prayerBadge }>
-                {message.messageType === PrayerPraise.PRAISE ? 'Praise' : 'Prayer'}
+                { this.renderBadge(message.messageType) }
               </div>
               <div className={styles.messageText}>
                 {message.id === this.props.expandedMessage ?

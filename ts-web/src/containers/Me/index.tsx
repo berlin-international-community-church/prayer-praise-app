@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import { push } from 'react-router-redux';
 
 import LoadingSpinner from '../../components/LoadingSpinner';
@@ -61,7 +62,7 @@ export class Me extends React.Component<IAppProps, never> {
     }
     return (
       <div className={styles.container}>
-        <h2>My Data</h2>
+        <h2><FormattedMessage id="container.Me.heading" /></h2>
         <MyMessages
           messages={this.props.messages}
           deleteMessage={this.props.deleteMessage}

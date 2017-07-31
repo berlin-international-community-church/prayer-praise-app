@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import { SharedMessageType } from '../../constants/types';
 import * as styles from './styles.css';
@@ -21,13 +22,13 @@ class MyMessages extends React.PureComponent<IProps> {
               <span>
                 <button className={styles.editButton}
                   onClick={() => this.props.editMessage(message.id, `/edit/messages/${message.id}`)}>
-                  Edit
+                  <FormattedMessage id="actions.edit" />
                 </button>
               </span>
               <span>
                 <button className={styles.deleteButton}
                   onClick={() => this.props.deleteMessage(message.id)}>
-                  Delete
+                  <FormattedMessage id="actions.delete" />
                 </button>
               </span>
             </div>

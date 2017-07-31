@@ -20,6 +20,7 @@
   cursor: pointer;
   background: none;
   border: none;
+  outline: none;
 }
 
 .heading h1 {
