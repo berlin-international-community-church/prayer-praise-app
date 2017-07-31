@@ -1,4 +1,3 @@
-import * as stream from 'stream';
 import {
   FETCH_TOKEN,
   FETCH_USER_PROFILE,

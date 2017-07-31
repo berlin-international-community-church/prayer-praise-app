@@ -1,9 +1,9 @@
 import { addLocaleData } from 'react-intl';
-import * as enLocaleData from 'react-intl/locale-data/en';
 import * as deLocaleData from 'react-intl/locale-data/de';
+import * as enLocaleData from 'react-intl/locale-data/en';
 
-import enTranslationMessages from './en';
 import deTranslationMessages from './de';
+import enTranslationMessages from './en';
 
 addLocaleData(enLocaleData);
 addLocaleData(deLocaleData);
@@ -25,6 +25,6 @@ export const formatTranslationMessages = (locale, messages) => {
 };
 
 export const translationMessages = {
-  en: formatTranslationMessages('en', enTranslationMessages),
   de: formatTranslationMessages('de', deTranslationMessages),
+  en: formatTranslationMessages('en', enTranslationMessages)
 };
