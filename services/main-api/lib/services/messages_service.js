@@ -68,17 +68,19 @@ class MessagesService {
 
 }
 
-let obj = null;
+module.exports = MessagesService;
 
-const instance = (messagesRepo = require('./../repositories/messages_repo'),
-  usersRepo = require('./../repositories/users_repo')) => {
+// let obj = null;
 
-  if (!obj) {
-    obj = new MessagesService(messagesRepo, usersRepo);
-  }
-  return obj;
-};
+// const instance = (messagesRepo = require('./../repositories/messages_repo'),
+//   usersRepo = require('./../repositories/users_repo')) => {
 
-module.exports = {
-  instance
-};
+//   if (!obj) {
+//     obj = new MessagesService(messagesRepo, usersRepo);
+//   }
+//   return obj;
+// };
+
+// module.exports = {
+//   instance
+// };

@@ -6,10 +6,10 @@ const Config  = require('config');
 
 class AuthService {
 
-  constructor(userRepo, msgRepo) {
+  constructor(msgRepo, userRepo) {
 
-    this.userRepo = userRepo;
     this.msgRepo  = msgRepo;
+    this.userRepo = userRepo;
   }
 
   fetchOrCreateUser(accessToken) {
@@ -53,17 +53,19 @@ class AuthService {
 
 }
 
-let obj = null;
+module.exports = AuthService;
 
-const instance = (userRepo = require('./../repositories/users_repo'),
-  msgRepo = require('./../repositories/messages_repo')) => {
+// let obj = null;
 
-  if (!obj) {
-    obj = new AuthService(userRepo, msgRepo);
-  }
-  return obj;
-};
+// const instance = (userRepo = require('./../repositories/users_repo'),
+//   msgRepo = require('./../repositories/messages_repo')) => {
 
-module.exports = {
-  instance
-};
+//   if (!obj) {
+//     obj = new AuthService(userRepo, msgRepo);
+//   }
+//   return obj;
+// };
+
+// module.exports = {
+//   instance
+// };

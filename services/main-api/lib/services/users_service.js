@@ -1,3 +1,5 @@
+'use strict';
+
 const Promise = require('bluebird');
 const Jwt     = require('jsonwebtoken');
 const Config  = require('config');
@@ -5,18 +7,22 @@ const Config  = require('config');
 class UsersService {
 
   constructor(repo) {
-    this.repo = repo
+
+    this.repo = repo;
   }
 
   findUser(userId) {
+
     return this.repo.findUserBy({ id: userId });
   }
 
   findAuthorizedUser(authHeader) {
+
     if (!authHeader) {
       return this.findAnonymousUser();
     }
     return new Promise((resolve, reject) => {
+
       Jwt.verify(authHeader, Config.get('token.secret'), (err, decoded) => {
 
         if (err) {
@@ -25,24 +31,27 @@ class UsersService {
         resolve(decoded.id);
       });
     })
-    .then((userId) => this.findUser(userId));
+      .then((userId) => this.findUser(userId));
   }
 
   findAnonymousUser() {
+
     return this.repo.findAnonymousUser();
   }
 
 }
 
-let obj = null;
+module.exports = UsersService;
 
-const instance = (repo = require('./../repositories/users_repo')) => {
-  if (!obj) {
-    obj = new UsersService(repo);
-  }
-  return obj;
-}
+// let obj = null;
 
-module.exports = {
-  instance
-}
+// const instance = (repo = require('./../repositories/users_repo')) => {
+//   if (!obj) {
+//     obj = new UsersService(repo);
+//   }
+//   return obj;
+// }
+
+// module.exports = {
+//   instance
+// }

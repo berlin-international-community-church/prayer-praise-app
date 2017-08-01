@@ -1,7 +1,9 @@
 'use strict';
 
 const Boom = require('boom');
-const UsersService = require('./../services/users_service').instance();
+
+const UsersService = require('./../services/users_service');
+const UsersRepo    = require('./../repositories/users_repo');
 
 class UsersController {
 
@@ -9,7 +11,8 @@ class UsersController {
 
     const userId = request.auth.credentials.id;
 
-    UsersService.findUser(userId)
+    new UsersService(UsersRepo)
+      .findUser(userId)
       .then((user) => response(user))
       .catch((err) => response(Boom.badImplementation(err)));
   }

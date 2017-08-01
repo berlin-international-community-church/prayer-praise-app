@@ -1,30 +1,29 @@
 'use strict';
 
 const Promise = require('bluebird');
+const Sinon   = require('sinon');
 
-const Server          = require('../../');
-const Token           = require('../../lib/services/token');
-const MessagesService = require('../../lib/services/messages_service');
-const AuthService     = require('../../lib/services/auth_service');
-const DB              = require('../../lib/repositories/db');
+const Server  = require('../../');
+const Token   = require('../../lib/services/token');
+
+const MessagesRepo = require('../../lib/repositories/messages_repo');
+const UsersRepo    = require('../../lib/repositories/users_repo');
+const DB           = require('../../lib/repositories/db');
 
 describe('messages controller', () => {
 
-  const userId  = 42;
-  // const messageId = 101;
-  const mockedMessages = jest.fn();
-  const mockedUserRepo = {
-    findUserBy: jest.fn().mockReturnValue(Promise.resolve({}))
-  };
-  const mockedMessagesRepo = {
-    getAllUserMessages: mockedMessages,
-    getMessage: jest.fn().mockReturnValue(Promise.resolve({}))
-  };
+  const userId = 42;
+  const messageId = 101;
+  const userMessages = [{ id: messageId, user_id: userId }];
+  const sharedMessages = [{ id: 999 }];
 
   beforeAll((done) => {
 
-    MessagesService.instance(mockedMessagesRepo, mockedUserRepo);
-    AuthService.instance(mockedUserRepo, mockedMessagesRepo);
+    Sinon.stub(MessagesRepo, 'getAllUserMessages').callsFake(() => Promise.resolve(userMessages));
+    Sinon.stub(MessagesRepo, 'getAllSharedMessages').callsFake(() => Promise.resolve(sharedMessages));
+    Sinon.stub(MessagesRepo, 'getMessage').callsFake(() => Promise.resolve(userMessages[0]));
+    Sinon.stub(MessagesRepo, 'getMessageForUser').callsFake(() => Promise.resolve(userMessages[0]));
+    Sinon.stub(UsersRepo, 'findUserBy').callsFake(() => Promise.resolve({ id: userId }));
     Server.on('start', done);
   });
 
@@ -48,38 +47,32 @@ describe('messages controller', () => {
 
     test('fetch all messages for a user', (done) => {
 
-      const returnValue = [{ foo: 'bar' }];
-      mockedMessages.mockReturnValue(Promise.resolve(returnValue));
-
       Server.inject(options, (response) => {
 
         expect(response.statusCode).toBe(200);
-        expect(response.result).toEqual(returnValue);
+        expect(response.result).toEqual(userMessages);
         done();
       });
     });
   });
 
-  // describe('get specific message', () => {
+  describe('get specific message', () => {
 
-  //   const options = {
-  //     method: 'GET',
-  //     url: `/messages/${messageId}`,
-  //     headers: { 'Authorization': Token.generate(userId) }
-  //   };
+    const options = {
+      method: 'GET',
+      url: `/messages/${messageId}`,
+      headers: { 'Authorization': Token.generate(userId) }
+    };
 
-  //   test('fetch a specific messages for a user', (done) => {
+    test('fetch a specific messages for a user', (done) => {
 
-  //     const returnValue = { foo: 'bar' };
-  //     // mock2.mockReturnValue(Promise.resolve(returnValue));
+      Server.inject(options, (response) => {
 
-  //     Server.inject(options, (response) => {
-
-  //       expect(response.statusCode).toBe(200);
-  //       expect(response.result).toBe(returnValue);
-  //       done();
-  //     });
-  //   });
-  // });
+        expect(response.statusCode).toBe(200);
+        expect(response.result).toBe(userMessages[0]);
+        done();
+      });
+    });
+  });
 
 });

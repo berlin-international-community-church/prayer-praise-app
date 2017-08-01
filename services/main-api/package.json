@@ -26,7 +26,8 @@
     "eslint-config-hapi": "^10.0.0",
     "eslint-plugin-hapi": "^4.0.0",
     "jest": "^20.0.4",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "sinon": "^2.4.1"
   },
   "scripts": {
     "create-migration": "./node_modules/.bin/knex migrate:make",
