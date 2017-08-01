@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
 
 import DisplayMessage from '../../components/DisplayMessage';
 import LoadingSpinner from '../../components/LoadingSpinner';
@@ -64,7 +64,7 @@ export class Root extends React.Component<IAppProps, never> {
           <button
             className={styles.reload}
             onClick={() => this.props.fetchSharedMessages()}>
-            <FormattedMessage id="actions.reload" />
+            ↻
           </button>
         </div>
         <MessageCards
