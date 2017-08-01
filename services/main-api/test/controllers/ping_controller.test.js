@@ -11,13 +11,14 @@ describe('ping controller', () => {
   };
 
   beforeAll((done) => {
-    Server.on('start', () => {
-      done();
-    });
+
+    Server.on('start', done);
   });
 
   afterAll((done) => {
+
     Server.on('stop', () => {
+
       DB.destroy()
         .then(() => done());
     });
@@ -25,6 +26,7 @@ describe('ping controller', () => {
   });
 
   test('responds with success for ping', (done) => {
+
     Server.inject(options, (response) => {
 
       expect(response.statusCode).toBe(200);

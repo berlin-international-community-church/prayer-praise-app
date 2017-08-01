@@ -38,12 +38,10 @@ class AuthService {
 
   checkAuthorization(userId, msgId) {
 
-    return Promise.all(
-      [
-        this.userRepo.findUserBy({ id: userId }),
-        this.msgRepo.getMessage(msgId)
-      ]
-    )
+    return Promise.all([
+      this.userRepo.findUserBy({ id: userId }),
+      this.msgRepo.getMessage(msgId)
+    ])
       .spread((user, message) => {
 
         if (user.role === 'PRAYER_TEAM' || message.user_id === user.id) {
