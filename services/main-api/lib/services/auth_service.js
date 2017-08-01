@@ -54,18 +54,3 @@ class AuthService {
 }
 
 module.exports = AuthService;
-
-// let obj = null;
-
-// const instance = (userRepo = require('./../repositories/users_repo'),
-//   msgRepo = require('./../repositories/messages_repo')) => {
-
-//   if (!obj) {
-//     obj = new AuthService(userRepo, msgRepo);
-//   }
-//   return obj;
-// };
-
-// module.exports = {
-//   instance
-// };

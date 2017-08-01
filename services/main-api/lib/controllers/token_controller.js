@@ -2,10 +2,10 @@
 
 const Boom = require('boom');
 
-const AuthService = require('./../services/auth_service');
-const Token = require('./../services/token');
-const MessagesRepo = require('./../repositories/messages_repo');
-const UsersRepo = require('./../repositories/users_repo');
+const AuthService   = require('./../services/auth_service');
+const Token         = require('./../services/token');
+const MessagesRepo  = require('./../repositories/messages_repo');
+const UsersRepo     = require('./../repositories/users_repo');
 
 class TokenController {
 

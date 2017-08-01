@@ -23,10 +23,12 @@ class MessagesController {
   show(request, response) {
 
     const userId = request.auth.credentials.id;
+    const messagesService = new MessagesService(MessagesRepo, UsersRepo);
+    const authService = new AuthService(MessagesRepo, UsersRepo);
 
-    new AuthService(MessagesRepo, UsersRepo)
+    authService
       .checkAuthorization(userId, request.params.id)
-      .then(() => new MessagesService(MessagesRepo, UsersRepo).getMessageForUser(request.params.id))
+      .then(() => messagesService.getMessageForUser(request.params.id))
       .then((messages) => response(messages))
       .catch((err) => response(Boom.badImplementation(err)));
   }
@@ -34,11 +36,13 @@ class MessagesController {
   delete(request, response) {
 
     const userId = request.auth.credentials.id;
+    const messagesService = new MessagesService(MessagesRepo, UsersRepo);
+    const authService = new AuthService(MessagesRepo, UsersRepo);
 
-    new AuthService(MessagesRepo, UsersRepo)
+    authService
       .checkAuthorization(userId, request.params.id)
-      .then(() => new MessagesService(MessagesRepo, UsersRepo).deleteUserMessage(request.params.id))
-      .then(() => new MessagesService(MessagesRepo, UsersRepo).getAllUserMessages(userId))
+      .then(() => messagesService.deleteUserMessage(request.params.id))
+      .then(() => messagesService.getAllUserMessages(userId))
       .then((messages) => response(messages))
       .catch((err) => response(Boom.badImplementation(err))); // TODO: send 4xx in case of bad auth
   }
@@ -46,19 +50,23 @@ class MessagesController {
   update(request, response) {
 
     const userId = request.auth.credentials.id;
+    const messagesService = new MessagesService(MessagesRepo, UsersRepo);
+    const authService = new AuthService(MessagesRepo, UsersRepo);
 
-    new AuthService(MessagesRepo, UsersRepo)
+    authService
       .checkAuthorization(userId, request.params.id)
-      .then(() => new MessagesService(MessagesRepo, UsersRepo).updateUserMessage(request.params.id, request.payload.message))
+      .then(() => messagesService.updateUserMessage(request.params.id, request.payload.message))
       .then(() => response({}))
       .catch((err) => response(Boom.badImplementation(err))); // TODO: send 4xx in case of bad auth
   }
 
   create(request, response) {
 
+    const messagesService = new MessagesService(MessagesRepo, UsersRepo);
+
     new UsersService(UsersRepo)
       .findAuthorizedUser(request.headers.authorization)
-      .then((user)    => new MessagesService(MessagesRepo, UsersRepo).createMessageForUser(user.id, request.payload.message))
+      .then((user)    => messagesService.createMessageForUser(user.id, request.payload.message))
       .then((message) => response(message))
       .catch((err)    => response(Boom.badImplementation(err)));
   }

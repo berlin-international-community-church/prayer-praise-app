@@ -43,15 +43,3 @@ class UsersService {
 
 module.exports = UsersService;
 
-// let obj = null;
-
-// const instance = (repo = require('./../repositories/users_repo')) => {
-//   if (!obj) {
-//     obj = new UsersService(repo);
-//   }
-//   return obj;
-// }
-
-// module.exports = {
-//   instance
-// }
