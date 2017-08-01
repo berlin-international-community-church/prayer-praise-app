@@ -9,5 +9,5 @@
     width="300"
     height="41"
     style="fill: none; stroke: none;"/>
-  <line id="e1_line" x1="0" y1="40" x2="300" y2="40" stroke="silver" style="stroke-width: 1px; fill: none;"/>
+  <line id="e1_line" x1="0" y1="40" x2="300" y2="40" stroke="#B1CAD2" style="stroke-width: 1px; fill: none;"/>
 </svg>

@@ -1,7 +1,9 @@
+@import '../../main.css';
+
 .sidebar {
   padding: 10px;
-  background-color: #292929;
-  color: #FFFFFF;
+  background-color: var(--main-dark);
+  color: var(--main-white);
 }
 
 ul.sidelinks {
@@ -14,6 +16,6 @@ ul.sidelinks li {
 }
 
 ul.sidelinks li a {
-  color: #FFFFFF;
+  color: var(--main-white);
   text-decoration: none;
 }

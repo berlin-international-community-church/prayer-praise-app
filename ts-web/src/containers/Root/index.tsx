@@ -59,12 +59,14 @@ export class Root extends React.Component<IAppProps, never> {
     }
     return (
       <div className={styles.container}>
-        <h2><FormattedMessage id="container.Root.heading" /></h2>
-        <button
-          className={styles.reload}
-          onClick={() => this.props.fetchSharedMessages()}>
-          <FormattedMessage id="actions.reload" />
-        </button>
+        <div className={styles.heading}>
+          <h1><FormattedMessage id="container.Root.heading" /></h1>
+          <button
+            className={styles.reload}
+            onClick={() => this.props.fetchSharedMessages()}>
+            <FormattedMessage id="actions.reload" />
+          </button>
+        </div>
         <MessageCards
           expand={this.props.expandMessage}
           expandedMessage={this.props.expandedMessage}

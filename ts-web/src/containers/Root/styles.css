@@ -1,10 +1,18 @@
+@import '../../main.css';
+
 .container {
   display: flex;
   flex-direction: column;
 }
 
-.container h2 {
+.heading {
+  display: flex;
+  flex-direction: row;
+}
+
+.heading h1 {
   text-transform: uppercase;
+  margin-right: 10px;
 }
 
 .reload {
@@ -12,7 +20,7 @@
   margin: 20px 0;
   padding: 10px;
   border: none;
-  border-radius: 2px;
-  color: #FFFFFF;
-  background-color: #E10827;
+  border-radius: var(--app-radius);
+  color: var(--main-white);
+  background-color: var(--main-red);
 }

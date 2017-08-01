@@ -1,9 +1,11 @@
+@import '../../main.css';
+
 .heading {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #E10827;
-  color: #FFFFFF;
+  background-color: var(--main-red);
+  color: var(--main-white);
   padding: 10px;
 }
 
@@ -15,7 +17,7 @@
 .options button.language {
   margin-right: 5px;
   font-size: 1.1em;
-  color: white;
+  color: var(--main-white);
   text-decoration: underline;
   cursor: pointer;
   background: none;
@@ -29,6 +31,6 @@
 }
 
 .heading h1 a {
-  color: white;
+  color: var(--main-white);
   text-decoration: none;
 }

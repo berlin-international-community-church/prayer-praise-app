@@ -1,23 +1,25 @@
+@import '../../main.css';
+
 .selectbar {
   display: flex;
   flex-direction: column;
-  color: white;
+  color: var(--main-white);
 }
 
 .selected {
   width: 50%;
   padding: 20px 10px;
   margin-bottom: 5px;
-  border-radius: 2px;
-  background-color: #E10827;
+  border-radius: var(--app-radius);
+  background-color: var(--main-red);
 }
 
 .unselected {
   width: 50%;
   padding: 20px 10px;
   margin-bottom: 5px;
-  border-radius: 2px;
-  background-color: #898989;
+  border-radius: var(--app-radius);
+  background-color: var(--main-gray);
 }
 
 .hidden {

@@ -1,3 +1,5 @@
+@import '../../main.css';
+
 .messages {
   display: flex;
   flex-direction: column;
@@ -9,8 +11,8 @@
   width: 80%;
   padding: 20px;
   margin: 5px 0;
-  border: 1px solid #ccc;
-  background: #f8f8f8;
+  border: 1px solid var(--main-gray);
+  background: var(--main-white);
 }
 
 .message span {
@@ -21,20 +23,20 @@
   align-self: center;
   border: none;
   padding: 5px;
-  border-radius: 2px;
+  border-radius: var(--app-radius);
   text-transform: uppercase;
   text-align: center;
-  color: white;
-  background: #E10827;
+  color: var(--main-white);
+  background: var(--main-red);
 }
 
 .editButton {
   align-self: center;
   border: none;
   padding: 5px;
-  border-radius: 2px;
+  border-radius: var(--app-radius);
   text-transform: uppercase;
   text-align: center;
-  color: white;
-  background: #333;
+  color: var(--main-white);
+  background: var(--main-gray);
 }

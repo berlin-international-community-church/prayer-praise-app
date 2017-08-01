@@ -1,3 +1,5 @@
+@import '../../main.css';
+
 .messages {
   display: flex;
   flex-direction: column;
@@ -15,8 +17,8 @@
   margin-right: 15px;
   margin-bottom: 15px;
   margin-top: 15px;
-  border-radius: 2px;
-  background-color: #FAFAFA;
+  border-radius: var(--app-radius);
+  background-color: var(--main-white);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
@@ -30,33 +32,33 @@
   margin-right: 15px;
   margin-bottom: 15px;
   margin-top: 15px;
-  border-radius: 2px;
+  border-radius: var(--app-radius);
   text-align: justify;
   overflow: scroll;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: #FAFAFA;
+  background-color: var(--main-white);
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
 .prayerBadge {
   height: 16px;
   font-size: 12px;
-  border-radius: 2px;
+  border-radius: var(--app-radius);
   padding: 3px;
-  background-color: #E10827;
-  color: white;
+  background-color: var(--main-red);
+  color: var(--main-white);
   text-transform: uppercase;
 }
 
 .praiseBadge {
   height: 16px;
   font-size: 12px;
-  border-radius: 2px;
+  border-radius: var(--app-radius);
   padding: 3px;
-  border: 1px solid #E10827;
-  background-color: white;
-  color: #E10827;
+  border: 1px solid var(--main-red);
+  background-color: var(--main-white);
+  color: var(--main-red);
   text-transform: uppercase;
 }
 
@@ -68,8 +70,8 @@
   padding-top: 8px;
   padding-left: 6px;
   border-radius: 50%;
-  background-color: #CCC;
-  color: #292929;
+  background-color: var(--main-gray);
+  color: var(--main-white);
 }
 
 .messageText {
