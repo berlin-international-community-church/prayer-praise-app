@@ -24,6 +24,7 @@
   border-radius: 50%;
   color: var(--main-white);
   background-color: var(--main-red);
+  outline: none;
   font-size: x-large;
   font-weight: 900;
 }
