@@ -11,7 +11,7 @@ interface IProps {
   jwtToken?: string;
   auth0: any;
   logout(): void;
-  switchLanguage(payload: string);
+  switchLanguage(payload: 'en' | 'de');
 }
 
 class Header extends React.PureComponent<IProps> {
