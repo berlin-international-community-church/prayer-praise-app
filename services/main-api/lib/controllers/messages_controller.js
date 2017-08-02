@@ -28,7 +28,7 @@ class MessagesController {
 
     authService
       .checkAuthorization(userId, request.params.id)
-      .then(() => messagesService.getMessageForUser(request.params.id))
+      .then(() => messagesService.getMessage(request.params.id))
       .then((messages) => response(messages))
       .catch((err) => response(Boom.badImplementation(err)));
   }

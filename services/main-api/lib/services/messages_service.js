@@ -42,7 +42,7 @@ class MessagesService {
       .spread((myMessages, sharedMessages) => _.uniqBy(myMessages.concat(sharedMessages), 'id'));
   }
 
-  getMessageForUser(msgId) {
+  getMessage(msgId) {
 
     return this.messagesRepo.getMessage(msgId);
   }

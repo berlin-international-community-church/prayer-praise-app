@@ -2,8 +2,8 @@ export default {
   'container.Me.heading' : 'My data',
   'container.Root.heading' : 'Welcome',
   // tslint:disable-next-line:object-literal-sort-keys
-  'components.Header.main': 'Hi',
-  'components.Footer.main': '© Berlin 2017',
+  'components.Header.main': 'Hello',
+  'components.Footer.main': '❤ Berlin 2017',
   'components.Badge.praise': 'Praise',
   'components.Badge.prayer': 'Prayer',
   'actions.edit': 'Edit',

@@ -3,7 +3,7 @@ export default {
   'container.Root.heading' : 'Wilkommen',
   // tslint:disable-next-line:object-literal-sort-keys
   'components.Header.main': 'Hallo',
-  'components.Footer.main': '© Berlin 2017',
+  'components.Footer.main': '❤ Berlin 2017',
   'components.Badge.praise': 'Praise',
   'components.Badge.prayer': 'Prayer',
   'actions.edit': 'Edit',
