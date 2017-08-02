@@ -15,9 +15,17 @@ class MessageCards extends React.PureComponent<IProps> {
 
   renderBadge(messageType: PrayerPraise) {
     if (messageType === PrayerPraise.PRAISE) {
-      return <FormattedMessage id="components.Badge.praise" />
+      return (
+        <div className={styles.praiseBadge}>
+          <FormattedMessage id="components.Badge.praise" />
+        </div>
+      );
     }
-    return <FormattedMessage id="components.Badge.prayer" />
+    return (
+      <div className={styles.prayerBadge}>
+        <FormattedMessage id="components.Badge.prayer" />
+      </div>
+    );
   }
 
   render() {
@@ -31,10 +39,7 @@ class MessageCards extends React.PureComponent<IProps> {
               styles.expandedMessage : styles.message}
               onClick={() => this.props.expand(message.id)}
             >
-              <div className={ message.messageType === PrayerPraise.PRAISE ?
-                styles.praiseBadge : styles.prayerBadge }>
-                { this.renderBadge(message.messageType) }
-              </div>
+              { this.renderBadge(message.messageType) }
               <div className={styles.messageText}>
                 {message.id === this.props.expandedMessage ?
                   message.messageText : `${message.messageText.substr(0, 20)}...`}

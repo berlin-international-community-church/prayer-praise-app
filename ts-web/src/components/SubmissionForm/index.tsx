@@ -26,6 +26,13 @@ class SubmissionForm extends React.PureComponent<IProps> {
     }[formType];
   }
 
+  submitMessage(e) {
+    e.preventDefault();
+    if (this.props.messageText && this.props.messageText.trim().length !== 0) {
+      this.props.handleSubmit();
+    }
+  }
+
   render() {
     return (
       <div className={styles.formContainer}>
@@ -44,10 +51,8 @@ class SubmissionForm extends React.PureComponent<IProps> {
           handleChangeShareStatus={(status: ShareStatus) => this.props.handleChangeShareStatus(status)}
         />
         <button
-          disabled={!this.props.messageText || this.props.messageText.trim().length === 0}
-          className={!this.props.messageText || this.props.messageText.trim().length === 0 ?
-            styles.disabledButton : styles.submitButton}
-          onClick={ (e) => { e.preventDefault(); this.props.handleSubmit(); } }>
+          className={styles.submitButton}
+          onClick={(e) => this.submitMessage(e)}>
           <FormattedMessage id="actions.submit" />
         </button>
       </div>
