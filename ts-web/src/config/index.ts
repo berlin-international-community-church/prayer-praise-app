@@ -11,7 +11,7 @@ const environmentConfiguration = (environment: string) => {
     }).toObject();
   }
   return defaultConf.merge({
-    baseURL: 'http://prayersnpraises.online/api'
+    baseURL: 'https://prayersnpraises.online/api'
   }).toObject();
 };
 
