@@ -1,3 +1,5 @@
 auth0_url: AUTH0_AUDIENCE
-token.secret: TOKEN_SECRET
-db.password: DB_PASSWORD
+token:
+  secret: TOKEN_SECRET
+db:
+  password: DB_PASSWORD
