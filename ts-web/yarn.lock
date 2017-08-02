@@ -2,20 +2,9 @@
 # yarn lockfile v1
 
 
-"@types/cheerio@*":
-  version "0.22.2"
-  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.2.tgz#539625874bc856086ad491c2fdc9b10c05ae308e"
-
 "@types/classnames@2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.0.tgz#f2312039e780bdf89d7d4102a26ec11de5ec58aa"
-
-"@types/enzyme@^2.8.4":
-  version "2.8.4"
-  resolved "https://registry.yarnpkg.com/@types/enzyme/-/enzyme-2.8.4.tgz#0a75487091978a77178920fa0437c0f13a8e2dcd"
-  dependencies:
-    "@types/cheerio" "*"
-    "@types/react" "*"
 
 "@types/history@*", "@types/history@4.6.0":
   version "4.6.0"
