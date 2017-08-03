@@ -47,18 +47,18 @@ class MessagesService {
     return this.messagesRepo.getMessage(msgId);
   }
 
-  updateUserMessage(msgId, message) {
-
-    message.messageType = message.messageType;
-    message.sharedStatus = message.sharedStatus;
-    return this.messagesRepo.updateMessage(msgId, message);
-  }
-
   createMessageForUser(userId, message) {
 
     message.messageType = message.messageType;
     message.sharedStatus = message.sharedStatus;
     return this.messagesRepo.createMessageForUser(userId, message);
+  }
+
+  updateUserMessage(msgId, message) {
+
+    message.messageType = message.messageType;
+    message.sharedStatus = message.sharedStatus;
+    return this.messagesRepo.updateMessage(msgId, message);
   }
 
   deleteUserMessage(msgId) {

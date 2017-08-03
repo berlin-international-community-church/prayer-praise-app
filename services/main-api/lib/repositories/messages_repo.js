@@ -8,10 +8,9 @@ const SHARED_WITH_PRAYER_TEAM = 2;
 
 class MessagesRepo {
 
-  getAllSharedMessages() {
+  getMessage(msgId) {
 
-    return DB('messages')
-      .whereIn('sharedStatus', [SHARED_WITH_EVERYONE, SHARED_WITH_PRAYER_TEAM]);
+    return DB('messages').where({ id: msgId }).first();
   }
 
   getMessagesSharedToAll() {
@@ -19,14 +18,15 @@ class MessagesRepo {
     return DB('messages').where({ sharedStatus: SHARED_WITH_EVERYONE });
   }
 
+  getAllSharedMessages() {
+
+    return DB('messages')
+      .whereIn('sharedStatus', [SHARED_WITH_EVERYONE, SHARED_WITH_PRAYER_TEAM]);
+  }
+
   getAllUserMessages(userId) {
 
     return DB('messages').where({ user_id: userId });
-  }
-
-  getMessage(msgId) {
-
-    return DB('messages').where({ id: msgId }).first();
   }
 
   createMessageForUser(userId, message) {
