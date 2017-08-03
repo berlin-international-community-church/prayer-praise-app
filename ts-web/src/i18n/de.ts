@@ -1,8 +1,8 @@
 export default {
   'container.Me.heading' : 'My data',
-  'container.Root.heading' : 'Wilkommen',
+  'container.Root.heading' : 'Wilkommen Church',
   // tslint:disable-next-line:object-literal-sort-keys
-  'components.Header.main': 'Hallo',
+  'components.Header.main': 'BICC - Gebete und Lob',
   'components.Footer.main': '❤ Berlin 2017',
   'components.Badge.praise': 'Praise',
   'components.Badge.prayer': 'Prayer',
@@ -20,5 +20,5 @@ export default {
   'component.Sidebar.praiseLink': 'Praise',
   'component.Sidebar.meLink': 'Me',
   'component.FormHeading.Prayer': 'Prayer',
-  'component.FormHeading.Praise': 'Praise'
+  'component.FormHeading.Praise': 'Lob'
 };
