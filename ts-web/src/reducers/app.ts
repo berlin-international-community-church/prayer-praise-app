@@ -1,6 +1,7 @@
 import { WebAuth } from 'auth0-js';
 import { fromJS } from 'immutable';
 
+import Config from '../config';
 import {
   LOGIN,
   LOGOUT,
@@ -20,7 +21,7 @@ export const initialState = fromJS({
     clientID: process.env['AUTH0_CLIENT_ID'] || 'changeme',
     // tslint:disable-next-line:no-string-literal
     domain: process.env['AUTH0_DOMAIN'] || 'changeme.example.com',
-    redirectUri: 'http://localhost:3000/authCallback',
+    redirectUri: Config.env.callbackURL,
     responseType: 'token id_token',
     scope: 'openid profile'
   }),

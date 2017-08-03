@@ -7,11 +7,13 @@ const environmentConfiguration = (environment: string) => {
 
   if (environment === 'development') {
     return defaultConf.merge({
-      baseURL: 'http://' + window.location.hostname + ':3001'
+      baseURL: `http://${window.location.hostname}:3001`,
+      callbackURL : `http://${window.location.hostname}:3000/authCallback`
     }).toObject();
   }
   return defaultConf.merge({
-    baseURL: 'https://prayersnpraises.online/api'
+    baseURL: 'https://prayersnpraises.online/api',
+    callbackURL: 'https://prayersnpraises.online/authCallback'
   }).toObject();
 };
 
