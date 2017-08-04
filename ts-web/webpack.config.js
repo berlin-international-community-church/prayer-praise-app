@@ -100,7 +100,7 @@ module.exports = {
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new ExtractTextPlugin({
-      filename: 'styles.css',
+      filename: 'styles-[contenthash].css',
       disable: !isProduction
     }),
     new HtmlWebpackPlugin({
