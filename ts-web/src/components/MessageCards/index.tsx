@@ -46,8 +46,10 @@ class MessageCards extends React.PureComponent<IProps> {
               </div>
               <div className={message.id === this.props.expandedMessage ?
                 styles.username : styles.userInitials}>
-                {message.id === this.props.expandedMessage ?
-                  message.username : message.shortUsername}
+                <p>
+                  {message.id === this.props.expandedMessage ?
+                    message.username : message.shortUsername}
+                </p>
               </div>
             </div>
           );
