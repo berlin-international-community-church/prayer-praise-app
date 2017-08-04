@@ -30,6 +30,7 @@ interface ISharedMessage {
   messageText: string;
   sharedStatus: ShareStatus;
   shortUsername: string;
+  username: string;
 }
 
 export type SharedMessageType = ISharedMessage;

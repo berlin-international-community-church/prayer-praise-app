@@ -18,6 +18,7 @@ class MessagesService {
 
       const user = users.find((u) => u.id === message.user_id);
       message.shortUsername = user.name.substr(0, 2);
+      message.username = user.name;
       return message;
     };
 

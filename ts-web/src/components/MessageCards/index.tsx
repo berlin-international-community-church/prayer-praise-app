@@ -42,10 +42,12 @@ class MessageCards extends React.PureComponent<IProps> {
               { this.renderBadge(message.messageType) }
               <div className={styles.messageText}>
                 {message.id === this.props.expandedMessage ?
-                  message.messageText : `${message.messageText.substr(0, 20)}...`}
+                  message.messageText : `${message.messageText.substr(0, 20)} ...`}
               </div>
-              <div className={styles.userInitials}>
-                {message.shortUsername}
+              <div className={message.id === this.props.expandedMessage ?
+                styles.username : styles.userInitials}>
+                {message.id === this.props.expandedMessage ?
+                  message.username : message.shortUsername}
               </div>
             </div>
           );
