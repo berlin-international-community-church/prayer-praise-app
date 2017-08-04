@@ -15,7 +15,9 @@ class MessagesRepo {
 
   getMessagesSharedToAll() {
 
-    return DB('messages').where({ sharedStatus: SHARED_WITH_EVERYONE });
+    return DB('messages')
+      .where({ sharedStatus: SHARED_WITH_EVERYONE })
+      .orderBy('created_at', 'desc');
   }
 
   getAllSharedMessages() {
