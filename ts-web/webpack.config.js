@@ -25,7 +25,7 @@ module.exports = {
   output: {
     path: outPath,
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: 'bundle-[hash:6].js',
   },
   target: 'web',
   resolve: {
