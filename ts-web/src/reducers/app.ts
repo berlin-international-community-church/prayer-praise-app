@@ -1,5 +1,5 @@
 import { WebAuth } from 'auth0-js';
-import { fromJS } from 'immutable';
+import { Record } from 'immutable';
 
 import Config from '../config';
 import {
@@ -12,7 +12,7 @@ import {
   USER_PROFILE_LOADED
 } from '../containers/App/constants';
 
-export const initialState = fromJS({
+export const istate = {
   accessToken: sessionStorage.getItem('accessToken'),
   auth0: new WebAuth({
     // tslint:disable-next-line:no-string-literal
@@ -32,7 +32,10 @@ export const initialState = fromJS({
   profilePic: null,
   tokenExpiresAt: null,
   username: null
-});
+};
+
+const Rec = Record(istate);
+export const initialState = new Rec();
 
 export function appReducer(state = initialState, action) {
   switch (action.type) {

@@ -28,8 +28,7 @@ interface IDispatchProps {
   changeMessageType();
 }
 
-function mapStateToProps(immutableState: any): IStateProps {
-  const state: StateType = immutableState.toJS();
+function mapStateToProps(state: StateType): IStateProps {
   return {
     displayMessage: state.messages.displayMessage,
     loading: state.messages.loading,

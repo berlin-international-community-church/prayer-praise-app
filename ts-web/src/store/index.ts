@@ -1,5 +1,4 @@
 import { History } from 'history';
-import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import { applyMiddleware, compose, createStore, Store } from 'redux';
 import createSagaMiddleware from 'redux-saga';
@@ -31,7 +30,7 @@ export function configureStore(history: History): Store<any | undefined> {
 
   const store = createStore(
     createReducer(),
-    fromJS({}),
+    {},
     composeEnhancers(...enhancers)
   );
 

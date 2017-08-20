@@ -10,7 +10,7 @@ import AppAPI from '../api';
 
 export function* createToken() {
   const state = yield select();
-  const accessToken = state.get('app').get('accessToken');
+  const accessToken = state.app.accessToken;
 
   try {
     const result = yield call(AppAPI.createToken, accessToken);

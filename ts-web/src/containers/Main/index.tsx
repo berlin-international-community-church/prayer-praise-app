@@ -22,8 +22,7 @@ interface IDispatchProps {
   switchLanguage(payload: string);
 }
 
-function mapStateToProps(immutableState: any, ownProps: any): IStateProps {
-  const state: StateType = immutableState.toJS();
+function mapStateToProps(state: StateType, ownProps: any): IStateProps {
   return {
     accessToken: state.app.accessToken,
     auth0: state.app.auth0,

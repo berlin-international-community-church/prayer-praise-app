@@ -9,9 +9,9 @@ interface IStateProps {
   locale: string;
 }
 
-const mapStateToProps = (immutableState: any): IStateProps => {
+function mapStateToProps(state: StateType): IStateProps {
   return {
-    locale: immutableState.get('app').get('locale')
+    locale: state.app.locale
   };
 }
 

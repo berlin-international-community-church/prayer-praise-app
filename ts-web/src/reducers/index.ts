@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux-immutable';
+import { combineReducers } from 'redux';
 
 import { appReducer } from './app';
 import { messagesReducer } from './messages';

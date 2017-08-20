@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { Record } from 'immutable';
 
 import { PrayerPraise, ShareStatus } from '../constants/enums';
 import { MessagesStateType } from '../constants/types';
@@ -20,7 +20,8 @@ const init: MessagesStateType = {
   sharedStatus:  ShareStatus.SHARED_WITH_PRAYER_TEAM
 };
 
-const initialState = fromJS(init);
+const Rec = Record(init);
+export const initialState = new Rec();
 
 export function messagesReducer(state = initialState, action) {
   switch (action.type) {

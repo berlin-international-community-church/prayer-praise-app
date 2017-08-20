@@ -1,11 +1,14 @@
-import { fromJS } from 'immutable';
+import { Record } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
-const routeInitialState = fromJS({
+const istate = {
   locationBeforeTransitions: null
-});
+};
 
-export function routeReducer(state = routeInitialState, action) {
+const Rec = Record(istate);
+export const initialState = new Rec();
+
+export function routeReducer(state = initialState, action) {
   switch (action.type) {
     /* istanbul ignore next */
     case LOCATION_CHANGE:

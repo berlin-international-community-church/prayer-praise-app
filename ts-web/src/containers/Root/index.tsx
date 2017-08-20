@@ -22,8 +22,7 @@ interface IDispatchProps {
   fetchSharedMessages();
 }
 
-function mapStateToProps(immutableState: any): IStateProps {
-  const state: StateType = immutableState.toJS();
+function mapStateToProps(state: StateType): IStateProps {
   return {
     displayMessage: state.sharedMessages.displayMessage,
     expandedMessage: state.sharedMessages.expandedMessage,

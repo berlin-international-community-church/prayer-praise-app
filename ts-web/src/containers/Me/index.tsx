@@ -23,8 +23,7 @@ interface IDispatchProps {
   setMessageToEdit(payload: number);
 }
 
-function mapStateToProps(immutableState: any): IStateProps {
-  const state: StateType = immutableState.toJS();
+function mapStateToProps(state: StateType): IStateProps {
   return {
     loading: state.myData.loading,
     loggedIn: !!state.app.jwtToken,

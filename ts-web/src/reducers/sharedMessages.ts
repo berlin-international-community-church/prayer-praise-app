@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { Record } from 'immutable';
 
 import { SharedMessagesType } from '../constants/types';
 import {
@@ -16,7 +16,8 @@ const init: SharedMessagesType = {
   messages: []
 };
 
-const initialState = fromJS(init);
+const Rec = Record(init);
+export const initialState = new Rec();
 
 export function sharedMessagesReducer(state = initialState, action) {
   switch (action.type) {

@@ -57,8 +57,7 @@ export class AuthCallback extends React.Component<IAppProps, never> {
   }
 }
 
-function mapStateToProps(immutableState: any): IStateProps {
-  const state: StateType = immutableState.toJS();
+function mapStateToProps(state: StateType): IStateProps {
   return {
     accessToken: state.app.accessToken,
     auth0: state.app.auth0

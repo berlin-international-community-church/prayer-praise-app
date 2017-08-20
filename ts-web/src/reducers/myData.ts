@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable';
+import { Record } from 'immutable';
 
 import { MyData } from '../constants/types';
 import {
@@ -32,7 +32,8 @@ const init: MyData = {
   myMessages: []
 };
 
-const initialState = fromJS(init);
+const Rec = Record(init);
+export const initialState = new Rec();
 
 export function myDataReducer(state = initialState, action) {
   switch (action.type) {
