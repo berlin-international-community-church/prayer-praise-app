@@ -2,8 +2,6 @@ import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { SharedMessageType } from '../../constants/types';
-import { PrayerPraise } from '../../constants/enums';
-
 import Badge from './Badge';
 import * as styles from './styles.css';
 
@@ -23,7 +21,7 @@ const MessageSummary: React.SFC<IProps> = (props) => {
         {`${props.message.messageText.substr(0, 20)} ...`}
       </div>
       <div className={styles.userInitials}>
-        <p>{props.message.shortUsername}</p>
+        {props.message.shortUsername}
       </div>
     </div>
   );

@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import { SharedMessageType } from '../../constants/types';
 import ExpandedMessage from './ExpandedMessage';
 import MessageSummary from './MessageSummary';
-import { PrayerPraise } from '../../constants/enums';
-import { SharedMessageType } from '../../constants/types';
 import * as styles from './styles.css';
 
 interface IProps {
