@@ -15,6 +15,7 @@ export function routeReducer(state = initialState, action) {
       return state.merge({
         locationBeforeTransitions: action.payload
       });
+
     default:
       return state;
   }

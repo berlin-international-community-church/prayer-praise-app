@@ -3,7 +3,9 @@ import {
   FETCH_USER_PROFILE,
   LOGIN,
   LOGOUT,
+  RESET_SIDEBAR,
   SWITCH_LANGUAGE,
+  TOGGLE_SIDEBAR,
   TOKEN_LOAD_ERROR,
   TOKEN_LOADED,
   USER_PROFILE_LOAD_ERROR,
@@ -67,3 +69,16 @@ export function switchLanguage(payload: string) {
     type: SWITCH_LANGUAGE
   };
 }
+
+export function toggleSidebar() {
+  return {
+    type: TOGGLE_SIDEBAR
+  };
+}
+
+export function resetSidebar() {
+  return {
+    type: RESET_SIDEBAR
+  };
+}
+

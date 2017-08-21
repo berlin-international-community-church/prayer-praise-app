@@ -8,7 +8,7 @@ import { login } from '../App/actions';
 import * as styles from './styles.css';
 
 interface IStateProps {
-  accessToken?: string;
+  accessToken?: string | null;
   auth0?: any;
 }
 

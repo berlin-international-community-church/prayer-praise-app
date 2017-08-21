@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import ExpandButton from '../ExpandButton';
 import Footer from '../Footer';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
@@ -11,8 +12,10 @@ interface IProps {
   jwtToken?: string;
   auth0: any;
   children?: any;
+  sidebarVisible: boolean;
   logout(): void;
   switchLanguage(payload: string);
+  toggleSidebar();
 }
 
 class Layout extends React.PureComponent<IProps> {
@@ -29,10 +32,14 @@ class Layout extends React.PureComponent<IProps> {
           switchLanguage={this.props.switchLanguage}
         />
         <div className={styles.page}>
-          <Sidebar loggedIn={!!this.props.jwtToken && !!this.props.profilePic}/>
+          <Sidebar
+            loggedIn={!!this.props.jwtToken && !!this.props.profilePic}
+            sidebarVisible={this.props.sidebarVisible}
+          />
           <div className={styles.main}>
             { React.Children.toArray(this.props.children) }
           </div>
+          <ExpandButton toggleSidebar={this.props.toggleSidebar}/>
         </div>
         <Footer />
       </div>

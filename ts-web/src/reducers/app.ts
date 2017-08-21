@@ -1,18 +1,21 @@
 import { WebAuth } from 'auth0-js';
 import { Record } from 'immutable';
+import { AppStateType } from '../constants/types';
 
 import Config from '../config';
 import {
   LOGIN,
   LOGOUT,
+  RESET_SIDEBAR,
   SWITCH_LANGUAGE,
+  TOGGLE_SIDEBAR,
   TOKEN_LOAD_ERROR,
   TOKEN_LOADED,
   USER_PROFILE_LOAD_ERROR,
-  USER_PROFILE_LOADED
+  USER_PROFILE_LOADED,
 } from '../containers/App/constants';
 
-export const istate = {
+export const istate: AppStateType = {
   accessToken: sessionStorage.getItem('accessToken'),
   auth0: new WebAuth({
     // tslint:disable-next-line:no-string-literal
@@ -30,8 +33,9 @@ export const istate = {
   jwtToken: sessionStorage.getItem('jwtToken'),
   locale: 'en',
   profilePic: null,
-  tokenExpiresAt: null,
-  username: null
+  sidebarVisible: true,
+  tokenExpiresAt: undefined,
+  username: undefined
 };
 
 const Rec = Record(istate);
@@ -88,6 +92,14 @@ export function appReducer(state = initialState, action) {
     case SWITCH_LANGUAGE:
       return state
         .set('locale', action.payload);
+
+    case TOGGLE_SIDEBAR:
+      return state
+        .set('sidebarVisible', !state.get('sidebarVisible'));
+
+    case RESET_SIDEBAR:
+      return state
+        .set('sidebarVisible', true);
 
     default:
       return state;

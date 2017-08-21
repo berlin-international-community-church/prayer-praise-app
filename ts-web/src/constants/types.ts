@@ -2,13 +2,14 @@ import { PrayerPraise, ShareStatus } from './enums';
 import { MessagesStateType } from './types';
 
 interface IAppState {
-  accessToken?: string;
+  accessToken?: string | null;
   auth0: any;
-  error?: string;
-  idToken?: string;
-  jwtToken?: string;
+  error?: string | null;
+  idToken?: string | null;
+  jwtToken?: string | null;
   locale: string;
-  profilePic?: string;
+  profilePic?: string | null;
+  sidebarVisible: boolean;
   tokenExpiresAt?: number;
   username?: string;
 }

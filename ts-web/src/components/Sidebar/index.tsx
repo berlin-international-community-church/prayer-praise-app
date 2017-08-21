@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import * as styles from './styles.css';
 
 interface IProps {
+  sidebarVisible: boolean;
   loggedIn: boolean;
 }
 
@@ -12,7 +13,7 @@ class Sidebar extends React.PureComponent<IProps, {}> {
 
   render() {
     return (
-      <div className={styles.sidebar}>
+      <div className={this.props.sidebarVisible ? styles.sidebar : styles.visibleSidebar}>
         <ul className={styles.sidelinks}>
           <li>
             <Link to="/">
