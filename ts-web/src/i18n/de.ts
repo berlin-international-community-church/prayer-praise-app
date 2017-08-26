@@ -20,5 +20,9 @@ export default {
   'component.Sidebar.praiseLink': 'Lob',
   'component.Sidebar.meLink': 'Account',
   'component.FormHeading.Prayer': 'Gebetsanliegen',
-  'component.FormHeading.Praise': 'Lob'
+  'component.FormHeading.Praise': 'Lob',
+  'component.form.characters': ' chars',
+  'message.success': 'Vielen Dank! Die Nachricht wurde erfolgreich gespeichert.',
+  'message.failure': 'Fehler! Bitte erfrischen und später versuchen.',
+  'message.blank': ' '
 };

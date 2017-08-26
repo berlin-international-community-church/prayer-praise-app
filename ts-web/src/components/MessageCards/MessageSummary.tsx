@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { SharedMessageType } from '../../constants/types';
+import cleanString from '../../utils/cleanString';
 import Badge from './Badge';
 import * as styles from './styles.css';
 
@@ -18,7 +19,7 @@ const MessageSummary: React.SFC<IProps> = (props) => {
     >
       <Badge messageType={props.message.messageType} />
       <div className={styles.messageText}>
-        {`${props.message.messageText.replace(/<[^>]*>/ig, ' ').substr(0, 20)} ...`}
+        {`${cleanString(props.message.messageText).substr(0, 20)} ...`}
       </div>
       <div className={styles.userInitials}>
         {props.message.shortUsername}

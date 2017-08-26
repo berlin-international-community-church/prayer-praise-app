@@ -20,5 +20,9 @@ export default {
   'component.Sidebar.praiseLink': 'Praise',
   'component.Sidebar.meLink': 'Me',
   'component.FormHeading.Prayer': 'Prayer',
-  'component.FormHeading.Praise': 'Praise'
+  'component.FormHeading.Praise': 'Praise',
+  'component.form.characters': ' chars',
+  'message.success': 'Thank you! The message was saved successfully.',
+  'message.failure': 'Save unsuccessful! Please refresh and try later.',
+  'message.blank': ' '
 };

@@ -11,3 +11,4 @@ export const SUBMIT_MESSAGE          = 'app/PrayerPraiseForm/SUBMIT_MESSAGE';
 export const SUBMIT_MESSAGE_INFLIGHT = 'app/PrayerPraiseForm/SUBMIT_MESSAGE_INFLIGHT';
 export const SUBMIT_MESSAGE_SUCCESS  = 'app/PrayerPraiseForm/SUBMIT_MESSAGE_SUCCESS';
 export const SUBMIT_MESSAGE_FAILED   = 'app/PrayerPraiseForm/SUBMIT_MESSAGE_FAILED';
+export const CLEAR_DISPLAY           = 'app/PrayerPraiseForm/CLEAR_DISPLAY';

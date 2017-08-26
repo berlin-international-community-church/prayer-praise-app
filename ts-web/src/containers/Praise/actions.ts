@@ -3,6 +3,7 @@ import {
   CHANGE_MESSAGE_TEXT,
   CHANGE_MESSAGE_TYPE,
   CHANGE_SHARED_STATUS,
+  CLEAR_DISPLAY,
   SUBMIT_MESSAGE,
   SUBMIT_MESSAGE_FAILED,
   SUBMIT_MESSAGE_INFLIGHT,
@@ -51,5 +52,11 @@ export function submitMessageSuccessful() {
 export function submitMessageFailed() {
   return {
     type: SUBMIT_MESSAGE_FAILED
+  };
+}
+
+export function clearDisplay() {
+  return {
+    type: CLEAR_DISPLAY
   };
 }

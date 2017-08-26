@@ -47,3 +47,10 @@ button.disabledButton {
   overflow-x: hidden;
 }
 
+.info {
+  padding: 10px 0;
+  font-size: 0.8em;
+  font-style: italic;
+  color: var(--main-gray);
+}
+

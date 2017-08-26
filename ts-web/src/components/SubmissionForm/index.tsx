@@ -3,6 +3,7 @@ import * as ContentEditable from 'react-contenteditable';
 import { FormattedMessage } from 'react-intl';
 
 import { PrayerPraise, ShareStatus } from '../../constants/enums';
+import cleanString from '../../utils/cleanString';
 import DisplayMessage from '../DisplayMessage';
 import SelectBar from '../SelectBar';
 import * as styles from './styles.css';
@@ -38,6 +39,10 @@ class SubmissionForm extends React.PureComponent<IProps> {
     return (
       <div className={styles.formContainer}>
         <h2>{this.getMessage(this.props.formType)}</h2>
+        <div className={styles.info}>
+          { `${cleanString(this.props.messageText).length} / 500` }
+          <FormattedMessage id="component.form.characters" />
+        </div>
         <DisplayMessage message={this.props.displayMessage} />
         <ContentEditable
           className={styles.contentHolder}
@@ -51,7 +56,11 @@ class SubmissionForm extends React.PureComponent<IProps> {
           handleChangeShareStatus={(status: ShareStatus) => this.props.handleChangeShareStatus(status)}
         />
         <button
-          className={styles.submitButton}
+          disabled={cleanString(this.props.messageText).trim().length === 0 ||
+            cleanString(this.props.messageText).length > 500}
+          className={cleanString(this.props.messageText).trim().length === 0 ||
+            cleanString(this.props.messageText).length > 500 ?
+            styles.disabledButton : styles.submitButton}
           onClick={(e) => this.submitMessage(e)}>
           <FormattedMessage id="actions.submit" />
         </button>

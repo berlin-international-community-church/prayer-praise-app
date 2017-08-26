@@ -6,7 +6,9 @@ import SubmissionForm from '../../components/SubmissionForm';
 import { PrayerPraise, ShareStatus } from '../../constants/enums';
 import { StateType } from '../../constants/types';
 import { withUserProfile } from '../Main';
-import { changeMessageText, changeMessageType, changeSharedStatus, submitMessage } from './actions';
+import {
+  changeMessageText, changeMessageType, changeSharedStatus, clearDisplay, submitMessage
+} from './actions';
 
 interface IStateProps {
   displayMessage?: string;
@@ -19,6 +21,7 @@ interface IStateProps {
 interface IDispatchProps {
   changeMessageText(payload: string);
   changeSharedStatus(payload: ShareStatus);
+  clearDisplay();
   submitMessage();
   changeMessageType();
 }
@@ -38,6 +41,7 @@ function mapDispatchToProps(dispatch): IDispatchProps {
     changeMessageText: (payload: string) => dispatch(changeMessageText(payload)),
     changeMessageType: () => dispatch(changeMessageType(PrayerPraise.PRAISE)),
     changeSharedStatus: (payload: ShareStatus) => dispatch(changeSharedStatus(payload)),
+    clearDisplay: () => dispatch(clearDisplay()),
     submitMessage: () => dispatch(submitMessage())
   };
 }
@@ -48,6 +52,7 @@ type IAppProps = IStateProps & IDispatchProps;
 export class Praise extends React.Component<IAppProps, never> {
 
   componentDidMount() {
+    this.props.clearDisplay();
     this.props.changeMessageType();
   }
 

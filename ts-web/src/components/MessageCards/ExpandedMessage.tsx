@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { SharedMessageType } from '../../constants/types';
+import cleanString from '../../utils/cleanString';
 import Badge from './Badge';
 import * as styles from './styles.css';
 
@@ -22,7 +23,7 @@ const ExpandedMessage: React.SFC<IProps> = (props) => {
         </div>
       </div>
       <div className={styles.expandedMessageText}>
-        {props.message.messageText.replace(/<[^>]*>/ig, ' ')}
+        {cleanString(props.message.messageText)}
       </div>
     </div>
   );

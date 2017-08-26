@@ -6,6 +6,7 @@ import {
   CHANGE_MESSAGE_TEXT,
   CHANGE_MESSAGE_TYPE,
   CHANGE_SHARED_STATUS,
+  CLEAR_DISPLAY,
   SUBMIT_MESSAGE_FAILED,
   SUBMIT_MESSAGE_INFLIGHT,
   SUBMIT_MESSAGE_SUCCESS
@@ -47,13 +48,17 @@ export function messagesReducer(state = initialState, action) {
       return state
         .set('loading', false)
         .set('messageText', '')
-        .set('displayMessage', 'Save successful!');
+        .set('displayMessage', 'message.success');
 
     case SUBMIT_MESSAGE_FAILED:
       return state
         .set('loading', false)
         .set('error', SUBMIT_MESSAGE_FAILED)
-        .set('displayMessage', 'Save unsuccessful! Please refresh and try later.');
+        .set('displayMessage', 'message.failure');
+
+    case CLEAR_DISPLAY:
+      return state
+        .set('displayMessage', undefined);
 
     default:
       return state;
