@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ContentEditable from 'react-contenteditable';
 import { FormattedMessage } from 'react-intl';
 
 import { PrayerPraise, ShareStatus } from '../../constants/enums';
@@ -38,13 +39,12 @@ class SubmissionForm extends React.PureComponent<IProps> {
       <div className={styles.formContainer}>
         <h2>{this.getMessage(this.props.formType)}</h2>
         <DisplayMessage message={this.props.displayMessage} />
-        <div
+        <ContentEditable
           className={styles.contentHolder}
-          contentEditable={true}
-          onBlur={ (e) => this.props.handleChangeMessageText(e.target['innerHTML']) }
-        >
-          {this.props.messageText}
-        </div>
+          onChange={(evt) => this.props.handleChangeMessageText(evt.target.value)}
+          html={this.props.messageText}
+          disabled={false}
+        />
         <SelectBar
           loggedIn={this.props.loggedIn}
           sharedStatus={this.props.sharedStatus}

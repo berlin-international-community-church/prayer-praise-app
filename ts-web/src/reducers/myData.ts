@@ -72,7 +72,7 @@ export function myDataReducer(state = initialState, action) {
 
     case SET_MESSAGE_TO_EDIT:
       return state
-        .setIn(['messageForEdit', 'id'], action.payload);
+        .set('messageForEdit', { id: action.payload });
 
     case EDIT_MESSAGE_INFLIGHT:
       return state
@@ -81,10 +81,12 @@ export function myDataReducer(state = initialState, action) {
     case EDIT_MESSAGE_SUCCESS:
       return state
         .set('loading', false)
-        .setIn(['messageForEdit', 'id'], action.payload.id)
-        .setIn(['messageForEdit', 'messageType'], action.payload.messageType)
-        .setIn(['messageForEdit', 'newSharedStatus'], action.payload.sharedStatus)
-        .setIn(['messageForEdit', 'newText'], action.payload.messageText)
+        .set('messageForEdit', {
+          id: action.payload.id,
+          messageType: action.payload.messageType,
+          newSharedStatus: action.payload.sharedStatus,
+          newText: action.payload.messageText
+        })
         .set('displayMessage', undefined);
 
     case EDIT_MESSAGE_FAILED:

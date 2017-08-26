@@ -12,7 +12,7 @@ import {
   TOKEN_LOAD_ERROR,
   TOKEN_LOADED,
   USER_PROFILE_LOAD_ERROR,
-  USER_PROFILE_LOADED,
+  USER_PROFILE_LOADED
 } from '../containers/App/constants';
 
 export const istate: AppStateType = {

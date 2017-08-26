@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import LoadingSpinner from '../../components/LoadingSpinner';

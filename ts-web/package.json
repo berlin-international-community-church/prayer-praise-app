@@ -55,6 +55,7 @@
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
     "react": "^15.6.1",
+    "react-contenteditable": "^2.0.4",
     "react-dom": "^15.6.1",
     "react-intl": "^2.3.0",
     "react-redux": "^5.0.5",

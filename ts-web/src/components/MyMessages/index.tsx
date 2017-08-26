@@ -18,7 +18,7 @@ class MyMessages extends React.PureComponent<IProps> {
         {this.props.messages.map((message) => {
           return (
             <div className={styles.message} key={message.id}>
-              <span>{message.messageText.substr(0, 20)}...</span>
+              <span>{message.messageText.replace(/<[^>]*>/ig, ' ').substr(0, 20)}...</span>
               <span>
                 <button className={styles.editButton}
                   onClick={() => this.props.editMessage(message.id, `/edit/messages/${message.id}`)}>

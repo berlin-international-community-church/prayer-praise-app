@@ -18,7 +18,7 @@ const MessageSummary: React.SFC<IProps> = (props) => {
     >
       <Badge messageType={props.message.messageType} />
       <div className={styles.messageText}>
-        {`${props.message.messageText.substr(0, 20)} ...`}
+        {`${props.message.messageText.replace(/<[^>]*>/ig, ' ').substr(0, 20)} ...`}
       </div>
       <div className={styles.userInitials}>
         {props.message.shortUsername}

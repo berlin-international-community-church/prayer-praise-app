@@ -22,7 +22,7 @@ const ExpandedMessage: React.SFC<IProps> = (props) => {
         </div>
       </div>
       <div className={styles.expandedMessageText}>
-        {props.message.messageText}
+        {props.message.messageText.replace(/<[^>]*>/ig, ' ')}
       </div>
     </div>
   );
