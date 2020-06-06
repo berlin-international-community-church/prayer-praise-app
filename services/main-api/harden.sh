@@ -22,7 +22,7 @@ set -e
 #
 # This file is provided by the openssh package on Fedora.
 moduli=/etc/ssh/moduli
-if [[ -f ${moduli} ]]; then
+if [ -f ${moduli} ]; then
   cp ${moduli} ${moduli}.orig
   awk '$5 >= 2000' ${moduli}.orig > ${moduli}
   rm -f ${moduli}.orig
@@ -61,8 +61,8 @@ sysdirs="
 # Normally, I'd do this on the root fs, but circle ci fails with:
 #   chmod: /dev/mqueue: Operation not permitted
 # Therefore restrict the find to sysdirs listed above.
-find $sysdirs -xdev -type d -perm +0002 -exec chmod o-w {} +
-find $sysdirs -xdev -type f -perm +0002 -exec chmod o-w {} +
+find $sysdirs -xdev -type d -perm /0002 -exec chmod o-w {} +
+find $sysdirs -xdev -type f -perm /0002 -exec chmod o-w {} +
 
 # Remove apk configs.
 find $sysdirs -xdev -regex '.*apk.*' -exec rm -fr {} +
@@ -79,7 +79,7 @@ find $sysdirs -xdev -type d \
   -exec chmod 0755 {} \;
 
 # Remove all suid files.
-find $sysdirs -xdev -type f -a -perm +4000 -delete
+find $sysdirs -xdev -type f -a -perm /4000 -delete
 
 # Remove other programs that could be dangerous.
 find $sysdirs -xdev \( \
