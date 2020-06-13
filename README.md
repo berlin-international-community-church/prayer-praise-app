@@ -12,7 +12,7 @@ Fully containerized HapiJS + ReactJS app for Berlin Church to share prayers and 
 
 ## To run locally
 
-1. Run ```yarn install``` inside web and api projects to make sure you have npm and yarn setup correctly (_techinally optional, just docker-compose should be enough to get this project running)._
+1. Run ```yarn install``` inside folders `ts-web` and `services/main-api` to make sure you have npm and yarn setup correctly (_techinally optional, just docker-compose should be enough to get this project running)._
 2. __For the first time setup do - ```docker-compose up --build``` after that you do not need the '--build' flag__
 3. DB migrations can be done with - ```docker-compose exec main-api npm run migrate-latest```
 4. DB can be seeded with some data using - ```docker-compose exec main-api npm run seed-data```
