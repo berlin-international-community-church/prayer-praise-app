@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ContentEditable from 'react-contenteditable';
+import ContentEditable from 'react-contenteditable';
 import { FormattedMessage } from 'react-intl';
 
 import { PrayerPraise, ShareStatus } from '../../constants/enums';
