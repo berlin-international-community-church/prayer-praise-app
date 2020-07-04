@@ -47,7 +47,7 @@ class SubmissionForm extends React.PureComponent<IProps> {
         <ContentEditable
           className={styles.contentHolder}
           onChange={(evt) => this.props.handleChangeMessageText(evt.target.value)}
-          html={this.props.messageText}
+          html={this.props.messageText!}
           disabled={false}
         />
         <SelectBar
