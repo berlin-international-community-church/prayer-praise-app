@@ -15,9 +15,15 @@ const server = new Hapi.Server();
 const goodOptions = { reporters: LoggingConfig, includes: { request: ['headers'] } };
 const registered  = [HapiAuthJWT, { register: GoodLogging, options: goodOptions }];
 
+var fs = require('fs');
+
 // Server config
 server.connection({
   port: Config.get('api.port'),
+  tls: {
+    key: fs.readFileSync(Config.get('api.key')),
+    cert: fs.readFileSync(Config.get('api.cert'))
+  },
   routes: { cors: Config.get('api.cors') }
 });
 

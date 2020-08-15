@@ -13,3 +13,5 @@ services/db/data/
 /.env
 /services/main-api/db/data/dev.db
 /services/main-api/db/data/test.db
+/ts-web/nbproject/private/
+/services/main-api/nbproject/private/

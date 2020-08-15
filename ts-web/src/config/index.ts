@@ -7,7 +7,7 @@ const environmentConfiguration = (environment: string) => {
 
   if (environment === 'development') {
     return defaultConf.merge({
-      baseURL: `http://${window.location.hostname}:3001`,
+      baseURL: `https://ppa.berlin.church`,
       callbackURL : `http://${window.location.hostname}:3000/authCallback`
     }).toObject();
   }

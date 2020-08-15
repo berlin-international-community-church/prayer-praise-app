@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ContentEditable from 'react-contenteditable';
+import ContentEditable from 'react-contenteditable';
 import { FormattedMessage } from 'react-intl';
 
 import { PrayerPraise, ShareStatus } from '../../constants/enums';
@@ -47,7 +47,7 @@ class SubmissionForm extends React.PureComponent<IProps> {
         <ContentEditable
           className={styles.contentHolder}
           onChange={(evt) => this.props.handleChangeMessageText(evt.target.value)}
-          html={this.props.messageText}
+          html={this.props.messageText!}
           disabled={false}
         />
         <SelectBar
