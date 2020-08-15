@@ -4,5 +4,7 @@ db:
   name: prayer_praise_app
   user: postgres
 api:
-  port: 3001
-  cors: false
+  port: 443
+  cors: true
+  key: /app/cacert.prod.key
+  cert: /app/cacert.prod.pem
